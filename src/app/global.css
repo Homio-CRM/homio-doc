@@ -134,6 +134,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+strong, b {
+  font-weight: 700 !important;
+}
+
+article strong, 
+article b,
+.prose strong,
+.prose b,
+[data-docs-body] strong,
+[data-docs-body] b {
+  font-weight: 700 !important;
+}
+
 nav[aria-label="Table of contents"] h2,
 [data-toc] h2 {
   font-size: 0 !important;

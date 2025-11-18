@@ -3,13 +3,18 @@
   "pages": [
     "index",
     "introducao",
+    "informacoes-sub-conta",
+    "dominios",
+    "usuarios-e-permissoes",
+    "campos-personalizados",
     "Conversas",
     "leads-e-pipelines",
     "formularios",
     "calendarios",
     "dashboards",
     "assinaturas",
-    "landing-pages"
+    "landing-pages",
+    "pipelines"
   ]
 }
 
