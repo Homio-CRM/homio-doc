@@ -1,0 +1,13 @@
+{
+  "title": "Conversas",
+  "icon": "MessageSquare",
+  "pages": [
+    "whatsapp",
+    "email",
+    "boas-praticas-email",
+    "ligacoes-sms",
+    "redes-sociais",
+    "contatos-e-conversas"
+  ]
+}
+

@@ -1,0 +1,89 @@
+---
+title: Contatos
+icon: Users
+---
+
+A aba de contatos do sistema Homio é, sem dúvida, uma das funcionalidades mais intuitivas e poderosas da plataforma. Funciona como uma agenda telefônica inteligente, mas com recursos avançados: você pode filtrar seus contatos, integrá-los a automações personalizadas e enviar mensagens via WhatsApp, e-mail ou SMS de forma massiva e eficiente.
+
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/397bf63d-5ce9-40d1-9f4d-54f92de55046/image.png)
+
+* * *
+## Como um contato funciona?
+Cada contato na plataforma possui um perfil detalhado, que reúne informações essenciais, como nome, e-mail e telefone. Alguns campos padrão já estão disponíveis, mas a flexibilidade do sistema permite que você adicione quantos campos personalizados desejar, possibilitando o armazenamento de praticamente qualquer dado relevante sobre o contato.
+Essa capacidade de personalização garante que você possa adaptar o gerenciamento de informações às necessidades específicas do seu negócio.
+
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/36201f9d-8f03-4082-a3b9-4ddec662af41/image.png)
+
+* * *
+## Como importar contatos para a Homio
+### Requisitos para Preparação do Arquivo
+*   **Planilha:** Deve conter apenas uma aba.
+*   **Formato:** Certifique-se de que o seu arquivo esteja no formato **.csv**.
+*   **Tamanho:** Menor que 30 MB.
+*   **Cabeçalhos:** Inclua uma linha de cabeçalho com, pelo menos, uma coluna que corresponda a um campo padrão ou personalizado no sistema.
+*   **Para Criar Contatos:** É obrigatório ter, pelo menos, um dos seguintes campos: **Nome do Contato, Telefone ou Email**.
+*   **Observação:** Todos os seus campos personalizados devem ser criados no sistema antes da primeira importação.
+> **Atenção:** Apenas a importação de novos contatos pode ser revertida; a atualização de contatos não é uma ação reversível.
+
+* * *
+### Estruturando seu Arquivo
+*   **Data:**
+    *   mm/dd/aaaa (ex.: 10/28/2020)
+    *   aaaa/mm/dd (ex.: 2020/10/28)
+    *   mm-dd-aaaa (ex.: 10-28-2020)
+    *   aaaa-mm-dd (ex.: 2020-10-28)
+*   **Opções Múltiplas, Checkbox, Lista em Caixa de Texto:** `Valor 1, Valor 2, Valor 3` (ex.: Blue, Yellow, Green). Também é possível usar `;` ou `.` como separadores.
+*   **Opção Única, Radio:** `Valor 1` (ex.: Azul).
+*   **Proprietário do Contato:** `PrimeiroNome ÚltimoNome` (ex.: Logan Paul).
+*   **Tags:** `Valor 1, Valor 2, Valor 3` (ex.: Azul, Amarelo, Verde). Também é possível usar `;` ou `.` como separado.
+*   **Números de Telefone:** formato recomendado E.164 (ex.: **+1 1234567890**). Se tiver problemas, visite [libphonenumber.appspot.com](https://libphonenumber.appspot.com/) para verificar a formatação adequada com o código do país.
+*   **Numérico:** `1.23, 1234, .123`.
+*   **Monetário:** `1234` ou `1,234,234.33`.
+*   **Seguidores do Contato:** `PrimeiroNome ÚltimoNome, PrimeiroNome2 ÚltimoNome2` (ex.: Adam Smith, David Lee).
+*   **Emails Adicionais:** Se importar contatos com mais de um endereço de email, inclua uma coluna para **Endereços de Email Adicionais**. Formato aceito:[`abc@email.com`](mailto:abc@email.com)`,` [`abc1@email.com`](mailto:abc1@email.com).
+*   **Telefones Adicionais:** Se importar contatos com mais de um número de telefone, inclua uma coluna para **Números de Telefone Adicionais**. Formato aceito: `+1 7877123460,+1 7877123461`.
+
+* * *
+### Importando seu Arquivo
+1. Vá até a seção **Contatos**.
+2. Na linha superior com múltiplas ações, clique em **"Importar Contatos"**.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/2f9b78f9-8d0e-480e-95e2-44cea32ded15/image.png)
+1. Selecione se deseja importar apenas Contatos ou tanto Contatos quanto Oportunidades.
+2. Faça o upload do arquivo .csv e clique em **"Escolher como importar contatos"** para decidir se deseja:
+    *   Criar novos registros;
+    *   Atualizar registros existentes;
+    *   Ou ambos.
+3. As configurações de desduplicação definidas na conta serão utilizadas para identificar contatos já existentes.
+    *   Caso algum campo não seja importado, você pode deixá-lo sem mapeamento e marcar a caixa de confirmação.
+    *   **Importante:** Todos os campos obrigatórios devem estar mapeados. Se algum campo obrigatório não for mapeado, escolha a opção "Não importar dados para colunas não mapeadas".
+4. Revise a pré-visualização dos dados para confirmar que tudo está correto e, em seguida, confirme a importação.
+    *   Marque a caixa de aceitação do disclaimer para iniciar o processo.
+    *   Nesta etapa, também é possível adicionar tags aos contatos para facilitar a organização.
+
+Acompanhe o status da importação em **Oportunidades > Ações em Massa**.
+Clique no botão **"Mostrar Estatísticas"** para visualizar:
+*   **Erros:** Falhas em campos obrigatórios que impedem a importação de uma linha.
+*   **Avisos:** Problemas em campos opcionais que, mesmo ocorrendo, não impedem a importação da linha, mas o campo específico não será atualizado.
+
+* * *
+### Solução de Problemas Comuns
+#### **Erro: Campos Obrigatórios Ausentes**
+**Criação de Contatos:** Certifique-se de incluir pelo menos um dos seguintes campos: Nome, Telefone ou Email.
+**Atualização de Contatos:** Verifique as configurações de desduplicação em Configurações > "Permitir Contatos Duplicados". Dependendo das configurações, os contatos são identificados pelo ID ou por uma combinação de Telefone e Email.
+#### **Erro: Telefone ou Email Duplicado**
+Verifique as configurações de desduplicação. Caso o arquivo contenha números ou emails duplicados: Atualize os dados para torná-los únicos; ou ajuste as configurações para permitir duplicatas.
+#### **Erro: Contato Inválido ou Não Pertence à Subconta**
+Confirme que o ID do Contato informado no arquivo corresponde a um contato válido na subconta atual. Caso o contato tenha sido excluído, atualize o arquivo com o ID correto.
+#### **Erro: Número de Telefone Não Lido**
+Verifique se os números estão no formato E.164 (ex.: +1 1234567890). Se a subconta estiver configurada para os EUA, formatos como 123-456-7890, (123) 4567890 ou 1234567890 também são aceitos.
+Para números internacionais, utilize [libphonenumber.appspot.com](http://libphonenumber.appspot.com) para confirmar a formatação adequada.
+#### **Erro: Data Inválida**
+Garanta que as datas estejam em um dos formatos suportados (ex.: YYYY-MM-DD, YYYY/MM/DD, etc.). Caso contrário, ajuste as datas no arquivo antes de importar novamente.
+#### **Erro: Email Inválido**
+Verifique e corrija o formato dos endereços de email, garantindo que contenham "@" e um domínio válido.
+
+* * *
+### Dicas Adicionais
+*   **Revisão Pré-Importação:** Verifique minuciosamente o arquivo antes de realizar a importação para evitar erros.
+*   **Suporte:** Se encontrar dificuldades durante o processo, consulte este guia novamente ou entre em contato com a equipe de suporte.
+

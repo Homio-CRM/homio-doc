@@ -1,0 +1,83 @@
+---
+title: Ligações/SMS
+description: Como comprar e configurar números de telefone para ligações e SMS na Homio
+icon: Phone
+---
+
+`O envio e recebimento de SMS para números nacionais estão desativados temporariamente da plataforma.`
+
+Para habilitar o envio e recebimento de ligações pela plataforma Homio, é necessário adquirir um número diretamente em nossa plataforma. O processo é extremamente simples, rápido e intuitivo, veja abaixo:
+
+* * *
+## Como comprar um número Homio
+1. Acesse o menu lateral e clique em **"Configurações"**, localizado na última opção.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/222379ed-4ffd-4c6b-ae94-cd92312fc431/image.png)
+1. Na nova tela, selecione a aba **"Números de Telefone"**.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/2667fbd2-4aa6-41f0-9123-4ff5e68f472f/image.png)
+1. No canto superior direito, clique em **"Adicionar Número"**.
+2. **"Adicionar número de telefone"**
+3. Escolha o país desejado.
+4. Se necessário, utilize os filtros para encontrar um número específico. Para filtrar por estado, adicione o filtro **"Corresponder a"** → **"Primeira parte do número"** e insira o código **55(DDD do estado)**.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/c9aebe1a-f76a-4bf2-9c04-acfefccd8fb1/image.png)
+1. Clique em **"Aplicar"** no canto superior direito do pop-up para confirmar os filtros.
+2. Analise as opções disponíveis, selecione o número que mais lhe interessa e clique em **"Prosseguir para comprar"**.
+3. A cobrança será realizada automaticamente no cartão cadastrado no sistema.
+
+* * *
+## Como configurar um número Homio
+Agora que você já adquiriu seu número, existem algumas configurações essenciais que precisam ser feitas para que você possa utilizá-lo plenamente na Homio. Vamos te guiar nesse processo!
+
+1. Acesse o menu lateral e clique em **"Configurações"**, localizado na última opção.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/caf3474c-d627-46e5-a37d-c7339f0c3ee0/image.png)
+1. Na nova tela, selecione a aba **"Números de Telefone"**.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/6e5ecb2c-81de-4b07-8b32-08e0affb3645/image.png)
+1. Agora, deve aparecer já o seu novo número na lista.
+2. Em seguida, clique nos três pontos laterais.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/7631558c-b3ec-4bcf-b89b-e077a15ed926/image.png)
+1. Selecione "Editar configuração".
+
+* * *
+`Este menu é um dos elementos mais sofisticados de nossa plataforma. Para que você possa aproveitar ao máximo todas as suas funcionalidades, vamos explorar cada aspecto em detalhes, explicando passo a passo como cada recurso pode ser utilizado`
+* * *
+### Passar o número chamado como identificação de chamador
+Por padrão, se essa opção **não** estiver marcada, o identificador de chamadas mostrará o número de quem está ligando. Se marcarmos essa caixa, o sistema exibirá como identificador do chamador o número que você adquiriu. Isso pode ser útil para que você sempre saiba que a chamada vem deste subconta específico.
+
+* * *
+### Encaminhar chamadas para
+O número de telefone para o qual as chamadas recebidas nesse novo número devem ser redirecionadas (ou seja, quando alguém ligar para o novo número, a chamada será encaminhada para o número salvo aqui).
+
+* * *
+### Use seu número verificado como identificador de chamadas para chamadas de saída
+Esta funcionalidade permite que, ao fazer chamadas para fora, o destinatário veja o seu número de telefone verificado como o identificador de chamadas.
+
+* * *
+### Ativar a função de conexão de chamadas
+Se esta caixa estiver marcada, você ouvirá uma mensagem (chamada de "sussurro") solicitando que pressione uma tecla para aceitar a chamada. Isso ajuda o sistema a confirmar se a chamada foi atendida por um humano, evitando confundir secretárias eletrônicas com pessoas reais.
+#### **Por que ativar essa funcionalidade?**
+*   Permite ao CRM diferenciar chamadas conectadas de não conectadas.
+*   Viabiliza automações como o envio automático de mensagens de texto para chamadas perdidas (mensagem de texto para chamadas perdidas).
+*   Ajuda a evitar que o sistema interprete a gravação de um correio de voz como um atendimento verdadeiro.
+
+* * *
+### Gravação de chamada
+Se ativada, as chamadas serão gravadas e as gravações serão adicionadas diretamente ao histórico de conversas de cada contato (junto com e-mails, SMS, mensagens de Facebook, Instagram etc.).
+> **Observação:** No Brasil, segundo a LGPD (Lei Geral de Proteção de Dados – Lei n.º 13.709/2018) é obrigatório inserir um aviso, como "Esta chamada será gravada para fins de qualidade", para informar ao chamador sobre a gravação.
+
+* * *
+### Tempo limite de chamada
+É o tempo (em segundos) que o sistema deixa a chamada **recebida** tocar antes de encerrá-la ou encaminhá-la para um correio de voz (pessoal ou pré-gravado no CRM).
+*   **Cenário 1:** Se você quiser que a pessoa chegue ao seu correio de voz do celular, deixe este campo em branco ou coloque cerca de 60 segundos.
+*   **Cenário 2:** Se você quiser usar um correio de voz pré-gravado no CRM, defina o tempo limite para cerca de 20 segundos (ou um valor que evite cair na caixa postal pessoal).
+*   **Cenário 3:** Se quiser que as chamadas recebidas caiam imediatamente no correio de voz pré-gravado do CRM, coloque algo entre 1 a 4 segundos. Certifique-se de ter enviado o arquivo MP3/WAV nas configurações de "Informações do Negócio" ou do perfil do usuário.
+
+* * *
+### Tempo limite de chamada de saída
+É o tempo (em segundos) que o sistema deixa a chamada **de saída** tocar antes de desligá-la.
+*   Definir um tempo menor, por volta de 30 segundos, reduz as chances de cair na caixa postal do destinatário, o que pode ser útil para campanhas de envio de mensagens de voz ou para equipes que ligam para listas grandes e querem falar somente com leads que atendam de imediato.
+
+* * *
+### Encaminhar chamadas recebidas para usuários selecionados **_(Importante)_**
+Permite que chamadas recebidas sejam tocadas nos telefones de vários usuários (membros da equipe) simultaneamente. Você pode escolher até 7 usuários para receber as chamadas, aumentando as chances de alguém atender. Caso nenhum usuário atenda dentro do tempo limite, a chamada segue o fluxo de encaminhamento configurado (por exemplo, correio de voz).
+
+* * *
+

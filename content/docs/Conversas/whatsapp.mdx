@@ -1,0 +1,138 @@
+---
+title: WhatsApp
+description: Diferenças entre WhatsApp Homio e WhatsApp Meta e como escolher a melhor opção
+icon: MessageCircle
+---
+
+Nosso sistema permite a comunicação via WhatsApp, garantindo que toda a interação com seus clientes esteja centralizada em uma única plataforma.
+
+<Callout title="Escolha a melhor opção">
+Sabemos que o uso do **WhatsApp Oficial da Meta** apresenta algumas limitações. Por isso, desenvolvemos nossa própria integração na Homio, oferecendo a você a liberdade de escolher entre a versão **Meta** e a **Homio**. Para tomar a melhor decisão para o seu negócio, é essencial entender as diferenças entre elas.
+</Callout>
+
+<Cards>
+  <Card title="WhatsApp Homio">
+    Nossa solução própria para evitar burocracias e limitações.
+  </Card>
+  <Card title="WhatsApp Meta">
+    Integração oficial da Meta com mais segurança, mas com restrições.
+  </Card>
+</Cards>
+
+* * *
+## WhatsApp Homio
+
+O WhatsApp Homio é nossa solução própria que foi criada para evitar as burocracias e limitações do WhatsApp Meta.
+
+### Como conectar o WhatsApp Homio
+
+1. No menu lateral esquerdo da Homio, clique na última opção **"WhatsApp Homio"**.
+2. No card que abrir, selecione **"Começar a usar"**.
+3. Serão exibidos **4 cards**: cada um é uma instância de WhatsApp que você pode conectar.
+4. No **primeiro card**, clique em **"Criar"**.
+5. No seu celular, abra o **WhatsApp**.
+6. Acesse **Configurações** → **Dispositivos conectados**.
+7. Toque em **"Conectar um dispositivo"** e escaneie o QR Code que está na Homio.
+8. Prontinho! As mensagens já começarão a chegar na plataforma.
+
+### Limitações do WhatsApp Homio
+
+Apesar de oferecer mais flexibilidade, o uso de uma integração não oficial como o WhatsApp Homio apresenta algumas desvantagens que devem ser consideradas:
+
+*   **Risco de Bloqueio:** Por não ser uma API oficial da Meta, há um risco de que o seu número de telefone seja bloqueado pelo WhatsApp por violação dos termos de serviço.
+*   **Instabilidade:** A conexão depende da engenharia reversa do WhatsApp Web. Qualquer atualização feita pelo WhatsApp pode causar instabilidades temporárias ou até mesmo a interrupção do serviço até que nossa equipe realize os ajustes necessários.
+
+* * *
+## WhatsApp Meta
+
+O WhatsApp Meta é a forma que a Meta oferece para envio de mensagens via plataformas externas, ele utiliza os servidores da Meta e a nossa plataforma da Homio faz apenas a ponte entre você e a Meta. No entanto esse método vem com algumas desvantagens e burocracias que citaremos abaixo.
+
+Para evitar essas burocracias que criamos o WhatsApp Homio.
+
+### Limitações do WhatsApp Meta
+
+*   Cobranças por conversa iniciada.
+*   Apresenta algumas limitações, como:
+    *   **Perda do histórico ao desvincular o celular.**
+    *   [Regras para o envio de mensagens e obrigatoriedade de templates aprovados.](https://developers.facebook.com/docs/whatsapp/messaging-limits?locale=pt_BR)
+*   Em contrapartida, oferece **maior segurança e estabilidade** usando o serviço oficial da Meta.
+
+### Janela de 24 horas
+
+Imagine que um cliente envie uma mensagem às **10 h**. Desse instante até as **10 h** do dia seguinte corre a _janela de 24 horas_: o intervalo em que sua empresa pode falar livremente com ele — texto, imagem, áudio ou arquivo — sem precisar de modelos (templates) aprovados.
+
+Esse limite serve a dois propósitos: proteger o usuário contra spam e estimular respostas rápidas. Resolver a questão dentro das 24 horas mantém a conversa fluida; deixar o relógio zerar adiciona uma camada extra de controle.
+
+Quando o prazo expira, acontecem duas possibilidades:
+
+*   Se **o cliente** mandar nova mensagem, ela reabre automaticamente outra janela de 24 horas. Basta responder e seguir.
+*   Se **a empresa** quiser retomar por conta própria, precisa disparar um _template_ previamente aprovado pelo WhatsApp.
+
+Esses envios com a janela de 24 horas fechada que causam as cobranças abaixo:
+
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/4cc9655b-e347-471a-aacc-764bce8b2bf8/%7B9B3DE8AC-880F-4A66-9D29-90474B7F1145%7D.png)
+
+### Limites de Conversas Iniciadas
+
+Os limites de mensagens são o máximo de conversas iniciadas pela empresa (abertas devido ao envio de um modelo de marketing, utilidade ou autenticação a um usuário do WhatsApp) que um número de telefone comercial pode abrir em um período de 24 horas.
+
+Inicialmente, os números de telefone comerciais têm o limite de 250 conversas iniciadas pela empresa em um período de 24 horas, mas esse limite pode ser aumentado.
+
+[**Saiba Mais**](https://developers.facebook.com/docs/whatsapp/messaging-limits/)
+
+### Regras importantes para números existentes
+
+**Se você já tem um número de WhatsApp que usa no celular e deseja utilizá-lo** **como WhatsApp Oficial** **no CRM, há algumas regras importantes:**
+
+*   Após ser transferido para o CRM, o número **NÃO poderá mais ser usado no aplicativo WhatsApp Business do celular**.
+*   **Todo o seu histórico será deletado!**
+
+Ou seja, ao vincular esse número ao CRM, ele só poderá ser acessado:
+
+*   Pelo **desktop do CRM**.
+*   Pelo **aplicativo da Homio**, caso queira utilizá-lo no celular.
+
+Se precisar manter o número funcionando no WhatsApp Business do seu telefone, a melhor alternativa é **usar um número separado para o CRM**.
+
+*   Após a verificação do número, o Facebook precisará aprovar a conexão do WhatsApp com o CRM. O processo pode levar até 24 horas, embora frequentemente seja mais rápido.
+*   Sua conta terá um limite inicial de **250 conversas iniciadas/24h**. Com o uso adequado e o cumprimento das políticas da Meta, este limite poderá ser expandido progressivamente.
+
+
+Para garantir uma configuração tranquila, certifique-se de ter os seguintes itens prontos:
+
+* **Acesso à sua conta do Facebook:** Você precisará ser administrador da página do Facebook e do Gerenciador de Negócios (Business Manager) da sua empresa.
+* **Um número de telefone:** Tenha em mãos o aparelho telefônico para receber o código de verificação (SMS ou ligação).
+* **Método de Pagamento:** Verifique se há um cartão ou créditos adicionados à sua conta Homio (na seção de Cobrança ou Carteira), pois o serviço de WhatsApp possui uma assinatura mensal e custos por conversa.
+
+---
+
+**1. Acesse a Aba do WhatsApp**
+No menu lateral esquerdo da sua conta Homio, clique em **Configurações** e, em seguida, selecione a opção **WhatsApp**.
+
+**2. Inicie a Assinatura**
+Ao entrar na página do WhatsApp, você verá uma visão geral do serviço.
+1.  Clique no botão para **Iniciar** ou **Assinar** (geralmente destacado em azul).
+2.  O sistema poderá solicitar a confirmação da assinatura mensal. Revise os valores apresentados e confirme para prosseguir.
+
+**3. Conecte-se com o Facebook**
+Uma janela do Facebook será aberta para vincular sua conta.
+1.  Faça login com suas credenciais do Facebook.
+2.  Clique em **Continuar como [Seu Nome]**.
+3.  Permita as permissões solicitadas pelo Homio para gerenciar as conversas.
+
+**4. Preencha as Informações da Empresa**
+O Facebook guiará você por algumas telas de configuração:
+* **Conta Comercial:** Selecione o Gerenciador de Negócios (Business Portfolio) da sua empresa.
+* **Conta do WhatsApp:** Crie uma nova *Conta do WhatsApp Business* ou selecione uma existente se já tiver criado anteriormente.
+* **Perfil:** Confirme o nome que aparecerá para seus clientes no WhatsApp.
+
+**5. Verifique seu Número**
+Esta é a etapa final e mais importante:
+1.  Digite o número de telefone que deseja usar no Homio.
+2.  Escolha o método de verificação: **Mensagem de Texto (SMS)** ou **Ligação de Voz**.
+3.  Insira o código de 6 dígitos que você recebeu no seu celular.
+
+> **Atenção:** Se este número já estiver sendo usado no App do WhatsApp (Business ou Pessoal) no seu celular, você precisará desconectá-lo (excluir a conta no app) antes de verificar aqui, pois a API oficial não permite uso simultâneo no aplicativo comum.
+
+**6. Conclusão**
+Após a verificação, a janela do Facebook fechará e você retornará ao Homio. Aguarde alguns instantes até que o status apareça como **Conectado**.

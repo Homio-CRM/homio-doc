@@ -1,0 +1,64 @@
+---
+title: Assinaturas
+description: Aprenda a criar, vender e gerenciar conteúdo digital com cursos online, comunidades privadas e bibliotecas de recursos na plataforma Homio
+icon: CreditCard
+---
+
+A funcionalidade de **Assinaturas** permite a criação, venda e gestão de conteúdo digital dentro de um portal de membros integrado à plataforma Homio. O sistema foi desenhado para hospedar cursos online, comunidades privadas e bibliotecas de recursos, com total personalização de marca e automação de processos.
+
+Para operar esta funcionalidade, é essencial compreender a distinção entre dois componentes centrais:
+*   **Produtos:** Representa o conjunto de conteúdo em si. É o curso, com suas categorias (módulos) e aulas. É aqui que os vídeos, textos e materiais de apoio são estruturados.
+*   **Ofertas:** Representa o mecanismo de acesso a um ou mais produtos. É na Oferta que se define o preço, as condições de pagamento (único, recorrente ou gratuito) e quais produtos serão liberados para o membro.
+
+* * *
+### **Configuração de Produtos**
+1. No menu principal, acesse **Assinaturas > Cursos**.
+2. Navegue até a aba **Produtos**.
+3. Clique em **\+ Criar Produto**.
+4. Selecione um modelo de estrutura pré-definida ou escolha "Começar do Zero".
+5. Insira o nome do Produto e finalize a criação.
+
+#### **Estrutura do Conteúdo**
+*   **Categorias:** Funcionam como módulos para organizar as aulas. Para cada categoria, é possível definir um nome, uma descrição e uma imagem de miniatura.
+*   **Aulas:** São as unidades de conteúdo dentro de cada categoria. Cada aula pode conter vídeos, textos e arquivos.
+> **Status de Publicação:** Todo conteúdo é criado como **Rascunho** por padrão. Altere o status para **Publicado** para torná-lo visível aos membros que tiverem acesso.
+
+#### **Personalização do Portal**
+A aparência da área de membros pode ser configurada para se alinhar à sua marca.
+*   Dentro do Produto, acesse a aba **Personalizar**.
+*   **Configurações disponíveis:**
+    *   **Tema:** Selecione um layout geral para a exibição do conteúdo.
+    *   **Logotipo e Favicon:** Insira os elementos visuais da sua marca.
+    *   **Cores:** Ajuste as cores primárias e de elementos para corresponder à sua identidade visual.
+    *   **Fontes:** Configure a tipografia do portal.
+
+* * *
+### **Configuração de Ofertas**
+Uma Oferta é necessária para comercializar ou conceder acesso aos Produtos.
+
+#### **Navegação e Criação de Oferta**
+*   Acesse **Assinaturas > Cursos > Ofertas**.
+*   Clique em **\+ Criar Oferta**.
+*   Preencha os campos obrigatórios:
+    *   **Título da Oferta:** O nome comercial que será exibido para o cliente.
+    *   **Produtos Inclusos:** Selecione um ou mais produtos que esta oferta desbloqueia.
+
+#### **Configuração de Preço**
+Na seção **Preço**, defina o modelo de pagamento:
+*   **Gratuito:** Concede acesso sem custo.
+*   **Pagamento Único:** Define um valor de cobrança única.
+*   **Assinatura Recorrente:** Configura cobranças periódicas (requer integração com o Stripe e a seleção de um plano previamente criado).
+
+> **Nota:** É obrigatório alterar o status da Oferta para **Publicado** para que ela possa ser concedida ou vinculada a uma página de vendas.
+
+* * *
+### **Gerenciamento de Membros**
+#### **Concessão de Acesso**
+*   **Manual:**
+    *   Acesse o registro do **Contato** desejado.
+    *   Na seção **Ofertas do Contato**, clique em **\+ Adicionar**.
+    *   Selecione a Oferta a ser concedida. O sistema enviará um e-mail de acesso automaticamente.
+*   **Automatizada:**
+    *   Crie uma **Automação.**
+    *   Use a ação **Conceder Oferta de Assinatura**. Esta ação pode ser acionada por gatilhos como o envio de um formulário de pedido ou a adição de uma tag.
+

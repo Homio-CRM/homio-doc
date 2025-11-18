@@ -1,0 +1,74 @@
+---
+title: Boas práticas para envio de emails
+description: Guia completo com as melhores práticas de envio e plano de aquecimento de domínio para evitar spam e construir reputação sólida
+icon: Shield
+---
+
+Este passo a passo reúne as melhores práticas de envio e o plano de **aquecimento de domínio (warm-up)** indicados pela Equipe Homio. Seguindo cada item você evita cair no spam e constrói uma reputação sólida para o seu domínio.
+
+* * *
+## 1\. Preparação inicial
+1. **Crie um domínio dedicado de envio**
+    *   Vá em **Configurações › E-mail** e clique em **Domínio dedicado**.
+    *   Siga o assistente para adicionar o subdomínio (ex.: [`mail.suaempresa.com`](http://mail.suaempresa.com)) e atualizar os registros no DNS.
+    *   Por que importa? Compartilhar domínio com outros usuários pode transferir má reputação para você.
+
+1. **(Opcional) Contrate um IP dedicado**
+    *   Recomendado para quem envia **200 mil+ e-mails/semana**.
+    *   Em **Configurações › E-mail › IP dedicado**, clique em **Adicionar IP** e conclua a compra.
+    *   Você passa a controlar 100 % da reputação do IP.
+
+1. **Ative a validação de e-mails**
+    *   **Perfil da Empresa** → marque **"Verificar endereço na primeira troca de e-mail"**.
+    *   Evita enviar para endereços inexistentes e proteger sua reputação.
+
+1. **Marque hard bounces como inválidos**
+    *   Na mesma tela de Perfil, marque **"Marcar e-mail como inválido em hard bounce"**.
+    *   Assim o contato é pulado em disparos futuros e você reduz novos bounces.
+
+1. **Adicione um registro DMARC**
+    *   No DNS, crie um TXT chamado `_dmarc` com o valor `v=DMARC1; p=reject`.
+    *   Confirme com um verificador como [dmarcian.com](http://dmarcian.com).
+
+1. **Use um e-mail "De:" que combine com o domínio**
+    *   Se o domínio de envio for [`mail.suaempresa.com`](http://mail.suaempresa.com), envie como [`suporte@suaempresa.com`](mailto:suporte@suaempresa.com) ou [`time@mail.suaempresa.com`](mailto:time@mail.suaempresa.com).
+    *   Evite domínios diferentes (ex.: Gmail pessoal).
+
+1. **Adicione link de descadastro**
+    *   No construtor de e-mails, arraste o bloco **Rodapé** com o link de "Cancelar inscrição".
+    *   Personalize se quiser, mas nunca remova!
+
+* * *
+## 2\. Boas práticas de envio contínuo
+
+| Faça | Evite |
+| ---| --- |
+| Segmentar e enviar apenas para quem abriu/ou clicou nos últimos 30 dias | Mandar disparos em massa para listas frias ou compradas |
+| Manter cadência estável (ex.: 1 e-mail/dia nos 5 primeiros dias, depois 2/semana) | Ficar semanas sem enviar e depois lotar a caixa do lead de uma vez |
+| Limpar contatos inativos (sem abrir em 60 dias) | Forçar engajamento – é melhor parar de enviar que receber "marcar como spam" |
+
+* * *
+## 3\. Aquecimento de domínio (Warm-Up)
+> **Regra de ouro:** nos primeiros 30 - 40 dias envie somente para pessoas que **optaram receber** e priorize leads que costumam abrir seus e-mails.
+
+| Fase | Máx. por hora | Máx. por dia | Duração sugerida\* |
+| ---| ---| ---| --- |
+| 1 | 10 | 100 | Dias 1-3 |
+| 2 | 30 | 250 | Dias 4-7 |
+| 3 | 60 | 500 | Semana 2 |
+| 4 | 100 | 1000 | Semana 3 |
+| 5 | 200 | 2000 | Semana 4+ |
+
+\*Ajuste a próxima fase só se a taxa de entrega estiverem saudáveis (≥ 20 %).
+
+**Dicas extras**
+*   Use o modo **Drip** do Homio para respeitar os limites diários/horários.
+*   Conteúdo curto, pessoal e com no máximo 1 imagem tende a performar melhor.
+*   Evite encurtadores públicos ([bit.ly](http://bit.ly), tinyurl).
+
+* * *
+## 4\. Ferramentas úteis
+1. **Mail-Tester** – Mede o "índice de spam" do seu e-mail (nota de 0-10). Envie teste para o endereço gerado e confira.
+2. **MXToolbox Email Health** – escaneia DNS, blacklist e autenticações do seu domínio.
+3. **Google Postmaster Tools** – mostra reputação, taxa de spam e erros de entrega (grátis, exige verificação DNS).
+

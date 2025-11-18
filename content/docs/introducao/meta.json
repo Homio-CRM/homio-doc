@@ -1,0 +1,11 @@
+{
+  "title": "Introdução",
+  "icon": "BookOpen",
+  "pages": [
+    "informacoes-sub-conta",
+    "dominios",
+    "usuarios-e-permissoes",
+    "campos-personalizados"
+  ]
+}
+

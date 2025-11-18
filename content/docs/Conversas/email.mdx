@@ -1,0 +1,81 @@
+---
+title: E-mail
+description: Como configurar e usar e-mail marketing, automações e domínios dedicados na Homio
+icon: Mail
+---
+
+Na Homio, você pode enviar e automatizar e-mails. Com essa funcionalidade, é possível criar campanhas de e-mail marketing, programar sequências automáticas com base no comportamento do contato (como abertura de e-mail ou cliques), e ainda personalizar os conteúdos com o nome do cliente e outras informações.
+Tudo isso pode ser feito usando um editor visual bem intuitivo, que permite arrastar e soltar elementos, facilitando a criação de e-mails profissionais mesmo para quem não tem experiência com design ou programação. Além disso, a Homio fornece métricas detalhadas, como taxas de abertura e cliques, para você acompanhar os resultados e otimizar suas estratégias.
+
+* * *
+## **Importante:**
+Quando você envia emails pelo Homio (como parte de uma automação, funil ou campanha), o padrão é o domínio do próprio sistema ([noreply@mail.homio.com.br](mailto:noreply@mail.homio.com.br)). Porém, isso **pode afetar a entregabilidade** dos seus emails.
+Ao conectar um **domínio dedicado**, como [`email.seusite.com`](http://email.seusite.com), você:
+*   **Fica com melhor entregabilidade:** Um domínio próprio (ou um subdomínio exclusivo para envios) ajuda os provedores de email a reconhecerem suas mensagens como legítimas. Assim, elas têm mais chances de chegar à caixa de entrada, em vez de serem filtradas como spam.
+*   **Melhora sua reputação:** Ao utilizar um domínio dedicado, você constrói uma reputação exclusiva, sem os impactos negativos que podem ocorrer se compartilhar o mesmo domínio com outros remetentes. Isso é especialmente importante para empresas com altos volumes de envio.
+*   **Tem mais controle e monitoramento:** Um domínio de envio exclusivo permite rastrear melhor os resultados, implementar corretamente os registros de autenticação (SPF, DKIM e DMARC) e realizar um aquecimento do domínio, essencial para evitar picos de envio que prejudiquem a reputação.
+
+_Exemplo de prática recomendada:_ Se o domínio principal da sua empresa é "[minhaempresa.com](http://minhaempresa.com/)", considere usar um subdomínio como "[email.minhaempresa.com](http://email.minhaempresa.com/)" para suas campanhas de envio. Dessa forma, qualquer problema de entregabilidade ou reputação afetará apenas o subdomínio, preservando o domínio principal
+
+* * *
+## Como adicionar um Domínio Dedicado?
+#### O que você precisa antes de começar:
+1. Ter um domínio próprio (ex: [`seusite.com.br`](http://seusite.com.br)) registrado em algum serviço como [Registro.br](http://Registro.br), GoDaddy, HostGator, etc.
+2. Acesso ao **painel de DNS** do seu domínio (geralmente onde ele foi registrado).
+3. Acesso de administrador à sua conta Homio.
+
+* * *
+# Passo a passo para conectar o domínio dedicado no LeadConnector:
+1. Acesse o menu lateral e clique em "Configurações" (ícone de engrenagem no canto inferior esquerdo).
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/4cb3d4b5-c303-43e7-8fa1-ec63e3d471a7/image.png)
+1. Clique em "Serviços de Email"
+2. Clique em "Domínio Dedicado e IP"
+3. Clique em "Adicionar Domínio"
+4. Digite o domínio que você quer usar.
+    *   **Exemplo:** [`email.seusite.com`](http://email.seusite.com) ou [`seusite.com`](http://seusite.com)
+    *   **Dica:** use algo como [`email.seusite.com`](http://email.seusite.com) ou [`mail.seusite.com`](http://mail.seusite.com) para não mexer no domínio principal do seu site.
+5. Após adicionar o domínio, o sistema vai mostrar certos **registros DNS** que precisam ser adicionados:
+    *   Registros **TXT** (para autenticação SPF e DKIM)
+    *   Registro **CNAME** (para verificação)
+    *   Registro **MX**
+
+* * *
+### Como adicionar os registros DNS no seu domínio
+1. Acesse o painel onde o domínio está hospedado (ex: GoDaddy, [Registro.br](http://Registro.br), etc.)
+2. Vá até a área de **Gerenciamento de DNS**
+3. Copie e cole **exatamente os dados** (nome, tipo e valor) que o Homio te forneceu
+4. Salve cada registro
+
+**Atenção!** Pode levar algumas horas (até 24h) para os registros se propagarem totalmente.
+
+Depois de adicionar os registros:
+1. Volte ao Homio, na tela onde adicionou o domínio
+2. Clique nos três pontinhos no quadrado do novo domínio.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/fb9eb9e8-0585-4590-9c34-c3d991f7f5d3/image.png)
+1. Clique em **"Verificar Domínio"**
+2. Se tudo estiver certo, vai aparecer que o domínio foi **verificado com sucesso**.
+
+* * *
+### Como adicionar um outro serviço de Email?
+1. Acesse o menu lateral e clique em **"Configurações"**, localizado na última opção.
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/222379ed-4ffd-4c6b-ae94-cd92312fc431/image.png)
+1. Selecione "Serviços de Email".
+2. Clique em "Adicionar Serviço".
+3. Agora você terá as seguintes opções em "Provedor SMTP":
+    1. Se você quiser usar o **Gmail**, será necessário criar uma Chave de Acesso.
+        1. Primeiro, acesse [segurança](https://myaccount.google.com/apppasswords) (certifique-se de estar conectado na conta do Gmail que deseja utilizar).
+        2. Clique na opção **Verificação em duas etapas**.
+        3. Na próxima tela, role até o final da página e clique em **Chaves de acesso e de segurança**.
+        4. No campo **Nome do aplicativo**, digite qualquer nome que preferir e clique em **Criar**.
+        5. Copie a senha de aplicativo gerada.
+        6. Adicione seu **endereço de email do Gmail e a senha gerada**. Salve as configurações.
+    2. Para acessar o **Yahoo Mail**, basta fazer login com seu e-mail e senha do Yahoo.
+    3. Para acessar via **Sendgrid**, faça login com seu e-mail, nome de usuário e senha do Sendgrid.
+    4. Se nenhuma das opções acima funcionar para você, será necessário usar os dados do seu servidor de e-mail. Para isso, entre no seu provedor de e-mail e procure as informações de Provedor SMTP, Nome do fornecedor, Servidor SMTP, Número da porta SMTP, E-mail e Senha. Abaixo está uma lista de como encontrar esses dados nos provedores mais conhecidos do Brasil:
+        *   [**Outlook**](https://support.microsoft.com/pt-br/office/configura%C3%A7%C3%B5es-pop-imap-e-smtp-para-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040?utm_source=chatgpt.com)
+        *   [**Hostgator**](https://suporte.hostgator.com.br/hc/pt-br/articles/30811089087379-Como-usar-o-e-mail-em-plataformas-externas-Gmail-Outlook-e-outros)
+        *   [**iCloud Mail**](https://support.apple.com/pt-br/102525)
+        *   [**Locaweb**](https://www.locaweb.com.br/ajuda/wiki/com-acessar-o-painel-smtp-locaweb/)
+4. Agora selecione o seu provedor cadastrado como o provedor padrão no Sistema Homio
+![](https://t9011321034.p.clickup-attachments.com/t9011321034/a46f57d1-fa45-4009-81ec-beee04ca8995/image.png)
+
