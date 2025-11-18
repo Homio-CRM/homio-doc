@@ -16,41 +16,38 @@ Adicionar um domínio personalizado na Homio permite que você utilize URLs pers
 2. Dentro dessa seção, selecione **"Domínios"** e clique em **"Adicionar um domínio"**.
 3. No campo indicado, insira o domínio que deseja configurar e clique em **"Continuar"**. A plataforma exibirá os registros DNS necessários para a configuração.
 
-* * *
-
-## Como configurar os registros DNS
-
-### Acessar o painel de DNS
+## Acessar o painel de DNS
 
 Acesse o painel de gerenciamento DNS do seu serviço de registro de domínio. Embora o processo varie conforme o provedor, procure por termos como **"Gerenciar DNS"** ou **"Zona de DNS"**.
 
 > **_Dica:_** Se tiver dúvidas, consulte a documentação ou suporte do seu provedor.
 
-#### Localizar o painel de DNS
+### Localizar o painel de DNS
 
 Dependendo do seu provedor, o painel de DNS pode estar localizado em diferentes seções:
 
-##### Provedores comuns
+#### Provedores comuns
 
 - **Registro.br**: Acesse "Serviços" > "DNS"
 - **Cloudflare**: Acesse "DNS" no menu lateral
 - **GoDaddy**: Acesse "DNS" na página do domínio
 - **Namecheap**: Acesse "Advanced DNS"
 
-#### Verificar configurações atuais
+### Verificar configurações atuais
 
 Antes de adicionar novos registros, verifique os registros DNS existentes para evitar conflitos.
 
-### Adicionar os registros DNS
+* * *
+## Adicionar os registros DNS
 
 1. No painel DNS, localize os registros **A** e **CNAME**.
     *   **Registro A:** Atualize ou crie este registro conforme as informações fornecidas no passo 3 da seção anterior.
     *   **Registro CNAME:** Faça o mesmo para o registro CNAME, garantindo que os apontamentos estejam corretos.
     *   **Atenção:** Certifique-se de salvar cada alteração realizada.
 
-#### Configurar o registro A
+### Configurar o registro A
 
-##### Passo a passo do registro A
+#### Passo a passo do registro A
 
 1. Encontre a opção para adicionar um novo registro do tipo **A**
 2. No campo **Nome** ou **Host**, insira o subdomínio desejado ou deixe em branco para o domínio raiz
@@ -58,13 +55,13 @@ Antes de adicionar novos registros, verifique os registros DNS existentes para e
 4. Defina o TTL (Time To Live) conforme recomendado
 5. Salve o registro
 
-##### Verificação do registro A
+#### Verificação do registro A
 
 Após salvar, aguarde alguns minutos e verifique se o registro foi criado corretamente.
 
-#### Configurar o registro CNAME
+### Configurar o registro CNAME
 
-##### Passo a passo do registro CNAME
+#### Passo a passo do registro CNAME
 
 1. Localize a opção para adicionar um novo registro do tipo **CNAME**
 2. No campo **Nome** ou **Host**, insira o subdomínio desejado
@@ -72,21 +69,21 @@ Após salvar, aguarde alguns minutos e verifique se o registro foi criado corret
 4. Defina o TTL conforme recomendado
 5. Salve o registro
 
-##### Verificação do registro CNAME
+#### Verificação do registro CNAME
 
 Assim como no registro A, verifique se o registro CNAME foi criado corretamente após salvar.
 
-#### Tempo de propagação
+### Tempo de propagação
 
 Após essas alterações, salve as configurações no painel do seu provedor. As mudanças podem levar algumas horas para serem aplicadas, dependendo do provedor de domínio.
 
-##### Fatores que afetam a propagação
+#### Fatores que afetam a propagação
 
 - **TTL configurado**: Valores mais baixos propagam mais rapidamente
 - **Provedor de DNS**: Alguns provedores propagam mais rápido que outros
 - **Localização geográfica**: A propagação pode variar por região
 
-##### Como verificar a propagação
+#### Como verificar a propagação
 
 Você pode usar ferramentas online como "WhatsMyDNS.net" ou "DNS Checker" para verificar se os registros foram propagados globalmente.
 
