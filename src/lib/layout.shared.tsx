@@ -5,8 +5,5 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: 'Homio',
     },
-    search: {
-      enabled: true,
-    },
   };
 }

@@ -21,9 +21,7 @@ function getMessageText(message: UIMessage) {
 }
 
 export function AISearchTrigger() {
-  const { messages, sendMessage, status, error } = useChat({
-    api: '/api/chat',
-  });
+  const { messages, sendMessage, status, error } = useChat();
   const [input, setInput] = useState('');
   const [submitError, setSubmitError] = useState<string | null>(null);
   const isLoading = status === 'submitted' || status === 'streaming';
@@ -144,7 +142,7 @@ export function AISearchTrigger() {
             <button 
               type="submit" 
               disabled={isLoading || !input.trim()}
-              className={buttonVariants({ variant: 'default' })}
+              className={buttonVariants({ variant: 'primary' })}
             >
               Enviar
             </button>
