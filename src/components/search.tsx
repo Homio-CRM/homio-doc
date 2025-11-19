@@ -199,7 +199,7 @@ export function AISearchTrigger() {
                   )}
                 </div>
                 <span className="text-[10px] text-neutral-400 px-2">
-                  {message.createdAt ? formatTime(message.createdAt) : formatTime(new Date())}
+                  {formatTime(new Date())}
                 </span>
               </div>
             ))}
