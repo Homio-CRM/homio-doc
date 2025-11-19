@@ -1,16 +1,15 @@
 import { openai } from '@ai-sdk/openai';
 import { streamText, convertToModelMessages } from 'ai';
+import { getLLMText, source } from '@/lib/source';
 
 export const runtime = 'edge';
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  const url = new URL(req.url);
-  const baseUrl = `${url.protocol}//${url.host}`;
-  const llmText = await fetch(`${baseUrl}/llms-full.txt`).then((res) =>
-    res.text(),
-  );
+  const scan = source.getPages().map(getLLMText);
+  const scanned = await Promise.all(scan);
+  const llmText = scanned.join('\n\n');
 
   const modelMessages = convertToModelMessages(messages);
 
