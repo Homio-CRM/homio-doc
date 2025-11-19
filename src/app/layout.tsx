@@ -33,6 +33,11 @@ export default function Layout({ children }: LayoutProps<'/'>) {
         <RootProvider
           search={{
             enabled: true,
+            options: {
+              api: '/api/search',
+              type: 'fetch',
+              delayMs: 300,
+            },
           }}
           i18n={{
             locale: 'pt-BR',

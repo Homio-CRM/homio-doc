@@ -1,0 +1,63 @@
+---
+title: Integração de Suporte via Webhook
+description: Documentação sobre o formulário de solicitação de suporte integrado com Go High Level via Webhook.
+---
+
+# Integração de Suporte
+
+Esta documentação descreve o funcionamento do modal de solicitação de suporte implementado na página inicial da documentação. O formulário coleta informações do usuário e as envia para um fluxo de automação no Go High Level (LeadConnector) através de um Webhook.
+
+## Fluxo de Funcionamento
+
+1. O usuário clica no botão "Suporte" na página inicial.
+2. Um modal é aberto solicitando as informações necessárias.
+3. Ao submeter, os dados são enviados via requisição `POST` para o Webhook configurado.
+4. O usuário recebe um feedback visual de sucesso ou erro.
+
+## Campos do Formulário
+
+O formulário coleta os seguintes dados:
+
+| Campo | Tipo | Obrigatório | Descrição |
+| :--- | :--- | :---: | :--- |
+| **Nome** | Texto | Sim | Nome completo do solicitante. |
+| **Telefone** | Texto/Tel | Sim | Número de telefone para contato. |
+| **Módulo** | Seleção | Sim | Módulo da plataforma relacionado ao problema (ex: Conversas, Automação, Sites). |
+| **Descrição** | Texto Longo | Sim | Detalhes do problema ou solicitação. |
+| **Anexo** | Arquivo | Não | Upload de print ou arquivo relevante (enviado como multipart/form-data). |
+
+## Configuração do Webhook
+
+O endpoint utilizado para envio dos dados é:
+
+```http
+POST https://services.leadconnectorhq.com/hooks/sTzec3aUgGdmWIlduwGM/webhook-trigger/2a9ef919-18a2-4989-9776-159ddf1a6910
+```
+
+### Formato de Envio
+
+Os dados são enviados utilizando `FormData` (multipart/form-data), permitindo o envio de arquivos anexos juntamente com os campos de texto.
+
+Estrutura dos dados enviados:
+
+- `name`: String
+- `phone`: String
+- `module`: String (Valor selecionado da lista de módulos GHL)
+- `description`: String
+- `attachment`: File (Blob/Binary) - *Presente apenas se o usuário anexar um arquivo*
+
+## Implementação Técnica
+
+O componente responsável é o `SupportDialog`, localizado em `src/components/SupportDialog.tsx`. Ele utiliza:
+
+- **React Hooks**: `useState`, `useRef`, `useEffect` para gerenciamento de estado e ciclo de vida.
+- **Fetch API**: Para realizar a requisição HTTP POST ao webhook.
+- **Tailwind CSS**: Para estilização do modal e formulário, garantindo consistência com o design system da aplicação.
+- **Lucide React**: Para ícones de interface.
+
+### Tratamento de Erros
+
+- O formulário impede o envio se campos obrigatórios estiverem vazios.
+- Caso o webhook retorne erro (status diferente de 2xx), uma mensagem de erro é exibida ao usuário.
+- Em caso de sucesso, o modal exibe uma confirmação e fecha automaticamente após 2 segundos.
+
