@@ -125,7 +125,7 @@ export function SearchBar() {
     <div ref={containerRef} className="relative w-full max-w-2xl">
       <div className="relative">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
-          <Search className="w-5 h-5 text-neutral-400" />
+          <Search className="w-5 h-5 text-neutral-500" />
         </div>
         <input
           type="text"
@@ -133,15 +133,15 @@ export function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.trim().length > 0 && setShowResults(true)}
           placeholder="Como posso desvincular um email"
-          className="w-full bg-white/10 backdrop-blur-md rounded-xl border border-white/20 px-4 py-4 pl-12 pr-4 text-white placeholder-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-200 text-lg shadow-lg"
+          className="w-full bg-white backdrop-blur-md rounded-xl border border-neutral-300/50 px-4 py-4 pl-12 pr-4 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-200 text-lg shadow-lg"
         />
       </div>
 
       {showResults && (query.trim().length > 0 || results.length > 0) && (
-        <div className="absolute top-full mt-3 w-full bg-neutral-900/95 backdrop-blur-md rounded-xl border border-neutral-700/50 shadow-2xl max-h-96 overflow-y-auto z-50">
+        <div className="absolute top-full mt-3 w-full bg-white backdrop-blur-md rounded-xl border border-neutral-200/50 shadow-2xl max-h-96 overflow-y-auto z-50">
           {isSearching ? (
-            <div className="p-6 text-center text-neutral-400">
-              <div className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+            <div className="p-6 text-center text-neutral-600">
+              <div className="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-neutral-900 mr-2"></div>
               Pesquisando...
             </div>
           ) : results.length > 0 ? (
@@ -154,18 +154,18 @@ export function SearchBar() {
                     setQuery('');
                     setShowResults(false);
                   }}
-                  className="block px-5 py-4 hover:bg-neutral-800/80 transition-colors border-b border-neutral-800/50 last:border-b-0"
+                  className="block px-5 py-4 hover:bg-neutral-100 transition-colors border-b border-neutral-200/50 last:border-b-0"
                 >
                   {result.breadcrumbs && result.breadcrumbs.length > 0 && (
                     <div className="text-neutral-500 text-xs mb-2 font-medium">
                       {result.breadcrumbs.join(' / ')}
                     </div>
                   )}
-                  <div className="text-white font-semibold mb-2 text-base">
+                  <div className="text-neutral-900 font-semibold mb-2 text-base">
                     {result.title}
                   </div>
                   {result.description && (
-                    <div className="text-neutral-400 text-sm leading-relaxed">
+                    <div className="text-neutral-600 text-sm leading-relaxed">
                       {result.description.length > 120 
                         ? result.description.substring(0, 120) + '...'
                         : result.description}
@@ -175,7 +175,7 @@ export function SearchBar() {
               ))}
             </div>
           ) : (
-            <div className="p-6 text-center text-neutral-400">
+            <div className="p-6 text-center text-neutral-600">
               Nenhum resultado encontrado
             </div>
           )}
