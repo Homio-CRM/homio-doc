@@ -121,9 +121,8 @@ export function SupportDialog() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="px-5 py-2.5 bg-white/60 hover:bg-white/80 backdrop-blur-sm text-neutral-900 font-medium rounded-xl transition-all duration-200 border border-white/30 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-2 group"
+        className="text-neutral-700 text-base md:text-lg hover:text-neutral-900 transition-colors"
       >
-        <MessageSquarePlus className="size-4 text-neutral-500 group-hover:text-blue-600 transition-colors" />
         Suporte
       </button>
     );

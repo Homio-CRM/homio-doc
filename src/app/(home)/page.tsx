@@ -1,6 +1,5 @@
 import { SearchBar } from '@/components/SearchBar';
 import { SupportDialog } from '@/components/SupportDialog';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HomePage() {
@@ -14,23 +13,16 @@ export default function HomePage() {
           <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-purple-400/15 rounded-full blur-2xl"></div>
         </div>
         
-        <div className="relative z-20 w-full bg-white/40 backdrop-blur-xl border-b border-white/20 sticky top-0">
-          <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            <Image
-              src="/logo-homio.png"
-              alt="Homio"
-              width={120}
-              height={40}
-              priority
-              className="h-8 w-auto"
-            />
+        <div className="relative z-20 w-full sticky top-0">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-center">
             <div className="flex items-center gap-3">
               <Link 
                 href="/docs"
-                className="px-5 py-2.5 bg-white/60 hover:bg-white/80 backdrop-blur-sm text-neutral-900 font-medium rounded-xl transition-all duration-200 border border-white/30 shadow-sm hover:shadow-md hover:scale-105"
+                className="text-neutral-700 text-base md:text-lg hover:text-neutral-900 transition-colors"
               >
                 Documentação
               </Link>
+              <span className="text-neutral-400">•</span>
               <SupportDialog />
             </div>
           </div>
