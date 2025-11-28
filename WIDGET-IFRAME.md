@@ -8,187 +8,76 @@ O widget Liv é um assistente de IA especializado na documentação da plataform
 
 ## 🚀 Como Usar
 
-### Opção 1: Iframe Básico
+### Iframe Responsivo Flutuante
 
-Adicione o seguinte código HTML na sua página:
-
-```html
-<iframe 
-  src="https://seu-dominio.com/widget" 
-  width="100%" 
-  height="600" 
-  frameborder="0" 
-  allowtransparency="true"
-  style="border: none; background: transparent;"
-></iframe>
-```
-
-### Opção 2: Iframe Flutuante (Recomendado)
-
-Para um widget flutuante no canto da página, use este código:
-
-```html
-<iframe 
-  id="liv-widget"
-  src="https://seu-dominio.com/widget" 
-  width="100%" 
-  height="100%" 
-  frameborder="0" 
-  allowtransparency="true"
-  style="
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 400px;
-    height: 600px;
-    max-width: 100vw;
-    max-height: 100vh;
-    border: none;
-    background: transparent;
-    z-index: 9999;
-    pointer-events: auto;
-  "
-></iframe>
-```
-
-### Opção 3: Iframe Responsivo com Media Queries
-
-Para melhor experiência em dispositivos móveis:
+Widget flutuante totalmente responsivo que se adapta a todos os tamanhos de tela:
 
 ```html
 <style>
-  .liv-widget-container {
+  .liv-widget {
     position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 400px;
-    height: 600px;
-    max-width: 100vw;
-    max-height: 100vh;
+    bottom: 20px;
+    right: 20px;
+    width: 500px;
+    height: 700px;
+    border: none;
+    background: transparent;
     z-index: 9999;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
-    .liv-widget-container {
+    .liv-widget {
+      width: calc(100vw - 20px);
+      height: calc(100vh - 20px);
+      bottom: 10px;
+      right: 10px;
+      left: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .liv-widget {
       width: 100vw;
       height: 100vh;
-      top: 0;
+      bottom: 0;
+      right: 0;
       left: 0;
+      top: 0;
+      border-radius: 0;
+      box-shadow: none;
     }
   }
 </style>
 
 <iframe 
-  class="liv-widget-container"
+  class="liv-widget"
   src="https://seu-dominio.com/widget" 
   frameborder="0" 
   allowtransparency="true"
-  style="border: none; background: transparent;"
 ></iframe>
 ```
 
-## ⚙️ Configurações Avançadas
-
-### Permitir Comunicação entre Iframe e Página Pai
-
-Se você precisar de comunicação entre o widget e a página pai, adicione o atributo `sandbox`:
+**Versão inline (sem CSS separado):**
 
 ```html
 <iframe 
   src="https://seu-dominio.com/widget" 
-  sandbox="allow-scripts allow-same-origin allow-forms"
-  width="100%" 
-  height="600" 
-  frameborder="0"
-></iframe>
-```
-
-### Controle de Exibição com JavaScript
-
-Para mostrar/ocultar o widget dinamicamente:
-
-```html
-<button onclick="toggleWidget()">Abrir/Fechar Liv</button>
-
-<iframe 
-  id="liv-widget"
-  src="https://seu-dominio.com/widget" 
+  frameborder="0" 
+  allowtransparency="true"
   style="
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 400px;
-    height: 600px;
+    width: 500px;
+    height: 700px;
     border: none;
     background: transparent;
     z-index: 9999;
-    display: none;
+    border-radius: 16px;
   "
 ></iframe>
-
-<script>
-  function toggleWidget() {
-    const widget = document.getElementById('liv-widget');
-    widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
-  }
-</script>
-```
-
-## 🎨 Personalização
-
-### Ajustar Tamanho do Widget
-
-O widget se adapta automaticamente ao tamanho do iframe. Ajuste as dimensões conforme necessário:
-
-```html
-<iframe 
-  src="https://seu-dominio.com/widget" 
-  width="480" 
-  height="600" 
-  frameborder="0"
-></iframe>
-```
-
-### Posicionamento Customizado
-
-Use CSS para posicionar o widget onde desejar:
-
-```html
-<style>
-  #liv-widget {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 480px;
-    height: 600px;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  }
-</style>
-
-<iframe 
-  id="liv-widget"
-  src="https://seu-dominio.com/widget" 
-  frameborder="0"
-></iframe>
-```
-
-## 📱 Exemplo Completo para WordPress
-
-Se você estiver usando WordPress, adicione este código no widget HTML personalizado ou no editor de blocos:
-
-```html
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-  <iframe 
-    src="https://seu-dominio.com/widget" 
-    width="400" 
-    height="600" 
-    frameborder="0" 
-    allowtransparency="true"
-    style="border: none; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);"
-  ></iframe>
-</div>
 ```
 
 ## 🔒 Segurança e CORS
@@ -202,9 +91,10 @@ O widget funciona dentro de um iframe e faz requisições para a API do seu dom�
 ## 📝 Notas Importantes
 
 - **URL do Widget**: Substitua `https://seu-dominio.com/widget` pela URL real do seu widget
-- **Responsividade**: O widget é totalmente responsivo e se adapta ao tamanho do iframe
+- **Responsividade**: O widget é totalmente responsivo e se adapta ao tamanho do iframe automaticamente
 - **Performance**: O widget carrega apenas quando necessário e não afeta o desempenho da página principal
 - **Acessibilidade**: O widget inclui suporte completo a leitores de tela e navegação por teclado
+- **Viewport**: Use `max-width: calc(100vw - Xpx)` e `max-height: calc(100vh - Xpx)` para garantir que o widget nunca ultrapasse os limites da tela
 
 ## 🐛 Solução de Problemas
 
