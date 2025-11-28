@@ -1,0 +1,141 @@
+---
+title: Automações
+description: Um guia completo para iniciantes sobre como criar, configurar e gerenciar automações no Homio para economizar tempo e escalar seu negócio.
+icon: Zap
+---
+
+No coração do Homio, uma automação (ou fluxo de trabalho) é o que ajuda você a completar tarefas repetitivas de forma automática. Você configura uma vez e o sistema trabalha por você, sem exigir sua intervenção manual constante. Isso economiza muito tempo e permite que você foque no crescimento do seu negócio.
+
+Em termos simples, uma automação é uma lista cronológica de tarefas a serem realizadas. Ela funciona com base em um princípio de causa e efeito: um **Gatilho** (o evento inicial) inicia automaticamente uma sequência de **Ações**.
+
+Imagine o seguinte cenário: alguém preenche um formulário no seu site e você deseja que uma notificação seja enviada para você, para sua equipe e também para o cliente. Depois, você quer que o cliente receba uma sequência de e-mails de boas-vindas. Tudo isso é possível através das automações.
+
+
+
+Existem duas partes principais em uma automação: **Gatilhos** e **Ações**.
+
+## Gatilhos de Automação (Triggers)
+
+O gatilho é o evento que adiciona um novo contato à automação. É a circunstância ou conjunto de circunstâncias que precisa acontecer para que a automação comece.
+
+**Exemplo:** Adicionar um contato a uma automação quando ele agenda um horário no seu calendário. Ou, adicionar um contato quando um pagamento é realizado. Para iniciar a automação, você deve configurar um gatilho como esses.
+
+
+
+## Ações de Automação (Actions)
+
+As ações ocorrem depois que o contato entra na automação. Elas só começam após o gatilho ser ativado. A automação executará as ações que você, como usuário, definiu.
+
+**Exemplo:** Depois que um contato preenche um formulário, você pode querer enviar um e-mail de confirmação com os próximos passos. Nesse caso, você adicionaria uma ação de "Enviar E-mail". Outro exemplo: após alguém comprar um produto, você quer agradecer e liberar o acesso ao que foi comprado.
+
+Em resumo: eventos gatilhos iniciam uma ação (ou série de ações). Automatizando tarefas repetitivas e potencialmente tediosas, o Homio foi desenhado para facilitar sua vida profissional.
+
+
+
+---
+
+## Tarefas que Valem a Pena Automatizar
+
+O que devemos automatizar? A resposta simples é: qualquer coisa repetitiva. Automações funcionam mais rápido que processos manuais humanos e, uma vez configuradas, cometem poucos (ou nenhum) erros.
+
+Aqui estão alguns exemplos de tarefas que você pode automatizar no Homio:
+
+* **Campanhas de Nutrição de Leads:** Configure sequências de e-mail para educar seus potenciais clientes, incluindo boas-vindas, demonstrações de produtos e acompanhamentos.
+* **Agendamento de Compromissos:** Implemente um sistema onde leads podem reservar horários diretamente pelo seu site, integrando com sua agenda.
+* **Comunicações de Acompanhamento (Follow-Up):** Automatize e-mails ou SMS depois que um lead realiza uma ação específica, como visitar uma página de preços.
+* **Onboarding de Clientes:** Crie sequências para novos clientes com instruções de configuração e dicas iniciais.
+* **Pesquisas de Feedback:** Envie pesquisas automaticamente após uma compra ou atendimento.
+* **Recuperação de Carrinho Abandonado:** Lembre clientes sobre itens deixados para trás e incentive a conclusão da compra.
+
+## Receitas de Automação: Modelos Prontos
+
+Você sabia que o Homio possui automações pré-construídas prontas para você configurar e usar? Nós chamamos isso de "Receitas" (Recipes). Elas economizam muito tempo e mostram os casos de uso mais comuns.
+
+Para usar as receitas:
+1.  Crie uma nova automação.
+2.  Quando solicitado, selecione a opção **Recipes** (Receitas).
+
+Recomendamos começar por aqui e editar o que for fornecido. Isso é especialmente útil para quem está começando agora.
+
+---
+
+## Como Criar uma Automação
+
+Existem três passos principais para criar uma automação no construtor de automações do Homio:
+
+1.  Escolher um Gatilho.
+2.  Adicionar Filtros ao Gatilho (Opcional, mas recomendado).
+3.  Adicionar Ações à Automação.
+
+Vamos percorrer cada passo juntos.
+
+### Passo 1: Escolher um Gatilho
+
+Os gatilhos adicionam contatos às automações. O tipo de gatilho que você escolher determinará como e quando o contato entra na automação.
+
+1.  No construtor, selecione **Add New Workflow Trigger** (Adicionar Novo Gatilho).
+2.  Um menu aparecerá. Selecione o gatilho desejado (por exemplo, "Form Submitted" para envio de formulário).
+
+Você pode criar vários gatilhos diferentes na mesma automação, trazendo contatos para uma única automação a partir de várias fontes diferentes.
+
+
+
+### Passo 2: Adicionar Filtros ao Gatilho (Opcional)
+
+Após adicionar um gatilho, é altamente recomendado adicionar um filtro. Um filtro permite que você seja mais específico sobre o que vai disparar a automação.
+
+**Exemplo:** Temos um gatilho chamado "Call Status" (Status da Chamada) que dispara para todos os tipos de chamadas. Mas isso pode não ser o que você quer. Se você deseja disparar a automação apenas para chamadas recebidas em um número específico, você deve adicionar filtros para definir esses parâmetros exatos.
+
+
+
+### Passo 3: Adicionar Ações à Automação
+
+Utilizando ações, você pode criar, modificar, mover ou duplicar informações dentro do Homio.
+
+1.  Clique no sinal de **+** ou em **Add Action** (Adicionar Ação) abaixo do gatilho.
+2.  Isso abrirá o menu de ações.
+3.  Selecione a ação desejada, como enviar um SMS, enviar um e-mail, ou atualizar um campo do contato.
+
+
+
+E é isso! Em termos simples, você tem um gatilho, um filtro e uma ação.
+
+---
+
+## Tipos de Automações Avançadas
+
+Conforme você ganha confiança, perceberá que pode fazer quase tudo com automações. No entanto, aumentar a complexidade também requer mais atenção para evitar erros.
+
+### Condições Se/Senão (If/Else)
+
+Dentro de uma automação, você pode adicionar uma condição **If/Else**. Isso permite redirecionar o fluxo de contatos para caminhos específicos baseados em critérios.
+
+Por exemplo, você pode verificar se o contato tem uma determinada "Tag". Se tiver (Sim), ele segue por um caminho. Se não tiver (Não), ele segue por outro. Isso permite personalizar a experiência do contato.
+
+
+
+[Image of automação with if/else branches]
+
+
+### Conectando Múltiplas Automações
+
+Às vezes, é mais limpo e organizado ter várias automações menores trabalhando juntas do que uma única automação gigante.
+
+Imagine um funil de vendas com várias etapas. Você pode ter uma automação para cada etapa (Automação A, B, C...). Quando um contato avança para a próxima etapa, a nova automação pode conter uma ação para remover o contato da automação anterior, garantindo que ele não receba mensagens antigas.
+
+### Webhooks (Gatilho e Ação)
+
+Webhooks permitem que sistemas diferentes conversem entre si. Você pode usar Webhooks no Homio para conectar plataformas externas. Por exemplo, se você usa outro sistema de gestão e quer que os contatos entrem no Homio em um momento específico, você pode fazer isso via Webhook.
+
+> **Nota:** Webhooks são um recurso avançado. Recomendamos dominar o básico das automações antes de tentar implementá-los.
+
+---
+
+## Resolução de Problemas (Troubleshooting)
+
+Se a sua automação não estiver funcionando como esperado, aqui está uma lista de verificação para ajudar a identificar o problema:
+
+1.  **Teste com um Contato "Fresco":** Após testar várias vezes, utilizar o mesmo contato pode causar resultados inesperados. Tente deletar o contato de teste e criar um novo, ou usar um e-mail diferente.
+2.  **Teste Real:** A opção "Test Workflow" no canto superior direito tem limitações. Tente realizar a ação real (como preencher o formulário no seu site) para testar como um cliente verdadeiro.
+3.  **Verifique seus Filtros:** Filtros mal configurados são a causa mais comum de falhas. Verifique se os filtros no gatilho estão corretos e não estão excluindo o evento que você quer capturar.
+4.  **Verifique "Allow Reentry" (Permitir Reentrada):** Nas configurações da automação, existe uma opção chamada "Allow Reentry". Se estiver desativada, um contato só pode entrar nessa automação uma única vez na vida. Se você estiver testando e o contato não entrar novamente, verifique se essa opção está ativada.

@@ -121,9 +121,10 @@ export function SupportDialog() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="text-neutral-700 text-base md:text-lg hover:text-neutral-900 transition-colors"
+        className="relative text-neutral-200 text-base md:text-lg hover:text-white transition-colors group/support"
       >
         Suporte
+        <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover/support:w-full transition-all"></div>
       </button>
     );
   }
