@@ -31,9 +31,7 @@ const suggestedQuestions = [
 ];
 
 export function AISearchWidget() {
-  const { messages, sendMessage, status, error } = useChat({
-    api: '/api/chat',
-  });
+  const { messages, sendMessage, status, error } = useChat();
   const [input, setInput] = useState('');
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
