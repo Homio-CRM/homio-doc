@@ -134,28 +134,28 @@ export function SupportDialog() {
   const modalContent = (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6" style={{ position: 'fixed' }}>
       <div 
-        className="absolute inset-0 bg-neutral-900/20 backdrop-blur-sm transition-all duration-300" 
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-all duration-300" 
         onClick={() => setIsOpen(false)}
       />
       
       <div 
         ref={dialogRef}
-        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-white/50 overflow-hidden animate-in fade-in zoom-in-95 slide-in-from-bottom-4 duration-300 flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-lg bg-neutral-900 rounded-2xl shadow-2xl border border-neutral-800 overflow-hidden animate-in fade-in zoom-in-95 slide-in-from-bottom-4 duration-300 flex flex-col max-h-[90vh]"
       >
         {/* Header */}
-        <div className="px-6 py-5 border-b border-neutral-100 flex items-center justify-between bg-gradient-to-r from-neutral-50 to-white shrink-0">
+        <div className="px-6 py-5 border-b border-neutral-800 flex items-center justify-between bg-gradient-to-r from-neutral-900 to-neutral-800 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="size-10 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
-              <MessageSquarePlus className="size-5 text-blue-600" />
+            <div className="size-10 rounded-full bg-blue-900/30 flex items-center justify-center border border-blue-800/50">
+              <MessageSquarePlus className="size-5 text-blue-400" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-neutral-900 leading-tight">Solicitar Suporte</h2>
-              <p className="text-xs text-neutral-500">Preencha os dados para nos ajudar</p>
+              <h2 className="text-lg font-bold text-white leading-tight">Solicitar Suporte</h2>
+              <p className="text-xs text-neutral-400">Preencha os dados para nos ajudar</p>
             </div>
           </div>
           <button 
             onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-neutral-100 rounded-full transition-colors text-neutral-400 hover:text-neutral-600"
+            className="p-2 hover:bg-neutral-800 rounded-full transition-colors text-neutral-400 hover:text-neutral-200"
           >
             <X className="size-5" />
           </button>
@@ -166,54 +166,54 @@ export function SupportDialog() {
           <form id="support-form" onSubmit={handleSubmit} className="p-6 space-y-5">
             {submitStatus === 'success' ? (
               <div className="flex flex-col items-center justify-center py-12 text-center space-y-4 animate-in fade-in duration-500">
-                <div className="size-16 rounded-full bg-green-50 flex items-center justify-center border border-green-100 shadow-sm">
-                  <CheckCircle className="size-8 text-green-600" />
+                <div className="size-16 rounded-full bg-green-900/30 flex items-center justify-center border border-green-800/50 shadow-sm">
+                  <CheckCircle className="size-8 text-green-400" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-xl font-bold text-neutral-900">Solicitação Enviada!</h3>
-                  <p className="text-neutral-500 max-w-xs mx-auto">Recebemos sua mensagem e entraremos em contato em breve.</p>
+                  <h3 className="text-xl font-bold text-white">Solicitação Enviada!</h3>
+                  <p className="text-neutral-400 max-w-xs mx-auto">Recebemos sua mensagem e entraremos em contato em breve.</p>
                 </div>
               </div>
             ) : (
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-neutral-600 uppercase tracking-wide ml-1">Nome</label>
+                    <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wide ml-1">Nome</label>
                     <input
                       required
                       type="text"
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-700 bg-neutral-800/50 focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-500 text-sm text-white"
                       placeholder="Seu nome completo"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-neutral-600 uppercase tracking-wide ml-1">Telefone</label>
+                    <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wide ml-1">Telefone</label>
                     <input
                       required
                       type="tel"
                       value={formData.phone}
                       onChange={e => setFormData({...formData, phone: e.target.value})}
-                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-700 bg-neutral-800/50 focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-500 text-sm text-white"
                       placeholder="(00) 00000-0000"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-neutral-600 uppercase tracking-wide ml-1">Módulo</label>
+                  <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wide ml-1">Módulo</label>
                   <div className="relative">
                     <select
                       required
                       value={formData.module}
                       onChange={e => setFormData({...formData, module: e.target.value})}
-                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none text-sm text-neutral-700 cursor-pointer"
+                      className="w-full px-4 py-2.5 rounded-xl border border-neutral-700 bg-neutral-800/50 focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none text-sm text-white cursor-pointer"
                     >
-                      <option value="" disabled>Selecione o módulo relacionado</option>
+                      <option value="" disabled className="bg-neutral-800">Selecione o módulo relacionado</option>
                       {GHL_MODULES.map(mod => (
-                        <option key={mod} value={mod}>{mod}</option>
+                        <option key={mod} value={mod} className="bg-neutral-800">{mod}</option>
                       ))}
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-400">
@@ -225,19 +225,19 @@ export function SupportDialog() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-neutral-600 uppercase tracking-wide ml-1">Descrição</label>
+                  <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wide ml-1">Descrição</label>
                   <textarea
                     required
                     value={formData.description}
                     onChange={e => setFormData({...formData, description: e.target.value})}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none placeholder:text-neutral-400 text-sm leading-relaxed"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-700 bg-neutral-800/50 focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none placeholder:text-neutral-500 text-sm leading-relaxed text-white"
                     placeholder="Descreva detalhadamente o problema ou sua dúvida..."
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-neutral-600 uppercase tracking-wide ml-1">Anexo (Opcional)</label>
+                  <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wide ml-1">Anexo (Opcional)</label>
                   <div className="relative">
                     <input
                       type="file"
@@ -249,33 +249,33 @@ export function SupportDialog() {
                     {!fileName ? (
                       <label 
                         htmlFor="file-upload"
-                        className="flex flex-col items-center justify-center w-full px-4 py-6 border-2 border-dashed border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 hover:border-blue-300/50 transition-all group bg-neutral-50/30"
+                        className="flex flex-col items-center justify-center w-full px-4 py-6 border-2 border-dashed border-neutral-700 rounded-xl cursor-pointer hover:bg-neutral-800 hover:border-blue-500/50 transition-all group bg-neutral-800/30"
                       >
-                        <div className="size-10 rounded-full bg-neutral-100 flex items-center justify-center mb-2 group-hover:bg-white group-hover:shadow-sm transition-all">
-                          <Upload className="size-5 text-neutral-400 group-hover:text-blue-500 transition-colors" />
+                        <div className="size-10 rounded-full bg-neutral-700 flex items-center justify-center mb-2 group-hover:bg-neutral-700 group-hover:shadow-sm transition-all">
+                          <Upload className="size-5 text-neutral-400 group-hover:text-blue-400 transition-colors" />
                         </div>
-                        <p className="text-sm text-neutral-600 font-medium group-hover:text-neutral-900">
+                        <p className="text-sm text-neutral-300 font-medium group-hover:text-white">
                           Clique para fazer upload
                         </p>
-                        <p className="text-xs text-neutral-400 mt-1">
+                        <p className="text-xs text-neutral-500 mt-1">
                           Imagens ou documentos (max. 10MB)
                         </p>
                       </label>
                     ) : (
-                      <div className="flex items-center justify-between p-3 bg-blue-50/50 border border-blue-100 rounded-xl group">
+                      <div className="flex items-center justify-between p-3 bg-blue-900/30 border border-blue-800/50 rounded-xl group">
                         <div className="flex items-center gap-3 overflow-hidden">
-                          <div className="size-10 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
-                            <FileText className="size-5 text-blue-600" />
+                          <div className="size-10 rounded-lg bg-blue-800/50 flex items-center justify-center shrink-0">
+                            <FileText className="size-5 text-blue-400" />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-sm font-medium text-neutral-900 truncate">{fileName}</p>
-                            <p className="text-xs text-blue-600">Pronto para envio</p>
+                            <p className="text-sm font-medium text-white truncate">{fileName}</p>
+                            <p className="text-xs text-blue-400">Pronto para envio</p>
                           </div>
                         </div>
                         <button
                           type="button"
                           onClick={handleRemoveFile}
-                          className="p-2 hover:bg-white rounded-lg text-neutral-400 hover:text-red-500 hover:shadow-sm transition-all"
+                          className="p-2 hover:bg-neutral-800 rounded-lg text-neutral-400 hover:text-red-400 hover:shadow-sm transition-all"
                           title="Remover arquivo"
                         >
                           <Trash2 className="size-4" />
@@ -286,7 +286,7 @@ export function SupportDialog() {
                 </div>
 
                 {submitStatus === 'error' && (
-                  <div className="flex items-center gap-3 text-red-600 text-sm bg-red-50 p-4 rounded-xl border border-red-100 animate-in fade-in slide-in-from-top-1">
+                  <div className="flex items-center gap-3 text-red-400 text-sm bg-red-900/30 p-4 rounded-xl border border-red-800/50 animate-in fade-in slide-in-from-top-1">
                     <AlertCircle className="size-5 shrink-0" />
                     <span>Não foi possível enviar sua solicitação. Verifique sua conexão e tente novamente.</span>
                   </div>
@@ -298,7 +298,7 @@ export function SupportDialog() {
 
         {/* Footer */}
         {submitStatus !== 'success' && (
-          <div className="p-6 border-t border-neutral-100 bg-neutral-50/50 shrink-0">
+          <div className="p-6 border-t border-neutral-800 bg-neutral-900/50 shrink-0">
             <button
               type="submit"
               form="support-form"

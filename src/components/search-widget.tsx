@@ -5,7 +5,6 @@ import { useChat } from '@ai-sdk/react';
 import { useState, useEffect, useRef } from 'react';
 import type { FormEvent } from 'react';
 import { MessageSquare, Send, Sparkles } from 'lucide-react';
-import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import {
   Popover,
   PopoverContent,
@@ -31,8 +30,10 @@ const suggestedQuestions = [
   'Como integrar WhatsApp?'
 ];
 
-export function AISearchTrigger() {
-  const { messages, sendMessage, status, error } = useChat();
+export function AISearchWidget() {
+  const { messages, sendMessage, status, error } = useChat({
+    api: '/api/chat',
+  });
   const [input, setInput] = useState('');
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +73,7 @@ export function AISearchTrigger() {
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <button
-          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 h-12 w-12 md:h-14 md:w-14 rounded-full bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 text-white shadow-2xl hover:shadow-blue-500/50 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+          className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-50 h-12 w-12 md:h-14 md:w-14 rounded-full bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 text-white shadow-2xl hover:shadow-blue-500/50 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
           aria-label="Pergunte à IA - Assistente Liv"
         >
           <Sparkles className="h-5 w-5 md:h-6 md:w-6 group-hover:rotate-12 transition-transform duration-300" />
