@@ -78,7 +78,7 @@ export function AISearchWidget() {
         </button>
       </PopoverTrigger>
       <PopoverContent 
-        className="w-[calc(100vw-1.5rem)] sm:w-[400px] md:w-[480px] max-h-[calc(100vh-6rem)] sm:max-h-[600px] flex flex-col p-0 backdrop-blur-xl bg-white border-2 border-neutral-200 shadow-2xl rounded-2xl overflow-hidden" 
+        className="w-[calc(100vw-1.5rem)] sm:w-[400px] md:w-[480px] max-h-[calc(100vh-6rem)] sm:max-h-[600px] flex flex-col p-0 backdrop-blur-xl bg-white border-2 border-neutral-200 rounded-2xl overflow-hidden" 
         align="end"
         side="top"
         sideOffset={8}
