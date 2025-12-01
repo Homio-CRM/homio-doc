@@ -2,7 +2,7 @@
   'use strict';
   
   const WIDGET_CONFIG = {
-    apiUrl: window.HOMIO_WIDGET_API_URL || 'http://localhost:3000/api/chat',
+    apiUrl: window.HOMIO_WIDGET_API_URL || 'https://docs.homio.com.br/api/chat',
     containerId: 'homio-ai-widget-container'
   };
 
@@ -43,7 +43,7 @@
 
   const getStyles = () => {
     loadFont();
-    return `*{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}.homio-widget-button{position:absolute;bottom:1rem;right:1rem;width:3.5rem;height:3.5rem;border-radius:9999px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04);transition:all .3s}.homio-widget-button:hover{transform:scale(1.1);box-shadow:0 20px 25px -5px rgba(37,99,235,.5)}.homio-widget-popover{position:absolute;bottom:calc(3.5rem + 1.5rem);right:0;width:calc(100vw - 1.5rem);max-width:480px;max-height:calc(100vh - 6rem);background:#fff;border-radius:1rem;border:2px solid #e5e7eb;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);display:none;flex-direction:column;overflow:hidden}.homio-widget-popover.open{display:flex}.homio-widget-header{padding:1.5rem;border-bottom:1px solid #e5e7eb;background:linear-gradient(90deg,#fff,#f9fafb)}.homio-widget-header-content{display:flex;align-items:center;gap:.75rem}.homio-widget-avatar{width:2.5rem;height:2.5rem;border-radius:9999px;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;position:relative}.homio-widget-status{position:absolute;bottom:0;right:0;width:.75rem;height:.75rem;background:#10b981;border-radius:9999px;border:2px solid #fff}.homio-widget-title{font-size:1.125rem;font-weight:700;color:#111827;margin:0}.homio-widget-subtitle{font-size:.75rem;color:#6b7280;margin:0}.homio-widget-messages{flex:1;overflow-y:auto;padding:1rem 1.5rem;background:linear-gradient(180deg,#fff,#f9fafb);min-height:180px}.homio-widget-message{display:flex;flex-direction:column;gap:.25rem;margin-bottom:1rem}.homio-widget-message.user{align-items:flex-end}.homio-widget-message.assistant{align-items:flex-start}.homio-widget-message-bubble{padding:.75rem 1rem;border-radius:1rem;max-width:90%;font-size:.875rem;line-height:1.5}.homio-widget-message.user .homio-widget-message-bubble{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border-bottom-right-radius:.25rem}.homio-widget-message.assistant .homio-widget-message-bubble{background:#f3f4f6;color:#111827;border:2px solid #e5e7eb;border-bottom-left-radius:.25rem}.homio-widget-message-time{font-size:.625rem;color:#9ca3af;padding:0 .5rem}.homio-widget-empty{text-align:center;padding:2rem 1rem}.homio-widget-empty-icon{width:4rem;height:4rem;margin:0 auto 1rem;border-radius:9999px;background:linear-gradient(135deg,#dbeafe,#e9d5ff);display:flex;align-items:center;justify-content:center}.homio-widget-suggestions{margin-top:1.5rem}.homio-widget-suggestion{width:100%;text-align:left;padding:.75rem 1rem;margin-bottom:.5rem;border-radius:.5rem;background:#f3f4f6;border:2px solid #e5e7eb;font-size:.875rem;color:#374151;cursor:pointer;transition:all .2s}.homio-widget-suggestion:hover{border-color:rgba(37,99,235,.5);color:#2563eb}.homio-widget-suggestion:disabled{opacity:.5;cursor:not-allowed}.homio-widget-input-area{padding:1rem 1.5rem;border-top:1px solid #e5e7eb;background:#fff}.homio-widget-form{display:flex;gap:.5rem}.homio-widget-input{flex:1;padding:.625rem 1rem;border-radius:.75rem;border:2px solid #e5e7eb;background:#f9fafb;font-size:.875rem;color:#111827}.homio-widget-input:focus{outline:0;ring:2px;ring-color:#2563eb;border-color:transparent}.homio-widget-submit{padding:.625rem 1.25rem;border-radius:.75rem;background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff;border:0;font-weight:500;cursor:pointer;transition:all .2s}.homio-widget-submit:hover:not(:disabled){transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.homio-widget-submit:disabled{opacity:.5;cursor:not-allowed}.homio-widget-loading{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;background:#f3f4f6;border:2px solid #e5e7eb;border-radius:1rem;border-bottom-left-radius:.25rem}.homio-widget-dots{display:flex;gap:.25rem}.homio-widget-dot{width:.5rem;height:.5rem;border-radius:9999px;background:#2563eb;animation:bounce 1.4s infinite}.homio-widget-dot:nth-child(2){background:#7c3aed;animation-delay:.15s}.homio-widget-dot:nth-child(3){animation-delay:.3s}@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-.25rem)}}.homio-widget-error{font-size:.75rem;color:#dc2626;margin-top:.5rem;padding:.5rem .75rem;background:#fef2f2;border:1px solid #fecaca;border-radius:.5rem}`;
+    return `*{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}.homio-widget-button{position:absolute;bottom:1rem;right:1rem;width:3.5rem;height:3.5rem;border-radius:9999px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04);transition:all .3s}.homio-widget-button:hover{transform:scale(1.1);box-shadow:0 20px 25px -5px rgba(37,99,235,.5)}.homio-widget-popover{position:absolute;bottom:calc(3.5rem + 1.5rem);right:0;width:calc(100vw - 3rem);max-width:480px;max-height:80vh;margin-right:1rem;background:#fff;border-radius:1rem;border:2px solid #e5e7eb;box-shadow:0 20px 25px -5px rgba(0,0,0,.1);display:none;flex-direction:column;overflow:hidden}.homio-widget-popover.open{display:flex}.homio-widget-header{padding:1.5rem;border-bottom:1px solid #e5e7eb;background:linear-gradient(90deg,#fff,#f9fafb)}.homio-widget-header-content{display:flex;align-items:center;gap:.75rem}.homio-widget-avatar{width:2.5rem;height:2.5rem;border-radius:9999px;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;position:relative}.homio-widget-status{position:absolute;bottom:0;right:0;width:.75rem;height:.75rem;background:#10b981;border-radius:9999px;border:2px solid #fff}.homio-widget-title{font-size:1.125rem;font-weight:700;color:#111827;margin:0}.homio-widget-subtitle{font-size:.75rem;color:#6b7280;margin:0}.homio-widget-messages{flex:1;overflow-y:auto;padding:1rem 1.5rem;background:linear-gradient(180deg,#fff,#f9fafb);min-height:180px}.homio-widget-message{display:flex;flex-direction:column;gap:.25rem;margin-bottom:1rem}.homio-widget-message.user{align-items:flex-end}.homio-widget-message.assistant{align-items:flex-start}.homio-widget-message-bubble{padding:.75rem 1rem;border-radius:1rem;max-width:90%;font-size:.875rem;line-height:1.2}.homio-widget-message-bubble br{line-height:.5rem;display:block;content:"";margin:.25rem 0}.homio-widget-message-bubble ul,.homio-widget-message-bubble ol{padding-left:1.75rem;margin:.5rem 0;margin-left:.5rem}.homio-widget-message-bubble li{margin:.15rem 0;padding-left:.5rem}.homio-widget-message.user .homio-widget-message-bubble{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border-bottom-right-radius:.25rem}.homio-widget-message.assistant .homio-widget-message-bubble{background:#f3f4f6;color:#111827;border:2px solid #e5e7eb;border-bottom-left-radius:.25rem}.homio-widget-message-time{font-size:.625rem;color:#9ca3af;padding:0 .5rem}.homio-widget-empty{text-align:center;padding:2rem 1rem}.homio-widget-empty-icon{width:4rem;height:4rem;margin:0 auto 1rem;border-radius:9999px;background:linear-gradient(135deg,#dbeafe,#e9d5ff);display:flex;align-items:center;justify-content:center}.homio-widget-suggestions{margin-top:1.5rem}.homio-widget-suggestion{width:100%;text-align:left;padding:.75rem 1rem;margin-bottom:.5rem;border-radius:.5rem;background:#f3f4f6;border:2px solid #e5e7eb;font-size:.875rem;color:#374151;cursor:pointer;transition:all .2s}.homio-widget-suggestion:hover{border-color:rgba(37,99,235,.5);color:#2563eb}.homio-widget-suggestion:disabled{opacity:.5;cursor:not-allowed}.homio-widget-input-area{padding:1rem 1.5rem;border-top:1px solid #e5e7eb;background:#fff}.homio-widget-form{display:flex;gap:.5rem}.homio-widget-input{flex:1;padding:.625rem 1rem;border-radius:.75rem;border:2px solid #e5e7eb;background:#f9fafb;font-size:.875rem;color:#111827}.homio-widget-input:focus{outline:0;ring:2px;ring-color:#2563eb;border-color:transparent}.homio-widget-submit{padding:.625rem 1.25rem;border-radius:.75rem;background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff;border:0;font-weight:500;cursor:pointer;transition:all .2s}.homio-widget-submit:hover:not(:disabled){transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.homio-widget-submit:disabled{opacity:.5;cursor:not-allowed}.homio-widget-loading{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;background:#f3f4f6;border:2px solid #e5e7eb;border-radius:1rem;border-bottom-left-radius:.25rem}.homio-widget-dots{display:flex;gap:.25rem}.homio-widget-dot{width:.5rem;height:.5rem;border-radius:9999px;background:#2563eb;animation:bounce 1.4s infinite}.homio-widget-dot:nth-child(2){background:#7c3aed;animation-delay:.15s}.homio-widget-dot:nth-child(3){animation-delay:.3s}@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-.25rem)}}.homio-widget-error{font-size:.75rem;color:#dc2626;margin-top:.5rem;padding:.5rem .75rem;background:#fef2f2;border:1px solid #fecaca;border-radius:.5rem}`;
   };
 
   const createWidget = () => {
@@ -111,13 +111,15 @@
       
       const lastMessage = messages[messages.length - 1];
       const isLastAssistantStreaming = isLoading && lastMessage && lastMessage.role === 'assistant' && !lastMessage.content;
+      const hasStreamingContent = isLoading && lastMessage && lastMessage.role === 'assistant' && lastMessage.content && lastMessage.content.trim().length > 0;
       
       const messagesToRender = isLastAssistantStreaming ? messages.slice(0, -1) : messages;
+      const showLoading = isLoading && !hasStreamingContent;
       
       messagesContainer.innerHTML = messagesToRender.map((msg) => {
         const isUser = msg.role === 'user';
         return `<div class="homio-widget-message ${isUser ? 'user' : 'assistant'}"><div class="homio-widget-message-bubble">${isUser ? escapeHtml(msg.content) : markdownToHtml(msg.content)}</div><span class="homio-widget-message-time">${formatTime(new Date(msg.createdAt || Date.now()))}</span></div>`;
-      }).join('') + (isLoading ? `<div class="homio-widget-loading"><div class="homio-widget-dots"><div class="homio-widget-dot"></div><div class="homio-widget-dot"></div><div class="homio-widget-dot"></div></div><span style="font-size:.875rem;color:#6b7280">Pensando...</span></div>` : '');
+      }).join('') + (showLoading ? `<div class="homio-widget-loading"><div class="homio-widget-dots"><div class="homio-widget-dot"></div><div class="homio-widget-dot"></div><div class="homio-widget-dot"></div></div><span style="font-size:.875rem;color:#6b7280">Pensando...</span></div>` : '');
       
       if (!isLastAssistantStreaming) {
         currentAssistantBubble = null;
@@ -129,6 +131,11 @@
     
     const updateAssistantMessage = (content) => {
       if (!currentAssistantBubble) {
+        const loadingEl = messagesContainer.querySelector('.homio-widget-loading');
+        if (loadingEl) {
+          loadingEl.remove();
+        }
+        
         const existingMessages = messagesContainer.querySelectorAll('.homio-widget-message');
         const lastMsg = existingMessages[existingMessages.length - 1];
         
@@ -169,15 +176,37 @@
       let t = text.replace(/```([\s\S]+?)```/g, '<pre style="background:#e5e7eb;padding:.75rem;border-radius:.5rem;overflow-x:auto;margin:.75rem 0;font-size:.75rem;font-family:monospace;border:1px solid #d1d5db"><code>$1</code></pre>');
       t = t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
       t = t.replace(/(?:^|[^*])\*([^*\n]+?)\*(?![*])/g, '<em>$1</em>');
-      return t
-        .replace(/`([^`]+?)`/g, '<code style="background:#dbeafe;color:#1e40af;padding:.125rem .375rem;border-radius:.25rem;font-size:.75rem;font-family:monospace">$1</code>')
-        .replace(/###\s(.+)/g, '<h3 style="font-size:.875rem;font-weight:600;margin:.5rem 0 .25rem;color:#111827">$1</h3>')
-        .replace(/##\s(.+)/g, '<h2 style="font-size:.875rem;font-weight:700;margin:.75rem 0 .5rem;color:#111827">$1</h2>')
-        .replace(/^#\s(.+)$/gm, '<h1 style="font-size:1rem;font-weight:700;margin:1rem 0 .5rem;color:#111827">$1</h1>')
-        .replace(/^[\*\-]\s(.+)$/gm, '<li style="margin:.25rem 0">$1</li>')
-        .replace(/^\d+\.\s(.+)$/gm, '<li style="margin:.25rem 0">$1</li>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:underline">$1</a>')
-        .replace(/\n/g, '<br>');
+      t = t.replace(/`([^`]+?)`/g, '<code style="background:#dbeafe;color:#1e40af;padding:.125rem .375rem;border-radius:.25rem;font-size:.75rem;font-family:monospace">$1</code>');
+      t = t.replace(/###\s(.+)/g, '<h3 style="font-size:.875rem;font-weight:600;margin:.5rem 0 .25rem;color:#111827">$1</h3>');
+      t = t.replace(/##\s(.+)/g, '<h2 style="font-size:.875rem;font-weight:700;margin:.75rem 0 .5rem;color:#111827">$1</h2>');
+      t = t.replace(/^#\s(.+)$/gm, '<h1 style="font-size:1rem;font-weight:700;margin:1rem 0 .5rem;color:#111827">$1</h1>');
+      const lines = t.split('\n');
+      const result = [];
+      let inList = false;
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const isListItem = /^[\*\-]\s(.+)$/.test(line) || /^\d+\.\s(.+)$/.test(line);
+        if (isListItem) {
+          if (!inList) {
+            result.push('<ul>');
+            inList = true;
+          }
+          result.push(line.replace(/^[\*\-]\s(.+)$/, '<li>$1</li>').replace(/^\d+\.\s(.+)$/, '<li>$1</li>'));
+        } else {
+          if (inList) {
+            result.push('</ul>');
+            inList = false;
+          }
+          result.push(line);
+        }
+      }
+      if (inList) {
+        result.push('</ul>');
+      }
+      t = result.join('\n');
+      t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:underline">$1</a>');
+      t = t.replace(/\n{3,}/g, '\n\n');
+      return t.replace(/\n\n/g, '<br>').replace(/\n/g, ' ');
     };
     
     const sendMessage = async (text) => {
@@ -226,6 +255,7 @@
         renderMessages();
         
         let buffer = '';
+        let hasReceivedContent = false;
         
         while (true) {
           const { done, value } = await reader.read();
@@ -249,6 +279,10 @@
               try {
                 const parsed = JSON.parse(jsonStr);
                 if (parsed?.type === 'text-delta' && parsed.delta) {
+                  if (!hasReceivedContent) {
+                    hasReceivedContent = true;
+                    renderMessages();
+                  }
                   assistantMessage.content += parsed.delta;
                   updateAssistantMessage(assistantMessage.content);
                 }
@@ -268,6 +302,10 @@
             try {
               const parsed = JSON.parse(jsonStr);
               if (parsed?.type === 'text-delta' && parsed.delta) {
+                if (!hasReceivedContent) {
+                  hasReceivedContent = true;
+                  renderMessages();
+                }
                 assistantMessage.content += parsed.delta;
                 updateAssistantMessage(assistantMessage.content);
               }
