@@ -2,33 +2,65 @@ import { openai } from '@ai-sdk/openai';
 import { streamText, convertToModelMessages } from 'ai';
 import { getLLMText, source } from '@/lib/source';
 
-export const runtime = 'edge';
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-};
+export const runtime = 'nodejs';
 
 export async function OPTIONS() {
   return new Response(null, {
-    status: 204,
-    headers: corsHeaders,
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
   });
 }
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  try {
+    const body = await req.json();
+    const { messages } = body;
 
-  const scan = source.getPages().map(getLLMText);
-  const scanned = await Promise.all(scan);
-  const llmText = scanned.join('\n\n');
+    if (!messages || !Array.isArray(messages)) {
+      throw new Error('Messages must be an array');
+    }
 
-  const modelMessages = convertToModelMessages(messages);
+    let llmText = '';
+    try {
+      const pages = source.getPages();
+      const scan = pages.map(getLLMText);
+      const scanned = await Promise.all(scan);
+      llmText = scanned.join('\n\n');
+    } catch (sourceError) {
+      console.error('Error loading source pages:', sourceError);
+      llmText = 'Documentação não disponível no momento.';
+    }
 
-  const result = await streamText({
-    model: openai('gpt-4o'),
-    system: `Você é um assistente de IA especializado na documentação da plataforma Homio. Seu papel é fornecer respostas precisas, claras e úteis com base na documentação fornecida.
+    const normalizedMessages = messages.map((msg: any) => {
+      if (msg.parts) {
+        return msg;
+      }
+      if (msg.content) {
+        return {
+          id: msg.id || `msg-${Date.now()}-${Math.random()}`,
+          role: msg.role,
+          parts: [{ type: 'text' as const, text: msg.content }],
+        };
+      }
+      if (msg.text) {
+        return {
+          id: msg.id || `msg-${Date.now()}-${Math.random()}`,
+          role: msg.role,
+          parts: [{ type: 'text' as const, text: msg.text }],
+        };
+      }
+      return msg;
+    });
+
+    const modelMessages = convertToModelMessages(normalizedMessages);
+
+    const result = await streamText({
+      model: openai('gpt-4o'),
+      system: `Você é um assistente de IA especializado na documentação da plataforma Homio. Seu papel é fornecer respostas precisas, claras e úteis com base na documentação fornecida.
 
 ## Suas Responsabilidades:
 - Responder perguntas sobre a plataforma Homio usando apenas as informações da documentação abaixo
@@ -55,20 +87,43 @@ ${llmText}
 - Use os links que aparecem no formato (caminho) da documentação fornecida acima
 - Foque em responder apenas a pergunta do usuário, não adicione informações que não foram solicitadas.
 - Se você citar informações de múltiplas páginas, liste todas as fontes numeradas`,
-    messages: modelMessages,
-  });
+      messages: modelMessages,
+    });
 
-  const response = result.toUIMessageStreamResponse();
-  
-  const headers = new Headers(response.headers);
-  Object.entries(corsHeaders).forEach(([key, value]) => {
-    headers.set(key, value);
-  });
-
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: headers,
-  });
+    const response = result.toUIMessageStreamResponse();
+    
+    const headers = new Headers(response.headers);
+    headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    headers.set('Access-Control-Allow-Headers', 'Content-Type');
+    headers.set('Content-Type', response.headers.get('Content-Type') || 'text/plain; charset=utf-8');
+    
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  } catch (error) {
+    console.error('Chat API Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Internal server error';
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    
+    const errorResponse = new Response(
+      JSON.stringify({ 
+        error: errorMessage,
+        ...(process.env.NODE_ENV === 'development' && errorStack ? { stack: errorStack } : {})
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
+    );
+    return errorResponse;
+  }
 }
 
