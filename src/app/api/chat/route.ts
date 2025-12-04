@@ -59,7 +59,12 @@ export async function POST(req: Request) {
     const modelMessages = convertToModelMessages(normalizedMessages);
 
     const result = await streamText({
-      model: openai('gpt-4o'),
+      model: openai('gpt-5.1'),
+      providerOptions: {
+        openai: {
+          serviceTier: 'flex',
+        },
+      },
       system: `Você é um assistente de IA especializado na documentação da plataforma Homio. Seu papel é fornecer respostas precisas, claras e úteis com base na documentação fornecida.
 
 ## Suas Responsabilidades:
