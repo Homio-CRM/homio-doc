@@ -4,9 +4,12 @@
     "index",
     "introducao",
     "dashboards",
+    "fb",
+    "fbform",
     "informacoes-sub-conta",
     "usuarios-e-permissoes",
     "Conversas",
+    "bulkwa",
     "dominios",
     "pipelines",
     "oportunidades",
@@ -19,4 +22,3 @@
     "landing-pages"
   ]
 }
-

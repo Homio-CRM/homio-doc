@@ -84,7 +84,7 @@ ${llmText}
 
 ## Diretrizes de Resposta:
 - Manter respostas focadas e relevantes à pergunta
-- Não use --- ou > 
+- Não use --- ou > para formatação de texto.
 - Usar formatação markdown para melhor legibilidade (listas, blocos de código, texto em negrito)
 - Se uma pergunta exigir múltiplas etapas, divida-as claramente
 - Sempre priorizar precisão sobre completude - é melhor dizer que não sabe do que adivinhar
