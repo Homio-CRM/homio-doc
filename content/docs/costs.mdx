@@ -1,0 +1,146 @@
+---
+title: Custos de Uso
+description: Entenda as tarifas para ligações, WhatsApp, E-mail e Inteligência Artificial no Homio
+icon: CreditCard
+---
+
+No Homio, muitos recursos estão incluídos na sua assinatura, mas alguns serviços específicos (como telefonia, IA e mensagens) funcionam através de um sistema de **Carteira de Créditos**.
+
+Isso significa que você paga apenas pelo que utilizar. Você adiciona um saldo pré-pago à sua conta e os custos são descontados automaticamente dessa carteira conforme o uso.
+
+<Callout title="Onde encontrar">
+Para gerenciar sua carteira, ver seu saldo atual e histórico de gastos, acesse o menu **Configurações** e clique em **Faturamento**.
+</Callout>
+
+* * *
+
+## Telefonia e Ligações
+
+O sistema de telefonia do Homio permite que você alugue números, faça e receba chamadas, e grave conversas. Para saber como utilizar, consulte a documentação de [Ligações/SMS](/docs/ligacoes-sms).
+
+### 1. Aluguel de Número
+
+Para utilizar o telefone, é necessário alugar um número dedicado dentro da plataforma.
+
+| Serviço | Custo | Detalhes |
+| :--- | :--- | :--- |
+| **Aluguel de Número** | US$ 5.95 | Mensal |
+| **Recebimento (Inbound)** | US$ 0.014 | Por minuto |
+
+### 2. Custos de Ligações
+
+Para realizar chamadas (fazer ligações para fora), os custos dependem do destino:
+
+| Tipo de Ligação | Custo por Minuto | Detalhes |
+| :--- | :--- | :--- |
+| **Brasil - Celular** | US$ 0.0868 | Ligações para celulares em geral. |
+| **Brasil - Grandes Cidades** | US$ 0.0308 | DDDs: 11, 21, 27, 31, 41, 51, 61, 62, 81, 85. |
+| **Brasil - Geral** | US$ 0.056 | Outras regiões (código 55). |
+
+### 3. Gravação e Transcrição
+
+Se você optar por gravar as ligações ou transcrevê-las (transformar áudio em texto) automaticamente:
+
+| Serviço | Custo | Unidade |
+| :--- | :--- | :--- |
+| **Gravação** | US$ 0.0035 | /minuto |
+| **Armazenamento** | US$ 0.0007 | /minuto/mês |
+| **Transcrição** | US$ 0.05145 | /minuto |
+
+* * *
+
+## Mensagens via WhatsApp
+
+O Homio integra-se diretamente com a API do WhatsApp (Meta). Confira a documentação de [WhatsApp](/docs/whatsapp) para detalhes de configuração. As cobranças são feitas por conversa iniciada, baseadas no tipo de modelo (template) utilizado.
+
+| Template | Custo | Descrição |
+| :--- | :--- | :--- |
+| **Marketing** | US$ 0,1036 | Ofertas, promoções e novidades. |
+| **Utilidade** | US$ 0,0472 | Atualizações de pedidos e confirmações. |
+
+<Callout type="warn" title="Atenção">
+As conversas iniciadas pelo próprio cliente (dentro de uma janela de 24 horas) não possuem custo adicional além do valor já incluso na sua assinatura.
+</Callout>
+
+* * *
+
+## E-mail
+
+O envio de e-mails pelo Homio é extremamente econômico e conta com recursos para validar se os endereços são reais, melhorando sua taxa de entrega. Saiba mais em [E-mail](/docs/email).
+
+| Serviço | Custo |
+| :--- | :--- |
+| **Envio** | US$ 0,93 / 1000 e-mails |
+| **Validação** | US$ 0,0472 / 1000 validações |
+
+* * *
+
+## Outros
+
+| Serviço | Custo | Detalhes |
+| :--- | :--- | :--- |
+| **Compra de Domínio** | US$ 14.00 | Custo de registro |
+| **Gatilhos/Ações Premium** | US$ 0.014 | Por execução em automações |
+| **Criação de Funis (IA)** | US$ 1.386 | Por funil criado |
+| **Resposta a Avaliações (IA)** | US$ 0.014 | Por resposta gerada |
+
+* * *
+
+## IA de Conversação (Conversation AI)
+
+A IA de Conversação é o "cérebro" que permite criar chatbots inteligentes para conversar com seus clientes. O preço é baseado no consumo de **tokens**.
+
+<Callout title="O que é um Token?">
+Pense no token como sílabas ou pedaços de palavras. Aproximadamente 1000 tokens equivalem a cerca de 750 palavras.
+</Callout>
+
+### Custos por Provedor
+
+Abaixo estão os custos para **1 Milhão de Tokens**, dependendo do provedor de inteligência escolhida:
+
+| Provedor | Modelo | Preço de Entrada (Input) / 1M Tokens | Preço de Saída (Output) / 1M Tokens |
+| :--- | :--- | :--- | :--- |
+| **Google** | Gemini 2.5 Pro | US$ 1.75 (p/ ≤ 200k tokens) | US$ 14.00 (p/ ≤ 200k tokens) |
+| **Google** | Gemini 2.5 Flash | US$ 0.42 | US$ 3.50 |
+| **Anthropic** | Claude 4 Sonnet | US$ 4.20 | US$ 21.00 |
+| **Anthropic** | Claude 3.5 Haiku | US$ 1.12 | US$ 5.60 |
+| **OpenAI** | GPT-4.1 | US$ 2.80 | US$ 11.20 |
+
+*Nota: Entrada (Input) é o que o cliente escreve para a IA. Saída (Output) é a resposta que a IA gera.*
+
+* * *
+
+## IA de Voz (Voice AI)
+
+A IA de Voz permite que o sistema "fale" e "escute" em chamadas telefônicas. O custo é composto por duas partes: o motor de voz (a fala) e a inteligência (o raciocínio).
+
+### 1. Custo do Motor de Voz
+* **Motor de Voz:** US$ 0.084 por minuto.
+
+### 2. Custo da Inteligência (Modelos Externos)
+
+Além do minuto da voz, você paga pelo raciocínio da IA, calculado por milhão de tokens. Você pode escolher qual "cérebro" vai operar sua IA de Voz.
+
+Abaixo, a tabela de preços por **1 Milhão de Tokens** para uso em Voz:
+
+| Provedor | Modelo | Preço por 1M Tokens |
+| :--- | :--- | :--- |
+| **Google** | Gemini 2.0 Flash | US$ 0.14 |
+| **Google** | Gemini 2.0 Flash Lite | US$ 0.105 |
+| **Google** | Gemini 2.5 Flash | US$ 0.42 |
+| **Google** | Gemini 2.5 Flash Lite | US$ 0.14 |
+| **OpenAI** | GPT 4o Mini | US$ 0.21 |
+| **OpenAI** | GPT 4o | US$ 3.50 |
+| **OpenAI** | GPT 4.1 Nano | US$ 0.14 |
+| **OpenAI** | GPT 4.1 Mini | US$ 0.56 |
+| **OpenAI** | GPT 4.1 | US$ 2.80 |
+| **OpenAI** | GPT 5 Nano | US$ 0.07 |
+| **OpenAI** | GPT 5 Mini | US$ 0.35 |
+| **OpenAI** | GPT 5 | US$ 1.75 |
+| **Anthropic** | Claude 4.5 Sonnet | US$ 4.20 |
+| **Anthropic** | Claude 4.0 Sonnet | US$ 4.20 |
+| **Anthropic** | Claude 3.7 Sonnet | US$ 4.20 |
+| **Anthropic** | Claude 3.5 Haiku | US$ 1.12 |
+
+
+

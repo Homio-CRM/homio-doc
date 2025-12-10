@@ -6,96 +6,74 @@ icon: Globe
 
 Adicionar um domínio personalizado na Homio permite que você utilize URLs personalizadas para seus funis, sites e outros recursos, podendo colocar o seu site no ar diretamente no seu domínio.
 
-**Nota:** Antes de começar, é necessário que você possua um domínio registrado.
+<Callout title="Requisitos">
+Antes de começar, é necessário que você possua um domínio registrado (ex: *seunegocio.com.br*).
+</Callout>
+
+
+
+## Adicione o Domínio na Homio
+
+1. No painel da Homio, clique no menu lateral **Configurações** (localizado na parte inferior).
+2. Dentro dessa seção, selecione **Domínios**.
+3. Clique no botão **Adicionar um domínio**.
+4. Insira o endereço do seu domínio (ex: *www.seunegocio.com.br*) e clique em **Continuar**.
+5. A plataforma exibirá os registros DNS (Registro A e/ou CNAME) que você precisa configurar. Mantenha essa tela aberta.
+
+### 1. Acesse seu Provedor de Domínio
+
+Agora você precisa entrar no site onde comprou seu domínio para configurar o apontamento (DNS).
+
+1. Acesse o painel de gerenciamento do seu provedor (Registro.br, GoDaddy, Hostgator, etc.).
+2. Procure por uma seção chamada **Gerenciar DNS**, **Zona de DNS**, **Editor de Zona** ou similar.
+
+<Callout title="Dica">
+Se tiver dúvidas sobre onde encontrar essa área, consulte a documentação de ajuda do seu provedor de domínio específico.
+</Callout>
+
+### 2. Configure os Registros DNS
+
+Para que o domínio funcione, você precisará criar ou editar registros apontando para a Homio.
+
+**Para o domínio principal (com www ou subdomínios):**
+Geralmente usamos um registro **A** ou **CNAME**. Siga exatamente o que a tela da Homio instruiu no Passo 1.
+
+#### Configurando um Registro A:
+1. Encontre a opção para **Adicionar Registro**.
+2. Selecione o Tipo: **A**.
+3. No campo **Nome** (ou Host): Insira `@` (para raiz) ou o subdomínio desejado.
+4. No campo **Valor** (ou IP): Insira o endereço IP fornecido pela Homio.
+5. Clique em **Salvar**.
+
+#### Configurando um Registro CNAME:
+1. Encontre a opção para **Adicionar Registro**.
+2. Selecione o Tipo: **CNAME**.
+3. No campo **Nome** (ou Host): Insira `www` ou o subdomínio (ex: `blog`).
+4. No campo **Valor** (ou Destino): Insira o endereço fornecido pela Homio (geralmente *flash.funnels.msgsndr.com*).
+5. Clique em **Salvar**.
+
+<Callout type="warn" title="Atenção">
+Verifique se não existem outros registros conflitantes com o mesmo Nome/Host. Se houver, você precisará editá-los ou removê-los.
+</Callout>
+
+### 3. Finalize a Conexão
+
+1. Volte para a aba do navegador onde a **Homio** está aberta.
+2. Se você fechou a janela, repita o caminho: Configurações > Domínios.
+3. Clique no botão para **Verificar** ou **Continuar**.
+
+Se tudo estiver correto, o sistema confirmará a conexão.
 
 * * *
 
-## Como adicionar um domínio na Homio
+## Propagação de DNS
+As alterações de DNS não são instantâneas. Elas precisam se "espalhar" pela internet.
 
-1. No painel da Homio, clique no menu lateral **"Configurações"**, localizado na última opção.
-2. Dentro dessa seção, selecione **"Domínios"** e clique em **"Adicionar um domínio"**.
-3. No campo indicado, insira o domínio que deseja configurar e clique em **"Continuar"**. A plataforma exibirá os registros DNS necessários para a configuração.
+* **Tempo médio:** Geralmente leva de alguns minutos até 4 horas.
+* **Tempo máximo:** Em casos raros, pode levar até 24 ou 48 horas.
 
-## Acessar o painel de DNS
+<Callout title="Como verificar?">
+Você pode usar ferramentas gratuitas como [WhatsMyDNS.net](https://www.whatsmydns.net/) para checar se o IP ou CNAME já está aparecendo corretamente ao redor do mundo.
+</Callout>
 
-Acesse o painel de gerenciamento DNS do seu serviço de registro de domínio. Embora o processo varie conforme o provedor, procure por termos como **"Gerenciar DNS"** ou **"Zona de DNS"**.
-
-> **_Dica:_** Se tiver dúvidas, consulte a documentação ou suporte do seu provedor.
-
-### Localizar o painel de DNS
-
-Dependendo do seu provedor, o painel de DNS pode estar localizado em diferentes seções:
-
-#### Provedores comuns
-
-- **Registro.br**: Acesse "Serviços" > "DNS"
-- **Cloudflare**: Acesse "DNS" no menu lateral
-- **GoDaddy**: Acesse "DNS" na página do domínio
-- **Namecheap**: Acesse "Advanced DNS"
-
-### Verificar configurações atuais
-
-Antes de adicionar novos registros, verifique os registros DNS existentes para evitar conflitos.
-
-* * *
-## Adicionar os registros DNS
-
-1. No painel DNS, localize os registros **A** e **CNAME**.
-    *   **Registro A:** Atualize ou crie este registro conforme as informações fornecidas no passo 3 da seção anterior.
-    *   **Registro CNAME:** Faça o mesmo para o registro CNAME, garantindo que os apontamentos estejam corretos.
-    *   **Atenção:** Certifique-se de salvar cada alteração realizada.
-
-### Configurar o registro A
-
-#### Passo a passo do registro A
-
-1. Encontre a opção para adicionar um novo registro do tipo **A**
-2. No campo **Nome** ou **Host**, insira o subdomínio desejado ou deixe em branco para o domínio raiz
-3. No campo **Valor** ou **Conteúdo**, insira o endereço IP fornecido pela Homio
-4. Defina o TTL (Time To Live) conforme recomendado
-5. Salve o registro
-
-#### Verificação do registro A
-
-Após salvar, aguarde alguns minutos e verifique se o registro foi criado corretamente.
-
-### Configurar o registro CNAME
-
-#### Passo a passo do registro CNAME
-
-1. Localize a opção para adicionar um novo registro do tipo **CNAME**
-2. No campo **Nome** ou **Host**, insira o subdomínio desejado
-3. No campo **Valor** ou **Conteúdo**, insira o endereço CNAME fornecido pela Homio
-4. Defina o TTL conforme recomendado
-5. Salve o registro
-
-#### Verificação do registro CNAME
-
-Assim como no registro A, verifique se o registro CNAME foi criado corretamente após salvar.
-
-### Tempo de propagação
-
-Após essas alterações, salve as configurações no painel do seu provedor. As mudanças podem levar algumas horas para serem aplicadas, dependendo do provedor de domínio.
-
-#### Fatores que afetam a propagação
-
-- **TTL configurado**: Valores mais baixos propagam mais rapidamente
-- **Provedor de DNS**: Alguns provedores propagam mais rápido que outros
-- **Localização geográfica**: A propagação pode variar por região
-
-#### Como verificar a propagação
-
-Você pode usar ferramentas online como "WhatsMyDNS.net" ou "DNS Checker" para verificar se os registros foram propagados globalmente.
-
-**Atenção!** Pode levar algumas horas (até 24h) para os registros se propagarem totalmente.
-
-* * *
-
-## Finalizar a configuração
-
-1. Volte para a plataforma Homio, na tela onde adicionou o domínio.
-2. Repita os passos 1 a 3 da seção "Como adicionar um domínio na Homio" para confirmar a configuração do domínio.
-3. Em seguida, clique em **"Continuar"** para finalizar o processo.
-
-Após a configuração ser concluída, seu domínio estará pronto para uso na plataforma Homio.
 
