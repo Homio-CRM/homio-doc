@@ -1,16 +1,18 @@
 ---
-title: Integração com Facebook
-description: Aprenda como conectar sua página do Facebook ao Homio para gerenciar mensagens e leads.
-icon: facebook
+title: Facebook
+description: Aprenda como conectar sua página do Facebook e mapear formulários de Lead Ads no Homio.
+icon: Facebook
 ---
 
 Conectar sua conta do Facebook ao Homio é um passo fundamental para centralizar sua comunicação. Ao fazer essa integração, você poderá receber e responder mensagens do Messenger diretamente no sistema, além de capturar automaticamente os contatos (leads) que chegarem através dos seus anúncios e formulários.
 
-Abaixo, explicamos como fazer essa conexão de forma simples e segura.
+<Callout title="Requisitos">
+Antes de começar, certifique-se de que você está logado na sua conta do Facebook no mesmo navegador que está usando o Homio e que você é o **Administrador** da página que deseja conectar.
+</Callout>
 
 ## Passo a Passo da Integração
 
-Antes de começar, certifique-se de que você está logado na sua conta do Facebook no mesmo navegador que está usando o Homio e que você é o **Administrador** da página que deseja conectar.
+Siga este guia para conectar sua conta de forma simples e segura.
 
 ### 1. Acesse as Configurações
 No menu lateral esquerdo da sua tela (aquela barra cinza escura), role até o final e clique no botão chamado **Configurações**.
@@ -27,9 +29,9 @@ Você verá vários logotipos de redes sociais e ferramentas.
 Uma janela pop-up do Facebook se abrirá.
 1. Clique no botão **Continuar como [Seu Nome]**.
 2. O Facebook mostrará uma lista das suas páginas. **Selecione a página** que você deseja usar no Homio.
-    * *Dica:* Se você gerencia várias páginas, recomendamos selecionar apenas a página específica deste negócio para evitar confusões.
+   * *Dica:* Se você gerencia várias páginas, recomendamos selecionar apenas a página específica deste negócio para evitar confusões.
 3. Clique em **Avançar**.
-4. Certifique-se de deixar todas as permissões ativadas (o botão deve estar azul/sim) para que o sistema funcione corretamente.
+4. Certifique-se de deixar todas as permissões ativadas para que o sistema funcione corretamente.
 5. Clique em **Concluir**.
 
 ### 5. Selecione a Página no Homio
@@ -38,4 +40,65 @@ A janela pop-up fechará e você voltará para a tela do Homio.
 2. Selecione a página correta no menu suspenso.
 3. Clique no botão para confirmar a conexão.
 
-> **Atenção:** Se você mudar sua senha do Facebook no futuro, a conexão pode ser interrompida por segurança. Se isso acontecer, basta voltar a esta tela e clicar no botão para reconectar.
+<Callout type="warn" title="Atenção">
+Se você mudar sua senha do Facebook no futuro, a conexão pode ser interrompida por segurança. Se isso acontecer, basta voltar a esta tela e clicar no botão para reconectar.
+</Callout>
+
+* * *
+
+## Formulários do Facebook (Lead Ads)
+
+O **Mapeamento de Campos de Formulário do Facebook** é o processo que garante que as informações coletadas nos seus anúncios de cadastro (Lead Ads) no Facebook entrem corretamente no Homio.
+
+Imagine que o Facebook é o carteiro e o Homio é a caixa de correio. O mapeamento serve para dizer ao carteiro exatamente em qual gaveta colocar cada carta (nome, telefone, e-mail) para que nada se perca.
+
+<Callout title="Antes de Começar">
+Para que o mapeamento funcione, você precisa ter duas coisas prontas:
+1. Sua conta do Facebook deve estar **integrada** ao Homio (passos acima).
+2. Você já deve ter criado um **Formulário de Cadastro** (Lead Form) na sua página do Facebook ou Gerenciador de Anúncios.
+</Callout>
+
+### Como Mapear Seus Campos
+
+Siga os passos abaixo para ensinar o Homio a ler as respostas dos seus formulários.
+
+### 1. Acesse a Área de Integrações
+No menu lateral esquerdo do seu painel, clique em **Configurações** e, em seguida, selecione a opção **Integrações**.
+
+### 2. Encontre a Ferramenta de Mapeamento
+Dentro da tela de Integrações, procure por uma aba ou botão chamado **Mapeamento de Campos de Formulário do Facebook** (ou "Facebook Form Fields Mapping").
+Ao clicar nela, você verá uma lista com todos os formulários que existem na página do Facebook conectada.
+
+### 3. Selecione o Formulário para Mapear
+Localize o formulário que deseja configurar na lista. Ao lado do nome dele, haverá um botão para **Mapear Campos** (Map Fields). Clique nele.
+
+Uma janela se abrirá mostrando duas colunas:
+* **Esquerda:** Os campos que existem no seu formulário do Facebook.
+* **Direita:** Os campos correspondentes dentro do Homio.
+
+### 4. Faça a Correspondência (O "De-Para")
+Agora é hora de ligar os pontos. Verifique se o sistema identificou corretamente:
+* **Nome** do Facebook → **First Name** ou **Full Name** no Homio.
+* **Email** → **Email**.
+* **Telefone** → **Phone**.
+
+Se algum campo estiver errado ou vazio, clique na caixa de seleção do lado direito e escolha o campo correto na lista.
+
+### 5. Lidando com Perguntas Específicas
+Muitas vezes, fazemos perguntas personalizadas no Facebook (ex: *"Qual sua cor favorita?"*). Se você não encontrar um destino adequado na lista da direita, você precisará criar um **Campo Personalizado** no Homio primeiro.
+
+<Callout title="Importante">
+Se você não criar um campo específico para receber essa resposta, essa informação pode ser perdida. Consulte nosso guia sobre **Campos Personalizados** se precisar de ajuda.
+</Callout>
+
+### 6. Salve e Ative
+Depois de garantir que todas as linhas estão conectadas corretamente:
+1. Clique no botão para **Salvar** (Save).
+2. Certifique-se de que o **Status** do formulário está marcado como **Ativo**.
+
+* * *
+
+### Dicas Finais
+
+* **Teste sempre:** Use a ferramenta de teste de Leads do Facebook para enviar um cadastro falso e ver se ele aparece corretamente no Homio.
+* **Atualizações:** Se você alterar seu formulário no Facebook, lembre-se de voltar aqui e atualizar o mapeamento.

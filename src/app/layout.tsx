@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/Design sem nome.png',
+    icon: [
+      { url: '/simbolo-grafite.png', media: '(prefers-color-scheme: light)' },
+      { url: '/simbolo-off.png', media: '(prefers-color-scheme: dark)' },
+    ],
   },
 };
 
@@ -28,8 +31,10 @@ export default function Layout({ children }: LayoutProps<'/'>) {
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.theme === undefined || localStorage.theme === 'system') {
-                  localStorage.theme = 'dark';
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
                 }
               } catch (_) {}
             `,

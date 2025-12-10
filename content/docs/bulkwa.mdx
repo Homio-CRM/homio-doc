@@ -1,62 +1,59 @@
 ---
 title: Envio em Massa WhatsApp
-description: Aprenda como enviar mensagens de WhatsApp para vários contatos de uma vez no Homio, economizando tempo na sua comunicação.
+description: Aprenda como enviar mensagens de WhatsApp para vários contatos de uma vez no Homio de forma segura e eficiente.
 icon: MessageSquare
 ---
 
 O Homio permite que você se comunique com muitos contatos simultaneamente através do WhatsApp. Essa funcionalidade é ideal para enviar avisos, promoções ou atualizações importantes sem precisar mandar mensagem um por um manualmente.
 
-Siga este guia para realizar envios em massa de forma segura e eficiente.
+<Callout title="Atenção">
+O envio em massa deve ser feito com responsabilidade. Enviar mensagens não solicitadas (SPAM) pode levar ao bloqueio do seu número pelo WhatsApp. Recomendamos sempre o uso de mensagens relevantes e aguardadas pelo seu cliente.
+</Callout>
 
-## 1. Selecionando os Contatos
+Siga este guia para configurar seus disparos.
 
-O primeiro passo é escolher quem receberá sua mensagem. Você pode selecionar todos os seus contatos ou usar filtros para escolher um grupo específico (como "apenas clientes ativos").
+### Selecione os Contatos
+O primeiro passo é definir quem receberá sua mensagem. Você pode selecionar toda a sua base ou usar filtros para um grupo específico (ex: "apenas clientes ativos").
 
-1.  No menu lateral esquerdo, clique em **Contatos**.
-2.  Você verá sua lista de pessoas cadastradas.
-3.  Para selecionar as pessoas, marque a **caixa de seleção** (quadradinho) ao lado do nome de cada contato.
-4.  **Dica importante**: Se você quiser selecionar **todos** os contatos da sua lista (e não apenas os que aparecem na primeira página), clique no link que aparece no topo da lista dizendo "Selecione todos os X contatos".
+1. No menu lateral esquerdo, clique em **Contatos**.
+2. Marque a **caixa de seleção** ao lado do nome de cada contato que deseja incluir.
 
-## 2. Iniciando a Ação de Envio
+<Callout type="tip" title="Selecionar Todos">
+Por padrão, o sistema seleciona apenas os contatos da página atual. Se quiser enviar para **todos** da sua lista filtrada, clique no link azul que aparece no topo da lista dizendo **"Selecione todos os X contatos"**.
+</Callout>
 
-Com os contatos selecionados, você dará o comando para o envio da mensagem.
+### Inicie a Ação
+Com os contatos selecionados:
+1. Na barra de ferramentas superior, clique no ícone do **WhatsApp** (balão de fala).
+2. Uma janela de configuração se abrirá.
+3. Confirme que você tem permissão para contatar essas pessoas clicando em "Ok, prosseguir".
 
-1.  Na barra de ferramentas que aparece no topo da lista de contatos, procure pelo ícone do **WhatsApp** (geralmente representado por um ícone de balão de fala ou o símbolo do WhatsApp).
-2.  Clique neste ícone para abrir a janela de configuração do envio.
-3.  O sistema pode pedir uma confirmação de que você tem permissão para contatar essas pessoas. Confirme para prosseguir.
+### Configure a Mensagem
+Agora defina o conteúdo. O uso de **Modelos (Templates)** é altamente recomendado para garantir a entrega.
 
-## 3. Configurando a Mensagem
+* **Editor:** Escreva sua mensagem ou selecione um modelo pré-aprovado.
+* **Personalização:** Use variáveis como `{{contact.first_name}}` para chamar o cliente pelo nome automaticamente (ex: "Olá `{{contact.first_name}}`" vira "Olá Maria").
 
-Agora é hora de definir o conteúdo que será enviado. O Homio recomenda fortemente o uso de **Modelos** (Templates) para garantir que sua mensagem seja entregue corretamente e respeite as regras do WhatsApp.
+### Escolha o Tipo de Envio
+O Homio oferece três formas de processar o envio. Escolha a que melhor se adapta ao tamanho da sua lista:
 
-1.  **Selecionar Modelo**: No campo de seleção, escolha um modelo de mensagem pré-aprovado.
-2.  Se você optar por escrever uma mensagem manual (sem modelo), digite seu texto na caixa disponível.
-3.  **Personalização**: Você pode usar "variáveis" para personalizar a mensagem. Por exemplo, ao usar `{{contact.first_name}}`, o sistema substituirá automaticamente pelo primeiro nome de cada cliente (ex: "Olá Maria", "Olá João").
+#### Enviar Agora
+Processa tudo imediatamente.
+> **Uso:** Apenas para listas muito pequenas (ex: menos de 50 contatos).
 
-## 4. Agendamento e Opções de Envio
+#### Agendar para Depois
+Permite escolher uma data e hora específica para o início do disparo.
 
-O Homio oferece três formas de realizar o envio. Escolha a que melhor se adapta à sua necessidade:
-
-### Enviar Agora
-A mensagem será processada e enviada imediatamente para todos os contatos selecionados. Use essa opção apenas para listas pequenas para evitar bloqueios no seu número.
-
-### Agendar para Depois
-Permite que você escolha uma data e horário específicos (por exemplo, "Amanhã às 09:00") para que o disparo comece.
-
-### Modo Gotejamento (Recomendado)
-Esta é a opção mais segura para listas grandes. O "Modo Gotejamento" envia as mensagens aos poucos, em vez de todas de uma vez. Isso imita o comportamento humano e reduz drasticamente o risco de o WhatsApp bloquear seu número por "spam".
+#### Modo Gotejamento (Recomendado)
+A opção mais segura para listas médias e grandes. O sistema envia as mensagens aos poucos, imitando o comportamento humano e reduzindo drasticamente o risco de bloqueio.
 
 **Como configurar o Gotejamento:**
-1.  **Tamanho do Lote**: Defina quantas mensagens enviar por vez (ex: 10 ou 20).
-2.  **Repetir Após**: Defina o intervalo de tempo (ex: a cada 1 minuto ou 5 minutos).
-3.  **Janela de Envio**: Você pode definir dias da semana e horários específicos (ex: Segunda a Sexta, das 08:00 às 18:00) para garantir que ninguém receba mensagens de madrugada.
+1. **Tamanho do Lote:** Quantas mensagens enviar por vez (ex: 20).
+2. **Repetir Após:** Intervalo de tempo entre os lotes (ex: 10 minutos).
+3. **Janela de Envio:** Dias e horários permitidos (ex: Seg-Sex, 08:00 - 18:00) para evitar envios de madrugada.
 
-## 5. Confirmando a Ação
+### Finalize
+1. Dê um **Nome para a Ação** (ex: "Oferta Natal") para sua organização interna.
+2. Clique em **Enviar** (ou Confirmar).
 
-Para finalizar o processo:
-
-1.  **Nome da Ação**: Dê um nome para este envio (ex: "Promoção de Natal"). Isso serve apenas para sua organização interna.
-2.  Verifique se todas as configurações estão corretas.
-3.  Clique no botão **Enviar** (ou Agendar/Confirmar).
-
-Pronto! O sistema começará a trabalhar nos envios conforme sua configuração. Você pode acompanhar o progresso acessando a aba **Ações em Massa** dentro do menu de Contatos.
+Pronto! O sistema começará a trabalhar em segundo plano. Você pode acompanhar o progresso (sucessos e falhas) acessando a aba **Ações em Massa** dentro do menu de Contatos.
