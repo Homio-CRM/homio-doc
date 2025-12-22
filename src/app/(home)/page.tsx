@@ -61,7 +61,7 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Link 
-              href="/docs/Conversas/whatsapp"
+              href="/docs/whatsapp"
               className="group relative bg-neutral-800 border border-neutral-700 rounded-xl p-6 hover:border-neutral-600 transition-colors"
             >
               <div className="flex items-start justify-between mb-4">
@@ -74,7 +74,7 @@ export default function HomePage() {
             </Link>
 
             <Link 
-              href="/docs/Conversas/contatos-e-conversas"
+              href="/docs/contatos"
               className="group relative bg-neutral-800 border border-neutral-700 rounded-xl p-6 hover:border-neutral-600 transition-colors"
             >
               <div className="flex items-start justify-between mb-4">
@@ -126,7 +126,7 @@ export default function HomePage() {
             </Link>
 
             <Link 
-              href="/docs/Conversas/email"
+              href="/docs/email"
               className="group relative bg-neutral-800 border border-neutral-700 rounded-xl p-6 hover:border-neutral-600 transition-colors"
             >
               <div className="flex items-start justify-between mb-4">
