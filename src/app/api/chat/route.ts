@@ -1,6 +1,7 @@
 import { openai } from '@ai-sdk/openai';
 import { streamText, convertToModelMessages } from 'ai';
 import { getLLMText, source } from '@/lib/source';
+import { textoUniversidadeParaLLM } from '@/lib/universidade';
 
 export const runtime = 'nodejs';
 
@@ -29,7 +30,7 @@ export async function POST(req: Request) {
       const pages = source.getPages();
       const scan = pages.map(getLLMText);
       const scanned = await Promise.all(scan);
-      llmText = scanned.join('\n\n');
+      llmText = [...scanned, textoUniversidadeParaLLM()].join('\n\n');
     } catch (sourceError) {
       console.error('Error loading source pages:', sourceError);
       llmText = 'Documentação não disponível no momento.';

@@ -1,8 +1,17 @@
 import { SearchBar } from '@/components/SearchBar';
 import { SupportDialog } from '@/components/SupportDialog';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight, Play } from 'lucide-react';
+import {
+  clipePrincipal,
+  duracaoTotal,
+  formatarDuracao,
+  tutoriaisPublicados,
+} from '@/lib/universidade';
 
 export default function HomePage() {
+  const tutoriais = tutoriaisPublicados().slice(0, 4);
   return (
     <div className="relative flex flex-col min-h-screen overflow-hidden bg-neutral-900">
       <div className="relative bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
@@ -31,6 +40,14 @@ export default function HomePage() {
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover/doc:w-full transition-all"></div>
               </Link>
               <span className="text-neutral-500">•</span>
+              <Link
+                href="/universidade"
+                className="relative text-neutral-200 text-base md:text-lg hover:text-white transition-colors group/uni"
+              >
+                Universidade
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover/uni:w-full transition-all"></div>
+              </Link>
+              <span className="text-neutral-500">•</span>
               <SupportDialog />
             </div>
           </div>
@@ -49,6 +66,72 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {tutoriais.length > 0 ? (
+        <section aria-labelledby="universidade-home" className="w-full bg-neutral-900">
+          <div className="w-full max-w-7xl mx-auto px-6 pt-12 md:pt-20">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-12 items-start">
+              <div>
+                <h2 id="universidade-home" className="text-3xl md:text-4xl font-bold text-white">
+                  Universidade Homio
+                </h2>
+                <p className="mt-4 text-neutral-400 text-lg leading-relaxed">
+                  Tutoriais em vídeo gravados na própria Homio. Cada um mostra o caminho completo
+                  e, logo abaixo, os problemas mais comuns com a solução.
+                </p>
+                <Link
+                  href="/universidade"
+                  className="mt-6 inline-flex items-center gap-2 text-white font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  Ver todos os tutoriais
+                  <ArrowRight className="size-4" aria-hidden />
+                </Link>
+              </div>
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {tutoriais.map((t) => {
+                  const principal = clipePrincipal(t);
+                  const videos = t.data.clipes.filter((c) => c.mp4).length;
+                  return (
+                    <li key={t.url}>
+                      <Link
+                        href={t.url}
+                        className="group block overflow-hidden rounded-xl border border-neutral-700 bg-neutral-800 hover:border-neutral-500 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      >
+                        <span className="relative block bg-black">
+                          {principal.capa ? (
+                            <Image
+                              src={principal.capa}
+                              alt=""
+                              width={640}
+                              height={360}
+                              sizes="(min-width: 1024px) 20rem, (min-width: 640px) 50vw, 100vw"
+                              className="aspect-video w-full object-cover"
+                            />
+                          ) : (
+                            <span className="block aspect-video w-full bg-neutral-700" />
+                          )}
+                          <span className="absolute inset-0 flex items-center justify-center">
+                            <span className="flex size-11 items-center justify-center rounded-full bg-white/90 text-neutral-900 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none">
+                              <Play className="ml-0.5 size-4" fill="currentColor" aria-hidden />
+                            </span>
+                          </span>
+                        </span>
+                        <span className="block p-4">
+                          <span className="block font-semibold text-white leading-snug">{t.data.title}</span>
+                          <span className="mt-1 block text-sm text-neutral-400 tabular-nums">
+                            {videos} {videos === 1 ? 'vídeo' : 'vídeos'}
+                            {duracaoTotal(t) ? ` · ${formatarDuracao(duracaoTotal(t))}` : ''}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <div className="w-full bg-neutral-900">
         <div className="w-full max-w-7xl mx-auto px-6 pt-8 md:pt-19 pb-12 md:pb-16">

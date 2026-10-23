@@ -10,5 +10,9 @@ export function baseOptions(): BaseLayoutProps {
       url: undefined,
       children: <NavChildren />,
     },
+    links: [
+      { text: 'Documentação', url: '/docs', active: 'nested-url' },
+      { text: 'Universidade', url: '/universidade', active: 'nested-url' },
+    ],
   };
 }

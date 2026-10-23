@@ -15,6 +15,11 @@ const config = {
         protocol: 'https',
         hostname: 't9013444626.p.clickup-attachments.com',
       },
+      {
+        // capas dos tutoriais (Media Storage da subconta Homio)
+        protocol: 'https',
+        hostname: 'assets.cdn.filesafe.space',
+      },
     ],
   },
   async rewrites() {
