@@ -16,7 +16,6 @@ const EM_PRODUCAO = [
   'Minha automação não disparou: o checklist',
   'Contatos: filtros e listas inteligentes',
   'Conversas: achar uma conversa que sumiu da caixa de entrada',
-  'Status da oportunidade: aberta, ganha, perdida e abandonada',
 ];
 
 export default function UniversidadePage() {

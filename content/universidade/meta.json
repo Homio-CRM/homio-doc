@@ -1,4 +1,8 @@
 {
   "title": "Universidade Homio",
-  "pages": ["whatsapp-homio", "cade-meu-lead"]
+  "pages": [
+    "whatsapp-homio",
+    "cade-meu-lead",
+    "status-da-oportunidade"
+  ]
 }
