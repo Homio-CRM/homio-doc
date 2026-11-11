@@ -38,35 +38,11 @@ clipes:
       - dispositivos conectados
       - quantos números
       - 4 números
-  - ancora: excluir-recriar
-    titulo: "Aparece Conectado, mas não no celular: excluir e recriar"
-    pergunta: Na Homio diz Conectado, mas no meu celular o Homio sumiu de Dispositivos conectados.
-    tipo: erro
-    duracao: 36
-    narrado: true
-    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/1912c995-e1cb-44a5-87a6-e31254c6a13f.mp4
-    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/370df193-5662-4509-a6a9-ca8f96be7ae7.jpg
-    legendas:
-      - Aparece Conectado aqui, mas no celular o Homio sumiu de Dispositivos conectados?
-      - Exclua a instância e crie de novo. Clique na lixeira do card.
-      - Confirme em Excluir. O card volta a ficar Livre.
-      - Agora clique em Criar e conecte como da primeira vez.
-      - Leia o QR no celular, como na primeira conexão.
-      - "Pronto: conectado de novo. Confira no celular se o Homio aparece em Dispositivos conectados."
-    resposta: "Quando o card mostra Conectado mas o Homio não aparece em Dispositivos conectados no seu celular, a sessão caiu de um lado só. Exclua a instância (lixeira do card), clique em Criar e leia o QR de novo. Veja: {link}"
-    sintomas:
-      - conectado mas não aparece
-      - sumiu de dispositivos conectados
-      - conectado só de um lado
-      - excluir instância
-      - recriar
-      - lixeira
-      - aparece conectado mas não recebe
-      - não chega mensagem
   - ancora: reconectar
     titulo: "Desconectou: faixa laranja e o botão Reconectar"
     pergunta: Meu WhatsApp desconectou da Homio. O que eu faço?
     tipo: erro
+    suporte_rank: 1
     duracao: 33
     narrado: true
     mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/ffd3e7f5-d82b-41b9-a0cc-8f67e754bda4.mp4
@@ -93,10 +69,37 @@ clipes:
       - não está enviando
       - parou de funcionar
       - whatsapp offline
+  - ancora: excluir-recriar
+    titulo: "Aparece Conectado, mas não no celular: excluir e recriar"
+    pergunta: Na Homio diz Conectado, mas no meu celular o Homio sumiu de Dispositivos conectados.
+    tipo: erro
+    suporte_rank: 1
+    duracao: 36
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/1912c995-e1cb-44a5-87a6-e31254c6a13f.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/370df193-5662-4509-a6a9-ca8f96be7ae7.jpg
+    legendas:
+      - Aparece Conectado aqui, mas no celular o Homio sumiu de Dispositivos conectados?
+      - Exclua a instância e crie de novo. Clique na lixeira do card.
+      - Confirme em Excluir. O card volta a ficar Livre.
+      - Agora clique em Criar e conecte como da primeira vez.
+      - Leia o QR no celular, como na primeira conexão.
+      - "Pronto: conectado de novo. Confira no celular se o Homio aparece em Dispositivos conectados."
+    resposta: "Quando o card mostra Conectado mas o Homio não aparece em Dispositivos conectados no seu celular, a sessão caiu de um lado só. Exclua a instância (lixeira do card), clique em Criar e leia o QR de novo. Veja: {link}"
+    sintomas:
+      - conectado mas não aparece
+      - sumiu de dispositivos conectados
+      - conectado só de um lado
+      - excluir instância
+      - recriar
+      - lixeira
+      - aparece conectado mas não recebe
+      - não chega mensagem
   - ancora: mensagem-erro
     titulo: "Mensagem com triângulo vermelho: ver o motivo e tentar de novo"
     pergunta: A mensagem saiu com um triângulo vermelho e não foi entregue.
     tipo: erro
+    suporte_rank: 3
     duracao: 26
     narrado: true
     mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/580510e3-a684-4d84-a3d8-718b7f6f7251.mp4
@@ -123,6 +126,7 @@ clipes:
     titulo: Bloqueio e banimento
     pergunta: Meu número foi bloqueado ou banido. A Homio consegue desbloquear?
     tipo: texto
+    suporte_rank: 2
     narrado: false
     resposta: "Bloqueio e banimento vêm do comportamento do número (disparo em massa, número novo sem aquecer, automação em número virgem), não da Homio. O sistema só vê que o número caiu; o aviso de bloqueio aparece só no seu celular. Não há como acelerar o desbloqueio: espere o prazo que o WhatsApp mostrar. Para disparo em volume, use a API oficial. Veja: {link}"
     texto: "Bloqueio e banimento vêm do comportamento do número (disparo em massa, número novo sem aquecer, automação em número que acabou de ser criado), não da Homio. O sistema só percebe que o número caiu; o aviso de bloqueio aparece apenas no seu celular. Não existe forma de acelerar o desbloqueio: espere o prazo que o WhatsApp mostrar e, enquanto isso, evite reconectar e disparar de novo. Para envio em volume, o caminho seguro é a API oficial da Meta."

@@ -49,6 +49,12 @@ const clipeSchema = z.object({
   resposta: z.string(),
   /** palavras e frases que o cliente usa quando tem esse problema */
   sintomas: z.array(z.string()).default([]),
+  /**
+   * posição da dúvida na lista "as 25 que mais voltam" da análise de 12 meses do
+   * suporte (2026-10-16, wiki `homio_suporte_duvidas_frequentes`). Alimenta a faixa
+   * "Os problemas mais enviados" do índice; mais de um clipe pode ter a mesma posição.
+   */
+  suporte_rank: z.number().int().positive().optional(),
   /** para `tipo: texto` (sem vídeo): o texto que aparece na página */
   texto: z.string().optional(),
 });

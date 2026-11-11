@@ -69,6 +69,32 @@ export function respostaSemLink(clipe: Clipe): string {
     .trim();
 }
 
+export interface Destaque {
+  page: TutorialPage;
+  clipe: Clipe;
+}
+
+/**
+ * Faixa "Os problemas mais enviados" do índice: os clipes com `suporte_rank`, na
+ * ordem da lista de 25 da análise de suporte (empate: ordem do tutorial, depois a
+ * ordem do clipe dentro dele). Novo tutorial entra na faixa só marcando o campo.
+ */
+export function maisEnviados(limite = 8): Destaque[] {
+  const lista: Destaque[] = [];
+  for (const page of tutoriaisPublicados()) {
+    for (const clipe of page.data.clipes) {
+      if (clipe.suporte_rank) lista.push({ page, clipe });
+    }
+  }
+  return lista
+    .sort(
+      (a, b) =>
+        (a.clipe.suporte_rank ?? 0) - (b.clipe.suporte_rank ?? 0) ||
+        a.page.data.ordem - b.page.data.ordem,
+    )
+    .slice(0, limite);
+}
+
 export function duracaoTotal(page: TutorialPage): number {
   return page.data.clipes.reduce((soma, c) => soma + (c.duracao ?? 0), 0);
 }

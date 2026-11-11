@@ -1,8 +1,7 @@
-import { createElement, type ReactNode } from 'react';
-import * as LucideIcons from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { createElement } from 'react';
 import type { Node as PageTreeNode, Root as PageTreeRoot } from 'fumadocs-core/page-tree';
 import { tutoriaisPorTema } from './universidade';
+import { iconeLucide, temaInfo } from './universidade-temas';
 
 /**
  * Árvore da barra lateral da Universidade: "Todos os tutoriais" e uma pasta por
@@ -11,24 +10,9 @@ import { tutoriaisPorTema } from './universidade';
  * Fica num arquivo próprio porque importa o lucide inteiro; `universidade.ts` é
  * usado também pela API e pela busca, que não precisam de ícone.
  */
-
-const ICONE_DO_TEMA: Record<string, string> = {
-  'WhatsApp Homio': 'MessageCircle',
-  Contatos: 'Users',
-  'Oportunidades e funil': 'Kanban',
-  Automações: 'Workflow',
-  Conversas: 'MessagesSquare',
-};
-
-function icone(nome?: string): ReactNode {
-  if (!nome) return undefined;
-  const Icone = (LucideIcons as unknown as Record<string, LucideIcon | undefined>)[nome];
-  return Icone ? createElement(Icone) : undefined;
-}
-
 export function arvoreUniversidade(): PageTreeRoot {
   const children: PageTreeNode[] = [
-    { type: 'page', name: 'Todos os tutoriais', url: '/universidade', icon: icone('LayoutList') },
+    { type: 'page', name: 'Todos os tutoriais', url: '/universidade', icon: iconeLucide('LayoutList') },
   ];
   for (const [tema, pages] of tutoriaisPorTema()) {
     children.push({
@@ -43,13 +27,13 @@ export function arvoreUniversidade(): PageTreeRoot {
           pages.length,
         ),
       ),
-      icon: icone(ICONE_DO_TEMA[tema] ?? 'Folder'),
+      icon: iconeLucide(temaInfo(tema).icone),
       defaultOpen: true,
       children: pages.map((p) => ({
         type: 'page',
         name: p.data.menu ?? p.data.title,
         url: p.url,
-        icon: icone(p.data.icon),
+        icon: iconeLucide(p.data.icon),
       })),
     });
   }
