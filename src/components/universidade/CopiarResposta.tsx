@@ -50,6 +50,7 @@ export function CopiarResposta({ texto, descricao }: Props) {
       type="button"
       onClick={copiar}
       aria-label={`Copiar resposta pronta de: ${descricao}`}
+      title={texto}
       className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-md bg-fd-primary px-3 py-1.5 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
     >
       {estado === 'copiado' ? (

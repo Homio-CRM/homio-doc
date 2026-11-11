@@ -1,5 +1,4 @@
 import type { Clipe } from '@/lib/universidade';
-import { formatarDuracao } from '@/lib/universidade';
 
 interface Props {
   clipe: Clipe;
@@ -21,7 +20,8 @@ export function posterOtimizado(capa: string | undefined, largura: 828 | 1200): 
 
 export function VideoClipe({ clipe, prioridade = false, rotulo }: Props) {
   if (!clipe.mp4) return null;
-  const mostrarLegenda = Boolean(clipe.duracao) || !clipe.narrado;
+  // a duração já aparece no player e na capa; a legenda só fica para o aviso de narração
+  const mostrarLegenda = !clipe.narrado;
   return (
     <figure className="not-prose my-5">
       <div className="overflow-hidden rounded-xl border border-fd-border bg-black">
@@ -40,14 +40,9 @@ export function VideoClipe({ clipe, prioridade = false, rotulo }: Props) {
       </div>
       {mostrarLegenda ? (
         <figcaption className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-fd-muted-foreground">
-          {clipe.duracao ? (
-            <span className="tabular-nums">{formatarDuracao(clipe.duracao)}</span>
-          ) : null}
-          {!clipe.narrado ? (
-            <span className="rounded-full bg-fd-accent px-2 py-0.5 text-fd-accent-foreground">
-              Sem narração ainda
-            </span>
-          ) : null}
+          <span className="rounded-full bg-fd-accent px-2 py-0.5 text-fd-accent-foreground">
+            Sem narração ainda
+          </span>
         </figcaption>
       ) : null}
     </figure>

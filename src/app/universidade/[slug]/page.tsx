@@ -42,14 +42,16 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
   }
   if (problemas.length > 0) {
     toc.push({ title: 'Problemas comuns', url: '#problemas-comuns', depth: 2 });
-    for (const c of problemas) toc.push({ title: c.titulo, url: `#${c.ancora}`, depth: 3 });
+    // o sumário aponta pro H3 (elemento pequeno, o "ativo" acompanha a rolagem);
+    // a seção mantém o id curto, que é o link que o suporte manda
+    for (const c of problemas) toc.push({ title: c.titulo, url: `#${c.ancora}-titulo`, depth: 3 });
   }
 
   return (
     <DocsPage toc={toc} tableOfContent={{ style: 'clerk' }} breadcrumb={{ enabled: false }}>
       <AncoraAtiva />
       <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <DocsDescription className="max-w-[64ch]">{page.data.description}</DocsDescription>
       <DocsBody>
         <div className="not-prose flex flex-wrap items-center gap-2">
           <CopiarLink url={urlClipe(page, principal, true)} descricao={page.data.title} />
@@ -60,7 +62,9 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
         </div>
         <TrilhoClipes clipes={page.data.clipes} />
 
-        <MDX components={getMDXComponents()} />
+        <div className="max-w-[64ch]">
+          <MDX components={getMDXComponents()} />
+        </div>
 
         {principal.legendas.length > 0 ? (
           <details>
@@ -83,7 +87,7 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
         {problemas.length > 0 ? (
           <section aria-labelledby="problemas-comuns">
             <h2 id="problemas-comuns">Problemas comuns</h2>
-            <p>
+            <p className="max-w-[64ch]">
               Cada situação tem um vídeo curto com a solução. O link de cada trecho pode ser
               copiado e enviado.
             </p>
@@ -95,7 +99,7 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
 
         <div className="not-prose mt-10 rounded-xl border border-fd-border bg-fd-card p-5 dark:bg-fd-secondary/40">
           <p className="font-semibold text-fd-foreground">Não resolveu?</p>
-          <p className="mt-1 text-sm text-fd-muted-foreground">
+          <p className="mt-1 max-w-[60ch] text-sm text-fd-muted-foreground">
             Fale com o suporte da Homio. Diga qual trecho você viu e o que apareceu na sua tela.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -124,11 +128,11 @@ function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
   const tema = temaInfo(page.data.tema);
   return (
     <section id={clipe.ancora} data-clipe aria-labelledby={`${clipe.ancora}-titulo`}>
-      <h3 id={`${clipe.ancora}-titulo`} className="!my-0">
+      <h3 id={`${clipe.ancora}-titulo`} className="!my-0 scroll-mt-28">
         {clipe.titulo}
       </h3>
       {clipe.pergunta ? (
-        <p className="!mt-2 text-fd-muted-foreground">
+        <p className="!mt-2 max-w-[64ch] text-fd-foreground/75">
           <q>{clipe.pergunta}</q>
         </p>
       ) : null}
@@ -137,7 +141,9 @@ function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
         <CopiarResposta texto={respostaComLink(page, clipe)} descricao={clipe.titulo} />
       </div>
       {clipe.mp4 ? <VideoClipe clipe={clipe} /> : null}
-      <p>{clipe.tipo === 'texto' && clipe.texto ? clipe.texto : respostaSemLink(clipe)}</p>
+      <p className="max-w-[64ch]">
+        {clipe.tipo === 'texto' && clipe.texto ? clipe.texto : respostaSemLink(clipe)}
+      </p>
       {clipe.mp4 && clipe.legendas.length > 0 ? (
         <details className="!mt-0 text-sm">
           <summary>Ler os passos ({clipe.legendas.length})</summary>
@@ -148,14 +154,22 @@ function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
           </ol>
         </details>
       ) : null}
-      <p className="!mt-3 text-sm text-fd-muted-foreground">
-        Não resolveu?{' '}
-        <SupportDialog
-          rotulo="Falar com o suporte"
-          className={BOTAO_SUPORTE_LINK}
-          modulo={tema.suporte}
-          contexto={`Vi o tutorial "${page.data.title}", trecho "${clipe.titulo}", e não resolveu.`}
-        />
+      <p className="!mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-fd-muted-foreground">
+        <span>
+          Resolveu?{' '}
+          <a href="#video-principal" className={BOTAO_SUPORTE_LINK}>
+            Ver o caminho completo
+          </a>
+        </span>
+        <span>
+          Não resolveu?{' '}
+          <SupportDialog
+            rotulo="Falar com o suporte"
+            className={BOTAO_SUPORTE_LINK}
+            modulo={tema.suporte}
+            contexto={`Vi o tutorial "${page.data.title}", trecho "${clipe.titulo}", e não resolveu.`}
+          />
+        </span>
       </p>
     </section>
   );

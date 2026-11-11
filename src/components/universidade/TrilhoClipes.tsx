@@ -40,7 +40,7 @@ export function TrilhoClipes({ clipes }: { clipes: Clipe[] }) {
                     </span>
                   )}
                   {c.duracao ? (
-                    <span className="absolute bottom-1 right-1 rounded bg-black/75 px-1 text-[10px] font-medium tabular-nums text-white">
+                    <span className="absolute bottom-1 right-1 rounded bg-black/75 px-1.5 py-0.5 text-[11px] font-medium tabular-nums text-white">
                       {formatarDuracao(c.duracao)}
                     </span>
                   ) : null}

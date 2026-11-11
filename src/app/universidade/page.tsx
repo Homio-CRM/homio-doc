@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 import { MaisEnviados } from '@/components/universidade/MaisEnviados';
 import { ReguaModulos, type ItemRegua } from '@/components/universidade/ReguaModulos';
+import { SecaoTema } from '@/components/universidade/SecaoTema';
 import { TutorialCard } from '@/components/universidade/TutorialCard';
 import { idTema, maisEnviados, problemasComuns, tutoriaisPorTema } from '@/lib/universidade';
 import { iconeLucide, temaInfo } from '@/lib/universidade-temas';
@@ -54,8 +55,8 @@ export default function UniversidadePage() {
           </p>
         ) : null}
 
-        <div className="not-prose flex flex-col gap-6">
-          <ReguaModulos itens={regua} />
+        <ReguaModulos itens={regua} />
+        <div className="not-prose mt-4">
           <MaisEnviados />
         </div>
 
@@ -64,7 +65,7 @@ export default function UniversidadePage() {
           const id = idTema(tema);
           const problemas = pages.reduce((soma, p) => soma + problemasComuns(p).length, 0);
           return (
-            <section key={tema} id={id} aria-labelledby={`${id}-titulo`} className="not-prose mt-10 scroll-mt-24">
+            <SecaoTema key={tema} id={id} rotuladaPor={`${id}-titulo`} className="not-prose mt-10 scroll-mt-24">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary">
                   {iconeLucide(info.icone, { className: 'size-5', 'aria-hidden': true })}
@@ -86,14 +87,14 @@ export default function UniversidadePage() {
                   </Link>
                 ) : null}
               </div>
-              <ul className="mt-4 grid gap-3 sm:gap-4 lg:grid-cols-2">
+              <ul className={`mt-4 grid gap-3 sm:gap-4 ${pages.length > 1 ? 'lg:grid-cols-2' : ''}`}>
                 {pages.map((page) => (
                   <li key={page.url}>
-                    <TutorialCard page={page} />
+                    <TutorialCard page={page} largo={pages.length === 1} />
                   </li>
                 ))}
               </ul>
-            </section>
+            </SecaoTema>
           );
         })}
 
