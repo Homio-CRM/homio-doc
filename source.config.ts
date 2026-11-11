@@ -60,6 +60,8 @@ export const universidade = defineDocs({
       title: z.string(),
       description: z.string().optional(),
       icon: z.string().optional(),
+      /** título curto pra barra lateral; sem ele, usa `title` */
+      menu: z.string().optional(),
       full: z.boolean().optional(),
       /** agrupa no índice e na barra lateral */
       tema: z.string(),

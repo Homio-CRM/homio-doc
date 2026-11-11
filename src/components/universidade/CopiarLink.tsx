@@ -36,12 +36,12 @@ export function CopiarLink({ url, descricao }: Props) {
       type="button"
       onClick={copiar}
       aria-label={`Copiar link de: ${descricao}`}
-      className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-fd-border bg-fd-background px-2.5 py-1 text-xs font-medium text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+      className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-md border border-fd-border bg-fd-background px-3 py-1.5 text-sm font-medium text-fd-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring dark:bg-fd-muted"
     >
       {estado === 'copiado' ? (
-        <Check className="size-3.5" aria-hidden />
+        <Check className="size-4" aria-hidden />
       ) : (
-        <Link2 className="size-3.5" aria-hidden />
+        <Link2 className="size-4" aria-hidden />
       )}
       <span aria-live="polite">{estado === 'copiado' ? 'Link copiado' : 'Copiar link'}</span>
     </button>

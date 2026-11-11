@@ -5,7 +5,7 @@
 :root {
   --custom-background: #ffffff;
   --custom-foreground: #171717;
-  
+
   /* Primary Colors */
   --primary-50: #f0f9ff;
   --primary-100: #e0f2fe;
@@ -18,7 +18,7 @@
   --primary-800: #075985;
   --primary-900: #0c4a6e;
   --primary-950: #082f49;
-  
+
   /* Secondary Colors */
   --secondary-50: #f8fafc;
   --secondary-100: #f1f5f9;
@@ -31,7 +31,7 @@
   --secondary-800: #1e293b;
   --secondary-900: #0f172a;
   --secondary-950: #020617;
-  
+
   /* Accent Colors */
   --accent-50: #fef2f2;
   --accent-100: #fee2e2;
@@ -44,7 +44,7 @@
   --accent-800: #991b1b;
   --accent-900: #7f1d1d;
   --accent-950: #450a0a;
-  
+
   /* Neutral Colors */
   --neutral-50: #fafafa;
   --neutral-100: #f5f5f5;
@@ -64,7 +64,7 @@
   --color-custom-foreground: var(--custom-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
+
   /* Primary Colors */
   --color-primary-50: var(--primary-50);
   --color-primary-100: var(--primary-100);
@@ -77,7 +77,7 @@
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
   --color-primary-950: var(--primary-950);
-  
+
   /* Secondary Colors */
   --color-secondary-50: var(--secondary-50);
   --color-secondary-100: var(--secondary-100);
@@ -90,7 +90,7 @@
   --color-secondary-800: var(--secondary-800);
   --color-secondary-900: var(--secondary-900);
   --color-secondary-950: var(--secondary-950);
-  
+
   /* Accent Colors */
   --color-accent-50: var(--accent-50);
   --color-accent-100: var(--accent-100);
@@ -103,7 +103,7 @@
   --color-accent-800: var(--accent-800);
   --color-accent-900: var(--accent-900);
   --color-accent-950: var(--accent-950);
-  
+
   /* Neutral Colors */
   --color-neutral-50: var(--neutral-50);
   --color-neutral-100: var(--neutral-100);
@@ -130,27 +130,59 @@
   }
 }
 
+/* Geist (next/font) no site todo; o Arial que ficava aqui sobrescrevia a fonte carregada. */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Universidade: trecho apontado pela âncora do link (ex.: #reconectar) */
 [data-clipe] {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: calc(var(--fd-nav-height, 3.5rem) + var(--fd-tocnav-height, 0px) + 1rem);
   margin-inline: -0.75rem;
-  padding: 0.25rem 0.75rem 0.5rem;
+  padding: 0.5rem 0.75rem 0.75rem;
   border-radius: 0.75rem;
-  transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out, box-shadow 0.5s ease-out;
 }
 
 [data-clipe]:target {
-  background-color: color-mix(in oklab, var(--color-fd-accent) 60%, transparent);
+  background-color: color-mix(in oklab, var(--color-fd-primary) 8%, var(--color-fd-background));
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-fd-primary) 45%, transparent);
+  animation: clipe-chegada 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+
+/* um pulso só, ao chegar pelo link; depois fica o contorno */
+@keyframes clipe-chegada {
+  from {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-fd-primary) 45%, transparent),
+      0 0 0 0 color-mix(in oklab, var(--color-fd-primary) 40%, transparent);
+  }
+  to {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-fd-primary) 45%, transparent),
+      0 0 0 16px transparent;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-clipe] {
     transition: none;
   }
+  [data-clipe]:target {
+    animation: none;
+  }
+}
+
+/* passos dobrados (Universidade) */
+[data-docs-body] details > summary {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  color: var(--color-fd-foreground);
+}
+
+[data-docs-body] details > summary::marker {
+  color: var(--color-fd-muted-foreground);
 }
 
 video:focus-visible {
@@ -162,168 +194,13 @@ strong, b {
   font-weight: 700 !important;
 }
 
-article strong, 
+article strong,
 article b,
 .prose strong,
 .prose b,
 [data-docs-body] strong,
 [data-docs-body] b {
   font-weight: 700 !important;
-}
-
-nav[aria-label="Table of contents"] h2,
-[data-toc] h2 {
-  font-size: 0 !important;
-  line-height: 0;
-  visibility: hidden;
-}
-
-nav[aria-label="Table of contents"] h2::after,
-[data-toc] h2::after {
-  content: "Nesse Documento";
-  font-size: 0.875rem;
-  font-weight: 600;
-  visibility: visible;
-  display: block;
-  line-height: 1.25rem;
-}
-
-nav a[href="/"],
-[data-nav] a[href="/"],
-header a[href="/"] {
-  display: flex !important;
-  align-items: center !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-nav a[href="/"]::before,
-[data-nav] a[href="/"]::before,
-header a[href="/"]::before {
-  content: "";
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-image: url("/logo-homio.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-nav a[href="/"] span,
-[data-nav] a[href="/"] span,
-header a[href="/"] span {
-  display: none !important;
-}
-
-aside a[href="/"],
-aside nav a[href="/"],
-[data-sidebar] a[href="/"],
-[data-sidebar] nav a[href="/"] {
-  display: flex !important;
-  align-items: center !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  justify-content: center !important;
-}
-
-aside a[href="/"]::before,
-aside nav a[href="/"]::before,
-[data-sidebar] a[href="/"]::before,
-[data-sidebar] nav a[href="/"]::before {
-  content: "";
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-image: url("/logo-homio.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-aside a[href="/"] span,
-aside nav a[href="/"] span,
-[data-sidebar] a[href="/"] span,
-[data-sidebar] nav a[href="/"] span,
-aside a[href="/"] *,
-aside nav a[href="/"] * {
-  display: none !important;
-}
-
-a[href="/"]:has(span),
-nav a[href="/"]:has(span) {
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-a[href="/"]:has(span)::before,
-nav a[href="/"]:has(span)::before {
-  content: "";
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-image: url("/logo-homio.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-brand] a[href="/"],
-[data-brand] a[href="/"] span {
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-[data-brand] a[href="/"]::before {
-  content: "";
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-image: url("/logo-homio.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-a[href="/"][aria-label*="Homio"],
-a[href="/"][title*="Homio"] {
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-a[href="/"][aria-label*="Homio"]::before,
-a[href="/"][title*="Homio"]::before {
-  content: "";
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-image: url("/logo-homio.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[role="complementary"] a[href="/"],
-[role="complementary"] nav a[href="/"] {
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-[role="complementary"] a[href="/"]::before,
-[role="complementary"] nav a[href="/"]::before {
-  content: "";
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  background-image: url("/logo-homio.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[role="complementary"] a[href="/"] *,
-[role="complementary"] nav a[href="/"] * {
-  display: none !important;
 }
 
 @keyframes fade-in {

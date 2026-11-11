@@ -3,19 +3,25 @@ import Link from 'next/link';
 import { Play } from 'lucide-react';
 import {
   clipePrincipal,
-  duracaoTotal,
   formatarDuracao,
   problemasComuns,
   type TutorialPage,
 } from '@/lib/universidade';
 
+/**
+ * Card do índice. É um <div>, não <article>: o DocsLayout aplica padding a todo
+ * article dentro da página e o card herdava 48 px de vazio acima da capa.
+ */
 export function TutorialCard({ page }: { page: TutorialPage }) {
   const principal = clipePrincipal(page);
   const problemas = problemasComuns(page);
-  const videos = page.data.clipes.filter((c) => c.mp4).length;
+  const idTitulo = `tutorial-${page.slugs[0] ?? page.url}`;
 
   return (
-    <article className="group grid gap-5 rounded-xl border border-fd-border bg-fd-card p-4 sm:grid-cols-[minmax(0,17rem)_1fr] sm:p-5">
+    <div
+      aria-labelledby={idTitulo}
+      className="group grid gap-5 rounded-xl border border-fd-border bg-fd-card p-4 sm:grid-cols-[minmax(0,17rem)_1fr] sm:p-5 dark:bg-fd-secondary/40"
+    >
       <Link
         href={page.url}
         aria-label={`Assistir: ${page.data.title}`}
@@ -46,7 +52,7 @@ export function TutorialCard({ page }: { page: TutorialPage }) {
       </Link>
 
       <div className="min-w-0">
-        <h3 className="text-lg font-semibold leading-snug">
+        <h3 id={idTitulo} className="text-lg font-semibold leading-snug">
           <Link href={page.url} className="underline-offset-4 hover:underline">
             {page.data.title}
           </Link>
@@ -57,16 +63,18 @@ export function TutorialCard({ page }: { page: TutorialPage }) {
           </p>
         ) : null}
         <p className="mt-2 text-xs tabular-nums text-fd-muted-foreground">
-          {videos} {videos === 1 ? 'vídeo' : 'vídeos'}
-          {duracaoTotal(page) ? ` · ${formatarDuracao(duracaoTotal(page))} no total` : ''}
+          {principal.duracao ? `Vídeo principal de ${formatarDuracao(principal.duracao)}` : 'Vídeo principal'}
+          {problemas.length > 0
+            ? ` · ${problemas.length} ${problemas.length === 1 ? 'problema comum' : 'problemas comuns'}`
+            : ''}
         </p>
         {problemas.length > 0 ? (
-          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Problemas comuns">
+          <ul className="mt-3 flex flex-wrap gap-2" aria-label="Problemas comuns">
             {problemas.map((c) => (
               <li key={c.ancora}>
                 <Link
                   href={`${page.url}#${c.ancora}`}
-                  className="inline-flex rounded-full border border-fd-border bg-fd-background px-2.5 py-1 text-xs text-fd-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+                  className="inline-flex min-h-8 items-center rounded-full border border-fd-border bg-fd-background px-3 py-1 text-xs text-fd-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring dark:bg-fd-muted"
                 >
                   {c.titulo}
                 </Link>
@@ -75,6 +83,6 @@ export function TutorialCard({ page }: { page: TutorialPage }) {
           </ul>
         ) : null}
       </div>
-    </article>
+    </div>
   );
 }

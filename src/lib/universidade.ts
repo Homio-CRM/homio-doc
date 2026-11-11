@@ -1,6 +1,5 @@
 import { universidade } from '@/.source';
 import { loader, type InferPageType } from 'fumadocs-core/source';
-import type { Node as PageTreeNode, Root as PageTreeRoot } from 'fumadocs-core/page-tree';
 import type { AdvancedIndex } from 'fumadocs-core/search/server';
 
 /** Host público; entra nos links absolutos que o agente envia. */
@@ -91,20 +90,6 @@ export function normalizar(texto: string): string {
 
 export function idTema(tema: string): string {
   return `tema-${normalizar(tema).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
-}
-
-/** Árvore da barra lateral: índice, depois um separador por tema. */
-export function arvoreUniversidade(): PageTreeRoot {
-  const children: PageTreeNode[] = [
-    { type: 'page', name: 'Todos os tutoriais', url: '/universidade' },
-  ];
-  for (const [tema, pages] of tutoriaisPorTema()) {
-    children.push({ type: 'separator', name: tema });
-    for (const p of pages) {
-      children.push({ type: 'page', name: p.data.title, url: p.url });
-    }
-  }
-  return { name: 'Universidade Homio', children };
 }
 
 // ---------------------------------------------------------------------------

@@ -28,3 +28,6 @@ next-env.d.ts
 
 # prints de inspeção da skill de design
 /.impeccable/review
+
+# snapshots da critique da impeccable (local)
+/.impeccable/critique

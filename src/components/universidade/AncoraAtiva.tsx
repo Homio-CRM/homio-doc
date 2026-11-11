@@ -19,8 +19,9 @@ export function AncoraAtiva() {
       const video = alvo.querySelector('video');
       if (video && video.preload === 'none') video.preload = 'metadata';
       // segunda rolagem, depois das fontes e do vídeo principal reservarem altura
+      const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       timer = window.setTimeout(() => {
-        alvo.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        alvo.scrollIntoView({ block: 'start', behavior: reduzMovimento ? 'auto' : 'smooth' });
       }, 120);
     };
 

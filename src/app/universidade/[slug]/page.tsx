@@ -50,14 +50,21 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
         <MDX components={getMDXComponents()} />
 
         {principal.legendas.length > 0 ? (
-          <section aria-labelledby="o-que-o-video-mostra">
-            <h2 id="o-que-o-video-mostra">O que o vídeo mostra</h2>
-            <ol>
+          <details>
+            <summary>
+              <h2 id="o-que-o-video-mostra" className="!my-0 inline text-xl">
+                O que o vídeo mostra
+              </h2>
+              <span className="ml-2 text-sm font-normal text-fd-muted-foreground">
+                {principal.legendas.length} passos
+              </span>
+            </summary>
+            <ol className="!mt-3">
               {principal.legendas.map((l, i) => (
                 <li key={i}>{l}</li>
               ))}
             </ol>
-          </section>
+          </details>
         ) : null}
 
         {problemas.length > 0 ? (
@@ -85,31 +92,30 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
 function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
   return (
     <section id={clipe.ancora} data-clipe aria-labelledby={`${clipe.ancora}-titulo`}>
-      <div className="flex items-start justify-between gap-4">
-        <h3 id={`${clipe.ancora}-titulo`} className="!mt-0">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+        <h3 id={`${clipe.ancora}-titulo`} className="!my-0">
           {clipe.titulo}
         </h3>
-        <span className="not-prose mt-1">
+        <span className="not-prose sm:mt-1">
           <CopiarLink url={urlClipe(page, clipe, true)} descricao={clipe.titulo} />
         </span>
       </div>
       {clipe.pergunta ? (
-        <p className="!mt-1 text-fd-muted-foreground">
+        <p className="!mt-2 text-fd-muted-foreground">
           <q>{clipe.pergunta}</q>
         </p>
       ) : null}
       <p>{clipe.tipo === 'texto' && clipe.texto ? clipe.texto : respostaSemLink(clipe)}</p>
-      {clipe.mp4 ? (
-        <div className="grid items-start gap-x-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-          <VideoClipe clipe={clipe} />
-          {clipe.legendas.length > 0 ? (
-            <ol className="!my-5 text-sm">
-              {clipe.legendas.map((l, i) => (
-                <li key={i}>{l}</li>
-              ))}
-            </ol>
-          ) : null}
-        </div>
+      {clipe.mp4 ? <VideoClipe clipe={clipe} /> : null}
+      {clipe.mp4 && clipe.legendas.length > 0 ? (
+        <details className="!mt-0 text-sm">
+          <summary>Ler os passos ({clipe.legendas.length})</summary>
+          <ol className="!mt-2">
+            {clipe.legendas.map((l, i) => (
+              <li key={i}>{l}</li>
+            ))}
+          </ol>
+        </details>
       ) : null}
     </section>
   );
