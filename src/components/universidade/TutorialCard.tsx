@@ -22,6 +22,7 @@ export function TutorialCard({ page }: { page: TutorialPage }) {
   const chips = problemas.slice(0, CHIPS_VISIVEIS);
   const restantes = problemas.length - chips.length;
   const idTitulo = `tutorial-${page.slugs[0] ?? page.url}`;
+  const capa = principal.capa_molde ?? principal.capa;
 
   return (
     <div
@@ -33,9 +34,9 @@ export function TutorialCard({ page }: { page: TutorialPage }) {
         aria-label={`Assistir: ${page.data.title}`}
         className="relative block self-start overflow-hidden rounded-md bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring sm:rounded-none"
       >
-        {principal.capa ? (
+        {capa ? (
           <Image
-            src={principal.capa}
+            src={capa}
             alt=""
             width={640}
             height={360}
@@ -45,9 +46,9 @@ export function TutorialCard({ page }: { page: TutorialPage }) {
         ) : (
           <div className="aspect-video w-full bg-fd-muted" />
         )}
-        <span className="absolute inset-0 flex items-center justify-center">
-          <span className="flex size-8 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-md transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none sm:size-12">
-            <Play className="ml-0.5 size-3.5 sm:size-5" fill="currentColor" aria-hidden />
+        <span className="absolute inset-0 hidden items-center justify-center sm:flex">
+          <span className="flex size-12 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-md transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none">
+            <Play className="ml-0.5 size-5" fill="currentColor" aria-hidden />
           </span>
         </span>
         {principal.duracao ? (

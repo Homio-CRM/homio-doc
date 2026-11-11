@@ -16,6 +16,7 @@ clipes:
     narrado: true
     mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/450e7839-7f8e-4d36-99f9-ec80012615e9.mp4
     capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/ea3e13fc-a270-461d-91ad-940ffea91bc3.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/6ca92740-c3d8-42a3-9ea5-6441d0519f5e.jpg
     legendas:
       - Pra trazer uma planilha de contatos, vá em Contatos e clique em Importar.
       - Escolha Importar registros do CSV.
@@ -46,6 +47,7 @@ clipes:
     narrado: true
     mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/5b87453e-f3ab-4284-a151-a4cec776e682.mp4
     capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/46222c96-b345-4bf0-8294-b4372782cf75.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/7acce669-8289-4f13-affd-bc4fbf5f2b10.jpg
     legendas:
       - "Carregue o arquivo. Use o modelo da Homio: as colunas já vêm com os nomes certos."
       - "Deixe em Crie e atualize contatos: quem já existe é atualizado, sem duplicar."
@@ -66,6 +68,7 @@ clipes:
     narrado: true
     mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/ff6cd13d-a873-46b2-9fc0-c4583d036761.mp4
     capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/c54cf283-2772-4c02-9e6a-6e45e8c31a27.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/93c2d678-f79f-4c6f-92a2-82213fc5d63e.jpg
     legendas:
       - Confira se todas as colunas aparecem como Mapeado, e se os acentos vieram certos.
       - No telefone, sempre com DDD e com o nove do celular. Sem isso, a linha dá erro.
@@ -84,6 +87,7 @@ clipes:
     narrado: true
     mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/53942a46-f38b-433f-a719-5698809fc85b.mp4
     capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/2c55c799-58bf-4c48-a794-b0419ab621fc.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/f2868829-09db-47bb-b15a-7abb15cdecd0.jpg
     legendas:
       - A importação roda em segundo plano. O resultado fica no Histórico de importação.
       - "Aqui: dez registros encontrados e nenhum erro."
@@ -98,6 +102,7 @@ clipes:
     titulo: Acentos quebrados ou tudo numa coluna só
     pergunta: Os acentos vieram como � ou a planilha caiu numa coluna só.
     tipo: texto
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/88f48d03-f49a-474a-9e93-88883f23aba1.jpg
     suporte_rank: 12
     narrado: false
     texto: "É o CSV salvo pelo Excel em português: ele separa as colunas com ponto e vírgula e grava os acentos num formato antigo. A Homio não mostra erro, mas lê tudo numa coluna só, com os acentos trocados por �. O caminho seguro é abrir a planilha no Google Planilhas e baixar em Arquivo › Fazer download › Valores separados por vírgula (.csv). Arquivo .xlsx também não serve: só CSV. O problema aparece no passo Mapear, antes de importar: uma linha só na tabela ou � nos valores de amostra. Nesse caso, cancele e troque o arquivo."
@@ -115,6 +120,7 @@ clipes:
     titulo: "Colunas como Não mapeado"
     pergunta: Minhas colunas aparecem como Não mapeado. O que faço?
     tipo: texto
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/302faf9a-b094-48ff-b854-006f78aef7a0.jpg
     narrado: false
     texto: "O mapeamento automático só reconhece os nomes de coluna do modelo, em inglês (First Name, Last Name, Phone, Email, City, Tags, Notes). Com cabeçalho em português, escolha o campo de cada coluna na lista: a busca é pelo nome do campo (Phone, não Telefone; um campo personalizado, pelo próprio nome). O Proprietário (Contact Owner) sempre precisa ser escolhido à mão. Para seguir com alguma coluna sem campo, marque a caixa do rodapé Não importar dados em N colunas não mapeadas (o N é o número de colunas sem campo)."
     resposta: "O mapeamento automático só reconhece os nomes de coluna do modelo da Homio, em inglês (First Name, Last Name, Phone, Email...). Com cabeçalho em português, escolha o campo de cada coluna na lista (a busca é pelo nome do campo: Phone, não Telefone) ou copie os dados para o modelo. Para seguir com alguma coluna sem campo, marque a caixa do rodapé Não importar dados em N colunas não mapeadas. Veja: {link}"
@@ -129,6 +135,7 @@ clipes:
     titulo: "Erro Could not read the phone number"
     pergunta: A importação deu erro em alguns contatos. Como vejo quais?
     tipo: texto
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/c5744683-bf66-4ae5-b494-16d2180d077c.jpg
     narrado: false
     texto: "No Histórico de importação, clique no ícone de gráfico da importação e em Importar detalhes: lá estão as linhas com erro, com o botão Baixar. O erro mais comum é Could not read the phone number, que é telefone sem DDD ou celular sem o nove. Com DDD e o nove, os formatos (27) 99999-0101, 27999990101 e com 55 ou +55 na frente funcionam. Corrija só essas linhas e importe de novo. Os contadores do topo podem mostrar 0% mesmo com a importação certa: confira pelos detalhes."
     resposta: "No Histórico de importação, clique no ícone de gráfico da importação e em Importar detalhes: lá estão as linhas com erro, com o botão Baixar. Could not read the phone number é telefone sem DDD ou celular sem o nove. Corrija só essas linhas e importe de novo. Veja: {link}"
@@ -143,6 +150,7 @@ clipes:
     titulo: Importar de novo repete as observações
     pergunta: Importei a mesma planilha duas vezes. Duplicou?
     tipo: texto
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/ef6fbfd7-57f1-4af7-a586-d4f40082c564.jpg
     narrado: false
     texto: "Com Crie e atualize contatos, o contato não duplica: ele é atualizado. Mas a coluna de observações (Notes) vira uma observação nova a cada importação, e o contato fica com a mesma observação repetida. Antes de importar de novo, tire a coluna de observações da planilha."
     resposta: "Com Crie e atualize contatos, o contato não duplica, é atualizado. Mas a coluna de observações (Notes) vira uma observação nova a cada importação. Antes de importar de novo, tire essa coluna da planilha. Veja: {link}"

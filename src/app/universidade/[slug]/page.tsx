@@ -171,11 +171,16 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const page = tutorialPorSlug(slug);
   if (!page) notFound();
-  const capa = clipePrincipal(page).capa;
+  const principal = clipePrincipal(page);
+  const og = principal.capa_molde
+    ? { url: principal.capa_molde, width: 1280, height: 720 }
+    : principal.capa
+      ? { url: principal.capa, width: 1920, height: 1080 }
+      : undefined;
   return {
     title: `${page.data.title} | Universidade Homio`,
     description: page.data.description,
     robots: { index: false, follow: true },
-    openGraph: capa ? { images: [{ url: capa, width: 1920, height: 1080 }] } : undefined,
+    openGraph: og ? { images: [og] } : undefined,
   };
 }

@@ -42,7 +42,15 @@ const clipeSchema = z.object({
   duracao: z.number().int().positive().optional(),
   narrado: z.boolean().default(true),
   mp4: z.string().url().optional(),
+  /** frame real da gravação; é o poster do player */
   capa: z.string().url().optional(),
+  /**
+   * capa em molde (1280×720, gerada por `homio-tutoriais/capas/gerar_capas.mjs`): módulo,
+   * título curto e o frame real numa janela. Vai no índice, no trilho e na imagem do link.
+   */
+  capa_molde: z.string().url().optional(),
+  /** título curto só pra capa em molde; sem ele o gerador corta o `titulo` no ":" ou "?" */
+  capa_titulo: z.string().optional(),
   /** legendas na ordem do vídeo; é o passo a passo em texto */
   legendas: z.array(z.string()).default([]),
   /** parágrafo pronto pro agente mandar; `{link}` vira a URL do clipe */

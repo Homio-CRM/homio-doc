@@ -98,9 +98,9 @@ export default function HomePage() {
                         className="group block overflow-hidden rounded-xl border border-neutral-700 bg-neutral-800 hover:border-neutral-500 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                       >
                         <span className="relative block bg-black">
-                          {principal.capa ? (
+                          {(principal.capa_molde ?? principal.capa) ? (
                             <Image
-                              src={principal.capa}
+                              src={principal.capa_molde ?? principal.capa ?? ''}
                               alt=""
                               width={640}
                               height={360}

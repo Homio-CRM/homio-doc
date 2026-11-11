@@ -17,6 +17,7 @@ export function TrilhoClipes({ clipes }: { clipes: Clipe[] }) {
       <ol className="flex w-max gap-3 py-1">
         {clipes.map((c) => {
           const principal = c.tipo === 'principal';
+          const capa = c.capa_molde ?? c.capa;
           return (
             <li key={c.ancora} className="w-36 shrink-0">
               <a
@@ -24,9 +25,9 @@ export function TrilhoClipes({ clipes }: { clipes: Clipe[] }) {
                 className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
               >
                 <span className="relative block aspect-video overflow-hidden rounded-md border border-fd-border bg-fd-muted">
-                  {c.capa ? (
+                  {capa ? (
                     <Image
-                      src={c.capa}
+                      src={capa}
                       alt=""
                       width={320}
                       height={180}
