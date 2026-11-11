@@ -61,17 +61,42 @@ async function subir(caminho, parentId) {
   return { nome, url: j.url || j.fileUrl || j.data?.url, id: j.fileId || j._id || j.id, ms: Date.now() - ini, bytes: buf.length, raw: j };
 }
 
+// Desde 2026-11 o `url` devolvido pela API aponta para um domínio com a marca do fornecedor.
+// O MDX usa a CDN neutra: https://assets.cdn.filesafe.space/<path>, com o `path` do registro.
+const CDN = 'https://assets.cdn.filesafe.space/';
+
+async function caminhosNaPasta(parentId) {
+  const u = new URL(`${BASE}/medias/files`);
+  u.searchParams.set('altType', 'location');
+  u.searchParams.set('altId', LOC);
+  u.searchParams.set('type', 'file');
+  u.searchParams.set('parentId', parentId);
+  u.searchParams.set('sortBy', 'createdAt');
+  u.searchParams.set('sortOrder', 'desc');
+  u.searchParams.set('limit', '100');
+  const r = await fetch(u, { headers: H });
+  if (!r.ok) throw new Error(`listar arquivos ${r.status}: ${(await r.text()).slice(0, 300)}`);
+  const j = await r.json();
+  return new Map((j.files || []).map((f) => [f._id, f.path]));
+}
+
 const parentId = await acharOuCriarPasta(pastaNome);
 console.error('pasta', pastaNome, '=>', parentId);
-const saida = {};
+const subidos = [];
 for (const a of arquivos) {
   try {
     const r = await subir(a, parentId);
-    saida[r.nome] = r.url;
-    console.error(`ok  ${r.nome}  ${(r.bytes / 1e6).toFixed(1)} MB  ${r.ms} ms  ${r.url}`);
-    if (!r.url) console.error('   resposta crua:', JSON.stringify(r.raw).slice(0, 400));
+    subidos.push(r);
+    console.error(`ok  ${r.nome}  ${(r.bytes / 1e6).toFixed(1)} MB  ${r.ms} ms`);
   } catch (e) {
     console.error('ERRO', e.message);
   }
+}
+const caminhos = await caminhosNaPasta(parentId);
+const saida = {};
+for (const r of subidos) {
+  const p = r.raw.path || caminhos.get(r.id);
+  saida[r.nome] = p ? CDN + p : null;
+  if (!p) console.error(`sem path para ${r.nome} (id ${r.id}); resposta crua:`, JSON.stringify(r.raw).slice(0, 400));
 }
 console.log(JSON.stringify(saida, null, 2));
