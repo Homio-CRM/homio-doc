@@ -24,7 +24,18 @@ const GHL_MODULES = [
   'Outro'
 ];
 
-export function SupportDialog() {
+interface SupportDialogProps {
+  /** texto do botão que abre o formulário */
+  rotulo?: string;
+  /** classes do botão; sem elas, usa o estilo do cabeçalho da home */
+  className?: string;
+  /** módulo pré-selecionado (um dos GHL_MODULES) */
+  modulo?: string;
+  /** texto inicial da descrição (ex.: qual tutorial e trecho a pessoa viu) */
+  contexto?: string;
+}
+
+export function SupportDialog({ rotulo = 'Suporte', className, modulo = '', contexto = '' }: SupportDialogProps = {}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -40,8 +51,8 @@ export function SupportDialog() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    description: '',
-    module: '',
+    description: contexto,
+    module: modulo,
   });
 
   useEffect(() => {
@@ -104,7 +115,7 @@ export function SupportDialog() {
       setTimeout(() => {
         setIsOpen(false);
         setSubmitStatus('idle');
-        setFormData({ name: '', phone: '', description: '', module: '' });
+        setFormData({ name: '', phone: '', description: contexto, module: modulo });
         setFileName(null);
         if (fileInputRef.current) fileInputRef.current.value = '';
       }, 3000);
@@ -118,12 +129,20 @@ export function SupportDialog() {
   };
 
   if (!isOpen) {
+    if (className) {
+      return (
+        <button type="button" onClick={() => setIsOpen(true)} className={className}>
+          {rotulo}
+        </button>
+      );
+    }
     return (
       <button
+        type="button"
         onClick={() => setIsOpen(true)}
         className="relative text-neutral-200 text-base md:text-lg hover:text-white transition-colors group/support"
       >
-        Suporte
+        {rotulo}
         <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover/support:w-full transition-all"></div>
       </button>
     );

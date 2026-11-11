@@ -12,14 +12,16 @@ export interface Tema {
   icone: string;
   /** página de /docs com o mesmo assunto */
   doc?: string;
+  /** módulo do formulário de suporte (lista `GHL_MODULES` do SupportDialog) */
+  suporte?: string;
 }
 
 export const TEMAS: Record<string, Tema> = {
-  'WhatsApp Homio': { icone: 'MessageCircle', doc: '/docs/whatsapp' },
-  Contatos: { icone: 'Users', doc: '/docs/contatos' },
-  'Oportunidades e funil': { icone: 'Kanban', doc: '/docs/oportunidades' },
-  Automações: { icone: 'Workflow', doc: '/docs/automacoes' },
-  Conversas: { icone: 'MessagesSquare', doc: '/docs/conversas' },
+  'WhatsApp Homio': { icone: 'MessageCircle', doc: '/docs/whatsapp', suporte: 'Conversas' },
+  Contatos: { icone: 'Users', doc: '/docs/contatos', suporte: 'Contatos' },
+  'Oportunidades e funil': { icone: 'Kanban', doc: '/docs/oportunidades', suporte: 'Oportunidades' },
+  Automações: { icone: 'Workflow', doc: '/docs/automacoes', suporte: 'Automação' },
+  Conversas: { icone: 'MessagesSquare', doc: '/docs/conversas', suporte: 'Conversas' },
 };
 
 export function temaInfo(tema: string): Tema {

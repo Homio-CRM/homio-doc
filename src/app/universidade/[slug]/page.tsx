@@ -4,12 +4,16 @@ import { notFound } from 'next/navigation';
 import type { TOCItemType } from 'fumadocs-core/toc';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 import { getMDXComponents } from '@/mdx-components';
+import { SupportDialog } from '@/components/SupportDialog';
 import { AncoraAtiva } from '@/components/universidade/AncoraAtiva';
 import { CopiarLink } from '@/components/universidade/CopiarLink';
+import { CopiarResposta } from '@/components/universidade/CopiarResposta';
+import { TrilhoClipes } from '@/components/universidade/TrilhoClipes';
 import { VideoClipe } from '@/components/universidade/VideoClipe';
 import {
   clipePrincipal,
   problemasComuns,
+  respostaComLink,
   respostaSemLink,
   tutorialPorSlug,
   tutoriaisPublicados,
@@ -17,6 +21,10 @@ import {
   type Clipe,
   type TutorialPage,
 } from '@/lib/universidade';
+import { temaInfo } from '@/lib/universidade-temas';
+
+const BOTAO_SUPORTE_LINK =
+  'font-medium text-fd-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring';
 
 export default async function TutorialPage(props: PageProps<'/universidade/[slug]'>) {
   const { slug } = await props.params;
@@ -25,6 +33,7 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
 
   const principal = clipePrincipal(page);
   const problemas = problemasComuns(page);
+  const tema = temaInfo(page.data.tema);
   const MDX = page.data.body;
 
   const toc: TOCItemType[] = [];
@@ -37,15 +46,19 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
   }
 
   return (
-    <DocsPage toc={toc} tableOfContent={{ style: 'clerk' }}>
+    <DocsPage toc={toc} tableOfContent={{ style: 'clerk' }} breadcrumb={{ enabled: false }}>
       <AncoraAtiva />
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <div className="not-prose flex items-center justify-end">
+        <div className="not-prose flex flex-wrap items-center gap-2">
           <CopiarLink url={urlClipe(page, principal, true)} descricao={page.data.title} />
+          <CopiarResposta texto={respostaComLink(page, principal)} descricao={page.data.title} />
         </div>
-        <VideoClipe clipe={principal} prioridade rotulo={`${page.data.title}: vídeo completo`} />
+        <div id="video-principal" className="scroll-mt-24">
+          <VideoClipe clipe={principal} prioridade rotulo={`${page.data.title}: vídeo completo`} />
+        </div>
+        <TrilhoClipes clipes={page.data.clipes} />
 
         <MDX components={getMDXComponents()} />
 
@@ -80,33 +93,51 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
           </section>
         ) : null}
 
-        <p className="text-sm text-fd-muted-foreground">
-          Não resolveu? Fale com o suporte pelo WhatsApp da Homio ou pelo botão Suporte na{' '}
-          <Link href="/">página inicial</Link>.
-        </p>
+        <div className="not-prose mt-10 rounded-xl border border-fd-border bg-fd-card p-5 dark:bg-fd-secondary/40">
+          <p className="font-semibold text-fd-foreground">Não resolveu?</p>
+          <p className="mt-1 text-sm text-fd-muted-foreground">
+            Fale com o suporte da Homio. Diga qual trecho você viu e o que apareceu na sua tela.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <SupportDialog
+              rotulo="Falar com o suporte"
+              className="inline-flex min-h-9 items-center rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+              modulo={tema.suporte}
+              contexto={`Vi o tutorial "${page.data.title}" e não resolveu.`}
+            />
+            {tema.doc ? (
+              <Link
+                href={tema.doc}
+                className="inline-flex min-h-9 items-center rounded-md border border-fd-border bg-fd-background px-3 text-sm font-medium text-fd-foreground transition-colors hover:bg-fd-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring dark:bg-fd-muted"
+              >
+                Ler a documentação em texto
+              </Link>
+            ) : null}
+          </div>
+        </div>
       </DocsBody>
     </DocsPage>
   );
 }
 
 function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
+  const tema = temaInfo(page.data.tema);
   return (
     <section id={clipe.ancora} data-clipe aria-labelledby={`${clipe.ancora}-titulo`}>
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-        <h3 id={`${clipe.ancora}-titulo`} className="!my-0">
-          {clipe.titulo}
-        </h3>
-        <span className="not-prose sm:mt-1">
-          <CopiarLink url={urlClipe(page, clipe, true)} descricao={clipe.titulo} />
-        </span>
-      </div>
+      <h3 id={`${clipe.ancora}-titulo`} className="!my-0">
+        {clipe.titulo}
+      </h3>
       {clipe.pergunta ? (
         <p className="!mt-2 text-fd-muted-foreground">
           <q>{clipe.pergunta}</q>
         </p>
       ) : null}
-      <p>{clipe.tipo === 'texto' && clipe.texto ? clipe.texto : respostaSemLink(clipe)}</p>
+      <div className="not-prose mt-3 flex flex-wrap items-center gap-2">
+        <CopiarLink url={urlClipe(page, clipe, true)} descricao={clipe.titulo} />
+        <CopiarResposta texto={respostaComLink(page, clipe)} descricao={clipe.titulo} />
+      </div>
       {clipe.mp4 ? <VideoClipe clipe={clipe} /> : null}
+      <p>{clipe.tipo === 'texto' && clipe.texto ? clipe.texto : respostaSemLink(clipe)}</p>
       {clipe.mp4 && clipe.legendas.length > 0 ? (
         <details className="!mt-0 text-sm">
           <summary>Ler os passos ({clipe.legendas.length})</summary>
@@ -117,6 +148,15 @@ function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
           </ol>
         </details>
       ) : null}
+      <p className="!mt-3 text-sm text-fd-muted-foreground">
+        Não resolveu?{' '}
+        <SupportDialog
+          rotulo="Falar com o suporte"
+          className={BOTAO_SUPORTE_LINK}
+          modulo={tema.suporte}
+          contexto={`Vi o tutorial "${page.data.title}", trecho "${clipe.titulo}", e não resolveu.`}
+        />
+      </p>
     </section>
   );
 }
