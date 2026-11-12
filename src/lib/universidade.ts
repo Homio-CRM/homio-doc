@@ -1,6 +1,7 @@
 import { universidade } from '@/.source';
 import { loader, type InferPageType } from 'fumadocs-core/source';
 import type { AdvancedIndex } from 'fumadocs-core/search/server';
+import { EM_PRODUCAO, type TutorialEmProducao } from '@/lib/universidade-producao';
 
 /** Host público; entra nos links absolutos que o agente envia. */
 export const SITE_URL = 'https://docs.homio.com.br';
@@ -144,9 +145,32 @@ function radical(t: string): string {
   return t;
 }
 
+/**
+ * Jeitos de falar que viram a palavra do catálogo antes de comparar. É vocabulário
+ * de conversa ("zap", "caiu"), não assunto: sintoma novo de um trecho vai no
+ * `sintomas` do MDX, não aqui.
+ */
+const SINONIMOS: Record<string, string> = {
+  whats: 'whatsapp',
+  whatsap: 'whatsapp',
+  wpp: 'whatsapp',
+  zap: 'whatsapp',
+  zapzap: 'whatsapp',
+  caiu: 'desconectou',
+  cai: 'desconectou',
+  caindo: 'desconectou',
+  deslogou: 'desconectou',
+  mandar: 'enviar',
+  mando: 'enviar',
+  manda: 'enviar',
+  mandou: 'enviar',
+  mandando: 'enviar',
+};
+
 export function termos(texto: string): string[] {
   return normalizar(texto)
     .split(/[^a-z0-9]+/)
+    .map((t) => SINONIMOS[t] ?? t)
     .filter((t) => t.length > 1 && !PARADAS.has(t))
     .map(radical);
 }
@@ -160,7 +184,18 @@ function casa(a: string, b: string): boolean {
   if (a === b) return true;
   const [curto, longo] = a.length <= b.length ? [a, b] : [b, a];
   if (curto.length < 4 || longo.length - curto.length > 1) return false;
-  return longo.startsWith(curto);
+  if (longo.startsWith(curto)) return true;
+  // erro de digitação: uma letra trocada, a mais ou a menos, só em palavra longa
+  // ("watsapp", "desconetou"); em palavra curta isso junta assuntos diferentes
+  return curto.length >= 6 && umaEdicao(curto, longo);
+}
+
+/** `curto` e `longo` diferem em no máximo uma letra (troca, sobra ou falta). */
+function umaEdicao(curto: string, longo: string): boolean {
+  let i = 0;
+  while (i < curto.length && curto[i] === longo[i]) i++;
+  const resto = curto.length === longo.length ? i + 1 : i;
+  return curto.slice(resto) === longo.slice(i + 1);
 }
 
 /** Soma `peso` por termo da consulta presente no campo e marca quais termos casaram. */
@@ -169,10 +204,11 @@ function pontuar(
   campo: string[],
   peso: number,
   casados: Set<string>,
+  igual: (q: string, c: string) => boolean = casa,
 ): number {
   let pontos = 0;
   for (const q of consulta) {
-    if (campo.some((c) => casa(q, c))) {
+    if (campo.some((c) => igual(q, c))) {
       pontos += peso;
       casados.add(q);
     }
@@ -227,14 +263,45 @@ export type ClipeEncontrado = ClipeResultado & {
   confianca: 'alta' | 'media';
 };
 
+export interface OpcoesBusca {
+  /**
+   * Busca enquanto a pessoa digita (campo da capa da Universidade): a última
+   * palavra ainda está pela metade, então casa também como começo de palavra
+   * ("descon" acha "desconectou"). A API do agente não usa: lá a frase chega inteira.
+   */
+  prefixoFinal?: boolean;
+  /**
+   * Parte dos termos da consulta que o trecho precisa cobrir (padrão: metade). O
+   * campo da capa pede mais, porque mostra o primeiro resultado em destaque: com
+   * metade, "automação não disparou" achava um trecho só por causa de "automação".
+   */
+  coberturaMinima?: number;
+}
+
+function comparador(consulta: string, opcoes: OpcoesBusca) {
+  if (!opcoes.prefixoFinal || /\s$/.test(consulta)) return casa;
+  const ultima = normalizar(consulta).split(/[^a-z0-9]+/).filter(Boolean).at(-1);
+  // sozinha, uma palavra de 3 letras casa com meio catálogo ("con"); depois de outra
+  // palavra ela já tem contexto ("lead sum")
+  const minimo = termos(consulta).length > 1 ? 3 : 4;
+  if (!ultima || ultima.length < minimo || PARADAS.has(ultima)) return casa;
+  const alvo = radical(ultima);
+  return (q: string, c: string) => casa(q, c) || (q === alvo && c.startsWith(ultima));
+}
+
 /**
  * Procura o trecho que responde à dúvida. Sintoma vale 5, título/pergunta 3,
  * resposta/legendas 1. Só entra quem passa da pontuação mínima e cobre ao menos
  * metade dos termos da consulta. Empate: o clipe mais curto (mais específico) primeiro.
  */
-export function buscarClipes(consulta: string, limite = 5): ClipeEncontrado[] {
+export function buscarClipes(
+  consulta: string,
+  limite = 5,
+  opcoes: OpcoesBusca = {},
+): ClipeEncontrado[] {
   const q = [...new Set(termos(consulta))];
   if (q.length === 0) return [];
+  const igual = comparador(consulta, opcoes);
   const achados: ClipeEncontrado[] = [];
   for (const page of tutoriaisPublicados()) {
     for (const c of page.data.clipes) {
@@ -243,11 +310,11 @@ export function buscarClipes(consulta: string, limite = 5): ClipeEncontrado[] {
       const titulos = termos(`${c.titulo} ${c.pergunta ?? ''} ${page.data.title}`);
       const corpo = termos(`${c.resposta} ${c.legendas.join(' ')} ${c.texto ?? ''}`);
       const pontuacao =
-        pontuar(q, sintomas, 5, casados) +
-        pontuar(q, titulos, 3, casados) +
-        pontuar(q, corpo, 1, casados);
+        pontuar(q, sintomas, 5, casados, igual) +
+        pontuar(q, titulos, 3, casados, igual) +
+        pontuar(q, corpo, 1, casados, igual);
       const cobertura = casados.size / q.length;
-      if (pontuacao < PONTUACAO_MINIMA || cobertura < COBERTURA_MINIMA) continue;
+      if (pontuacao < PONTUACAO_MINIMA || cobertura < (opcoes.coberturaMinima ?? COBERTURA_MINIMA)) continue;
       achados.push({
         ...paraResultado(page, c),
         pontuacao,
@@ -262,6 +329,38 @@ export function buscarClipes(consulta: string, limite = 5): ClipeEncontrado[] {
         (a.duracao_s ?? 999) - (b.duracao_s ?? 999),
     )
     .slice(0, limite);
+}
+
+/**
+ * Tutoriais ainda sem vídeo que respondem à consulta: todos os termos dela precisam
+ * estar no título ou nos sintomas do item.
+ */
+export function emProducaoPara(consulta: string): TutorialEmProducao[] {
+  const q = [...new Set(termos(consulta))];
+  if (q.length === 0) return [];
+  return EM_PRODUCAO.filter((item) => {
+    const campo = termos(`${item.titulo} ${item.tema} ${item.sintomas.join(' ')}`);
+    return q.every((t) => campo.some((c) => casa(t, c)));
+  });
+}
+
+/**
+ * Exemplos do campo "O que deu errado?": o `exemplo_busca` do frontmatter de cada
+ * tutorial, na ordem dos mais enviados pelo suporte. Só entra o exemplo que, buscado,
+ * devolve um trecho do próprio tutorial em primeiro lugar: se o catálogo mudar e a
+ * frase deixar de achar, ela some da capa em vez de levar a uma lista vazia.
+ */
+export function exemplosDeBusca(limite = 3): string[] {
+  const exemplos: string[] = [];
+  const ordem = [...new Set([...maisEnviados(25).map((d) => d.page), ...tutoriaisPublicados()])];
+  for (const page of ordem) {
+    const frase = page.data.exemplo_busca?.trim();
+    if (!frase) continue;
+    if (buscarClipes(frase, 1)[0]?.tutorial_slug !== page.slugs[0]) continue;
+    exemplos.push(frase);
+    if (exemplos.length === limite) break;
+  }
+  return exemplos;
 }
 
 /** Catálogo completo, pra quem quer listar em vez de buscar. */

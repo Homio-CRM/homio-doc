@@ -20,7 +20,7 @@ export function MaisEnviados() {
         <h2 id="mais-enviados-titulo" className="text-lg font-semibold text-fd-foreground">
           Os problemas mais enviados pelo suporte
         </h2>
-        <p className="text-sm text-fd-muted-foreground">
+        <p className="text-sm text-fd-foreground/70">
           Da análise de 12 meses de conversas de suporte.
         </p>
       </div>
@@ -42,7 +42,7 @@ export function MaisEnviados() {
                 <span className="block text-sm font-medium leading-snug text-fd-foreground underline-offset-4 group-hover:underline">
                   {clipe.pergunta ?? clipe.titulo}
                 </span>
-                <span className="mt-0.5 block text-xs text-fd-muted-foreground">
+                <span className="mt-0.5 block text-xs text-fd-foreground/70">
                   {page.data.tema}
                   {clipe.duracao ? ` · ${formatarDuracao(clipe.duracao)}` : ' · resposta em texto'}
                 </span>

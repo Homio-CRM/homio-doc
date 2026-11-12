@@ -38,13 +38,19 @@ export function VideoClipe({ clipe, prioridade = false, rotulo }: Props) {
           <a href={clipe.mp4}>Baixe o arquivo</a>.
         </video>
       </div>
-      {mostrarLegenda ? (
-        <figcaption className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-fd-muted-foreground">
+      <figcaption
+        className={`mt-2 flex-wrap items-center gap-x-3 gap-y-1 text-xs text-fd-foreground/70 ${mostrarLegenda ? 'flex' : 'flex sm:hidden'}`}
+      >
+        {mostrarLegenda ? (
           <span className="rounded-full bg-fd-accent px-2 py-0.5 text-fd-accent-foreground">
             Sem narração ainda
           </span>
-        </figcaption>
-      ) : null}
+        ) : null}
+        {/* a gravação é uma tela de computador: em 360 px os rótulos não se leem */}
+        <span className="sm:hidden">
+          Para ler a tela, abra o vídeo em tela cheia e vire o celular.
+        </span>
+      </figcaption>
     </figure>
   );
 }

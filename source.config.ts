@@ -76,6 +76,8 @@ export const universidade = defineDocs({
       icon: z.string().optional(),
       /** título curto pra barra lateral; sem ele, usa `title` */
       menu: z.string().optional(),
+      /** frase de cliente que vira exemplo no campo "O que deu errado?" da capa */
+      exemplo_busca: z.string().optional(),
       full: z.boolean().optional(),
       /** agrupa no índice e na barra lateral */
       tema: z.string(),

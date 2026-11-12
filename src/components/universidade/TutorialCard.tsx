@@ -43,6 +43,7 @@ export function TutorialCard({ page, largo = false }: Props) {
       <Link
         href={page.url}
         aria-label={`Assistir: ${page.data.title}`}
+        tabIndex={-1}
         className={`relative block self-start overflow-hidden rounded-md bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring ${largo ? 'sm:rounded-lg' : 'sm:rounded-none'}`}
       >
         {capa ? (

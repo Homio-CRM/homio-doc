@@ -135,6 +135,23 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Texto secundário no tema claro: o #737373 do tema dava 4,496:1 no fundo da página,
+   abaixo do mínimo de 4,5:1. O escuro já passa e fica como está. */
+:root:not(.dark) {
+  --color-fd-muted-foreground: hsl(0, 0%, 40%);
+}
+
+/* O gatilho do sumário no celular vinha sem indicador de foco. */
+#nd-tocnav button:focus-visible {
+  outline: 2px solid var(--color-fd-ring);
+  outline-offset: -2px;
+}
+
+/* Modo suporte: a pílula fixa não cobre o fim da página. */
+body.suporte-ativo #nd-page {
+  padding-bottom: 4rem;
+}
+
 /* Universidade: trecho apontado pela âncora do link (ex.: #reconectar) */
 [data-clipe] {
   scroll-margin-top: calc(var(--fd-nav-height, 3.5rem) + var(--fd-tocnav-height, 0px) + 1rem);

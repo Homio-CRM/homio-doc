@@ -2,11 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
+import { BuscaSintoma } from '@/components/universidade/BuscaSintoma';
 import { MaisEnviados } from '@/components/universidade/MaisEnviados';
 import { ReguaModulos, type ItemRegua } from '@/components/universidade/ReguaModulos';
 import { SecaoTema } from '@/components/universidade/SecaoTema';
 import { TutorialCard } from '@/components/universidade/TutorialCard';
-import { idTema, maisEnviados, problemasComuns, tutoriaisPorTema } from '@/lib/universidade';
+import {
+  exemplosDeBusca,
+  idTema,
+  maisEnviados,
+  problemasComuns,
+  tutoriaisPorTema,
+} from '@/lib/universidade';
+import { EM_PRODUCAO } from '@/lib/universidade-producao';
 import { iconeLucide, temaInfo } from '@/lib/universidade-temas';
 
 export const metadata: Metadata = {
@@ -15,12 +23,6 @@ export const metadata: Metadata = {
     'Tutoriais em vídeo gravados na própria Homio: o caminho completo de cada tarefa e os problemas mais comuns, com a solução.',
   robots: { index: false, follow: true },
 };
-
-/** Mapeados e com roteiro escrito; ainda sem vídeo gravado. */
-const EM_PRODUCAO = [
-  { tema: 'Automações', titulo: 'Minha automação não disparou: o checklist' },
-  { tema: 'Conversas', titulo: 'Achar uma conversa que sumiu da caixa de entrada' },
-];
 
 export default function UniversidadePage() {
   const temas = [...tutoriaisPorTema().entries()];
@@ -43,7 +45,7 @@ export default function UniversidadePage() {
   return (
     <DocsPage toc={toc} tableOfContent={{ style: 'clerk' }} breadcrumb={{ enabled: false }}>
       <DocsTitle>Universidade Homio</DocsTitle>
-      <DocsDescription>
+      <DocsDescription className="max-w-[64ch]">
         Tutoriais curtos gravados na própria Homio: o caminho completo de cada tarefa e os
         problemas mais comuns, cada um com link próprio.
       </DocsDescription>
@@ -55,6 +57,7 @@ export default function UniversidadePage() {
           </p>
         ) : null}
 
+        {temas.length > 0 ? <BuscaSintoma exemplos={exemplosDeBusca()} /> : null}
         <ReguaModulos itens={regua} />
         <div className="not-prose mt-4">
           <MaisEnviados />
@@ -65,7 +68,7 @@ export default function UniversidadePage() {
           const id = idTema(tema);
           const problemas = pages.reduce((soma, p) => soma + problemasComuns(p).length, 0);
           return (
-            <SecaoTema key={tema} id={id} rotuladaPor={`${id}-titulo`} className="not-prose mt-10 scroll-mt-24">
+            <SecaoTema key={tema} id={id} rotuladaPor={`${id}-titulo`} className="not-prose mt-10 scroll-mt-[calc(var(--fd-nav-height,0px)+var(--fd-tocnav-height,0px)+4.75rem)]">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary">
                   {iconeLucide(info.icone, { className: 'size-5', 'aria-hidden': true })}
@@ -80,7 +83,7 @@ export default function UniversidadePage() {
                 {info.doc ? (
                   <Link
                     href={info.doc}
-                    className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-fd-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+                    className="ml-auto inline-flex min-h-11 items-center gap-1 text-sm font-medium text-fd-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
                   >
                     Ler em texto
                     <ArrowRight className="size-4" aria-hidden />
@@ -98,11 +101,11 @@ export default function UniversidadePage() {
           );
         })}
 
-        <section id="em-producao" aria-labelledby="em-producao-titulo" className="not-prose mt-10 scroll-mt-24">
+        <section id="em-producao" aria-labelledby="em-producao-titulo" className="not-prose mt-10 scroll-mt-[calc(var(--fd-nav-height,0px)+var(--fd-tocnav-height,0px)+4.75rem)]">
           <h2 id="em-producao-titulo" className="text-xl font-semibold text-fd-foreground">
             Em produção
           </h2>
-          <p className="mt-1 text-sm text-fd-muted-foreground">
+          <p className="mt-1 max-w-[64ch] text-sm text-fd-muted-foreground">
             Próximos tutoriais, na ordem do que mais gera dúvida no suporte. Enquanto o vídeo não
             sai, a documentação em texto cobre o assunto.
           </p>
@@ -122,7 +125,7 @@ export default function UniversidadePage() {
                   {info.doc ? (
                     <Link
                       href={info.doc}
-                      className="ml-auto text-xs font-medium text-fd-primary underline-offset-4 hover:underline"
+                      className="ml-auto inline-flex min-h-11 items-center text-sm font-medium text-fd-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring sm:min-h-0"
                     >
                       Ler em texto
                     </Link>

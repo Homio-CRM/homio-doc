@@ -24,7 +24,7 @@ import {
 import { temaInfo } from '@/lib/universidade-temas';
 
 const BOTAO_SUPORTE_LINK =
-  'font-medium text-fd-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring';
+  'inline-flex min-h-11 items-center font-medium text-fd-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring sm:min-h-0';
 
 export default async function TutorialPage(props: PageProps<'/universidade/[slug]'>) {
   const { slug } = await props.params;
@@ -68,7 +68,7 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
 
         {principal.legendas.length > 0 ? (
           <details>
-            <summary>
+            <summary className="!py-2">
               <h2 id="o-que-o-video-mostra" className="!my-0 inline text-xl">
                 O que o vídeo mostra
               </h2>
@@ -105,14 +105,14 @@ export default async function TutorialPage(props: PageProps<'/universidade/[slug
           <div className="mt-3 flex flex-wrap gap-2">
             <SupportDialog
               rotulo="Falar com o suporte"
-              className="inline-flex min-h-9 items-center rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+              className="inline-flex min-h-11 items-center rounded-md bg-fd-primary px-3 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
               modulo={tema.suporte}
               contexto={`Vi o tutorial "${page.data.title}" e não resolveu.`}
             />
             {tema.doc ? (
               <Link
                 href={tema.doc}
-                className="inline-flex min-h-9 items-center rounded-md border border-fd-border bg-fd-background px-3 text-sm font-medium text-fd-foreground transition-colors hover:bg-fd-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring dark:bg-fd-muted"
+                className="inline-flex min-h-11 items-center rounded-md border border-fd-border bg-fd-background px-3 text-sm font-medium text-fd-foreground transition-colors hover:bg-fd-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring dark:bg-fd-muted"
               >
                 Ler a documentação em texto
               </Link>
@@ -146,7 +146,7 @@ function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
       </p>
       {clipe.mp4 && clipe.legendas.length > 0 ? (
         <details className="!mt-0 text-sm">
-          <summary>Ler os passos ({clipe.legendas.length})</summary>
+          <summary className="!py-3">Ler os passos ({clipe.legendas.length})</summary>
           <ol className="!mt-2">
             {clipe.legendas.map((l, i) => (
               <li key={i}>{l}</li>
@@ -154,14 +154,14 @@ function ClipeSecao({ page, clipe }: { page: TutorialPage; clipe: Clipe }) {
           </ol>
         </details>
       ) : null}
-      <p className="!mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-fd-muted-foreground">
-        <span>
+      <p className="!mt-1 flex flex-wrap items-center gap-x-4 text-sm text-fd-foreground/70 sm:!mt-3 sm:gap-y-1">
+        <span className="inline-flex items-center gap-x-1">
           Resolveu?{' '}
           <a href="#video-principal" className={BOTAO_SUPORTE_LINK}>
             Ver o caminho completo
           </a>
         </span>
-        <span>
+        <span className="inline-flex items-center gap-x-1">
           Não resolveu?{' '}
           <SupportDialog
             rotulo="Falar com o suporte"

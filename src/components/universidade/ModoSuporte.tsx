@@ -48,6 +48,12 @@ export function ModoSuporte() {
     };
   }, []);
 
+  // reserva o rodapé da página pra pílula fixa não cobrir o último link
+  useEffect(() => {
+    document.body.classList.toggle('suporte-ativo', ativo);
+    return () => document.body.classList.remove('suporte-ativo');
+  }, [ativo]);
+
   if (!ativo) return null;
 
   return (
@@ -61,7 +67,7 @@ export function ModoSuporte() {
         type="button"
         onClick={() => gravar(false)}
         aria-label="Desligar o modo suporte"
-        className="inline-flex size-6 items-center justify-center rounded-full text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+        className="inline-flex size-8 items-center justify-center rounded-full text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
       >
         <X className="size-3.5" aria-hidden />
       </button>
