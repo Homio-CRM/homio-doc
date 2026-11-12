@@ -19,6 +19,7 @@ export interface Tema {
 export const TEMAS: Record<string, Tema> = {
   'WhatsApp Homio': { icone: 'MessageCircle', doc: '/docs/whatsapp', suporte: 'Conversas' },
   Contatos: { icone: 'Users', doc: '/docs/contatos', suporte: 'Contatos' },
+  'Campos e chaves': { icone: 'Braces', doc: '/docs/campos-personalizados', suporte: 'Configurações' },
   'Oportunidades e funil': { icone: 'Kanban', doc: '/docs/oportunidades', suporte: 'Oportunidades' },
   Automações: { icone: 'Workflow', doc: '/docs/automacoes', suporte: 'Automação' },
   Conversas: { icone: 'MessagesSquare', doc: '/docs/conversas', suporte: 'Conversas' },

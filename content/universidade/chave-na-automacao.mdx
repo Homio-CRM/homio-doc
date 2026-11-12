@@ -1,0 +1,109 @@
+---
+title: "Usar a chave numa automação"
+description: "Como colocar a chave de um campo na mensagem de uma automação, o que significam a chave azul, a vermelha e a laranja, por que o dado sai em branco e como a automação grava um dado no campo."
+icon: Workflow
+menu: "Chave na automação"
+tema: Campos e chaves
+ordem: 32
+publicado: true
+clipes:
+  - ancora: principal
+    titulo: "A chave na automação: azul, vermelho e laranja"
+    pergunta: "Como coloco um dado do cliente na mensagem da automação?"
+    tipo: principal
+    duracao: 74
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/a1e0a818-41b0-413b-8e8c-d5ead5aed8c7.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/c745b169-36de-4fa7-833f-bacb4787fafc.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/4b6bbf9b-318e-47eb-bfc2-08214839d60a.jpg
+    legendas:
+      - "Numa automação, a chave entra dentro da mensagem. Este fluxo manda um SMS de boas-vindas."
+      - "Abra a ação de mensagem."
+      - "Escreva o texto. E, onde entra o dado do cliente, clique na etiqueta."
+      - "Os campos do contato ficam em Contact. Mais rápido: busque pelo nome do campo."
+      - "Clique no campo, e a chave entra no texto."
+      - "Ficou azul: a Homio reconheceu a chave. No envio, ela vira o plano de cada cliente."
+      - "Agora o erro mais comum: digitar a chave de cabeça."
+      - "Ficou vermelho: valor não reconhecido. Essa chave não existe."
+      - "Chave vermelha não traz dado nenhum. Apague e escolha de novo pela etiqueta."
+      - "Tem também o laranja. É chave de oportunidade num ponto do fluxo onde ainda não existe oportunidade."
+      - "Laranja salva, mas vai sair em branco na mensagem. Vazio também sai o campo que o contato não tem preenchido."
+      - "E pra automação gravar um dado no campo, use a ação Atualizar campo de contato."
+      - "Você escolhe o campo e o valor. Quando o contato passar por aqui, o campo é preenchido sozinho."
+      - "Resumindo: chave pela etiqueta. Azul, certo. Vermelho, não existe. Laranja, vai sair em branco."
+    resposta: "Na ação de mensagem, escreva o texto e, onde entra o dado do cliente, clique na etiqueta e busque pelo nome do campo. A chave entra no texto. Azul: a Homio reconheceu, e no envio ela vira o dado de cada cliente. Vermelho: a chave não existe; apague e escolha de novo pela etiqueta. Laranja: é chave de oportunidade num ponto do fluxo onde ainda não existe oportunidade, e vai sair em branco. Veja: {link}"
+    sintomas:
+      - "chave na automação"
+      - "variável na mensagem"
+      - "dado do cliente na mensagem"
+      - "campo personalizado na automação"
+      - "etiqueta de valores"
+      - "chave azul"
+  - ancora: chave-vermelha
+    titulo: "A chave ficou vermelha na automação"
+    pergunta: "A chave ficou vermelha na mensagem da automação. O que é?"
+    tipo: erro
+    duracao: 14
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/f9606ec6-07cc-48f2-b2c4-60212938c5ec.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/9c1be86b-7f03-4d10-a6a9-2ad2d3244b12.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/487a704e-ca9b-475c-8829-989f63ea37e9.jpg
+    legendas:
+      - "Agora o erro mais comum: digitar a chave de cabeça."
+      - "Ficou vermelho: valor não reconhecido. Essa chave não existe."
+      - "Chave vermelha não traz dado nenhum. Apague e escolha de novo pela etiqueta."
+    resposta: "Vermelho quer dizer valor não reconhecido: essa chave não existe. Costuma acontecer quando a chave é digitada de cabeça. Chave vermelha não traz dado nenhum: apague e escolha de novo pela etiqueta, buscando pelo nome do campo. Veja: {link}"
+    sintomas:
+      - "chave vermelha"
+      - "valor não reconhecido"
+      - "chave não existe"
+      - "variável vermelha"
+      - "chave não reconhecida"
+  - ancora: chave-laranja
+    titulo: "A chave ficou laranja, ou o dado saiu em branco"
+    pergunta: "A mensagem da automação chegou com o dado em branco."
+    tipo: erro
+    duracao: 13
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/f0ce7be1-5707-47e8-b03c-88a695d1e062.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/555f4f12-fa56-492a-9a27-d540d9b9b936.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/e0b79985-b3cb-4d9c-b077-9754328a39d4.jpg
+    legendas:
+      - "Tem também o laranja. É chave de oportunidade num ponto do fluxo onde ainda não existe oportunidade."
+      - "Laranja salva, mas vai sair em branco na mensagem. Vazio também sai o campo que o contato não tem preenchido."
+    resposta: "Dois motivos comuns. Chave laranja: é chave de oportunidade num ponto do fluxo onde ainda não existe oportunidade; ela salva, mas sai em branco na mensagem. E campo vazio: se o contato não tem aquele campo preenchido, a chave também sai em branco. Veja: {link}"
+    sintomas:
+      - "chave laranja"
+      - "dado em branco"
+      - "mensagem chegou sem o nome"
+      - "variável vazia"
+      - "campo saiu em branco"
+      - "chave de oportunidade"
+  - ancora: gravar-no-campo
+    titulo: "A automação preenche o campo sozinha"
+    pergunta: "Dá para a automação preencher um campo do contato?"
+    tipo: erro
+    duracao: 11
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/a66a0353-835b-4b7f-a177-04321e4f9a3a.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/22e2f136-58c3-485a-96c0-50c1ea187ac1.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/4d638a57-63d0-4829-a4f9-7baeafe8e479.jpg
+    legendas:
+      - "E pra automação gravar um dado no campo, use a ação Atualizar campo de contato."
+      - "Você escolhe o campo e o valor. Quando o contato passar por aqui, o campo é preenchido sozinho."
+    resposta: "Dá. Use a ação Atualizar campo de contato: você escolhe o campo e o valor, e quando o contato passar por esse ponto do fluxo o campo é preenchido sozinho. Veja: {link}"
+    sintomas:
+      - "atualizar campo de contato"
+      - "automação preencher campo"
+      - "gravar dado no campo"
+      - "preencher campo automaticamente"
+---
+
+Numa automação, a chave entra dentro da mensagem, sempre pela **etiqueta** do editor. A cor da chave diz se vai
+funcionar: **azul** é chave reconhecida, **vermelho** é chave que não existe e **laranja** é chave de
+oportunidade num ponto do fluxo onde ainda não há oportunidade. Chave laranja e campo que o contato não tem
+preenchido saem em branco na mensagem.
+
+<Callout title="Prefere ler?">
+  O texto sobre campos personalizados está em [Campos Personalizados](/docs/campos-personalizados).
+</Callout>
