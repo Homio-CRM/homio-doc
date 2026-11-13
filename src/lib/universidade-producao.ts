@@ -13,18 +13,6 @@ export interface TutorialEmProducao {
 
 export const EM_PRODUCAO: TutorialEmProducao[] = [
   {
-    tema: 'Automações',
-    titulo: 'Minha automação não disparou: o checklist',
-    sintomas: [
-      'automação não disparou',
-      'automação não funciona',
-      'automação não rodou',
-      'workflow não disparou',
-      'fluxo não disparou',
-      'gatilho não funcionou',
-    ],
-  },
-  {
     tema: 'Conversas',
     titulo: 'Achar uma conversa que sumiu da caixa de entrada',
     sintomas: [

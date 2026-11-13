@@ -1,0 +1,201 @@
+---
+title: "Minha automação não disparou: o checklist"
+description: "As cinco checagens para descobrir por que uma automação não disparou: status publicado, acionador e filtro, histórico de inscrições, passo atual e detalhes do envio. E a regra da reentrada."
+icon: ListChecks
+menu: "Automação não disparou"
+exemplo_busca: automação não disparou
+tema: Automações
+ordem: 40
+publicado: true
+clipes:
+  - ancora: principal
+    titulo: "Automação não disparou: as cinco checagens"
+    pergunta: "Minha automação não disparou. Por onde eu começo?"
+    tipo: principal
+    duracao: 101
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/67037b03-91ef-474e-bf86-a2df7bf33811.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/2de1b670-f01a-44f4-ba90-0d4836306263.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/09894c88-637f-4d8c-84a7-c7dec02a795b.jpg
+    suporte_rank: 8
+    legendas:
+      - "Sua automação não disparou? Confira cinco pontos, nesta ordem."
+      - "Primeiro: ela está publicada? Na lista, o status precisa ser Publicado. Rascunho não dispara."
+      - "Abra o fluxo."
+      - "E ligue a chave Publicar, no topo. Ela já salva."
+      - "Segundo: o acionador, o primeiro bloco. É ele que decide quem entra."
+      - "Olhe o filtro. Aqui só entra quem receber a tag cliente-novo, escrita exatamente assim."
+      - "E só vale para tag adicionada depois de publicar."
+      - "Terceiro: o contato entrou? Abra o Histórico de inscrições."
+      - "Ele mostra quem entrou e quando, nos últimos 60 dias. A Helena está aqui."
+      - "O Caio, que também ganhou uma tag, não. A dele é cliente novo, com espaço. Não bateu com o filtro."
+      - "Não está no histórico? Reveja o acionador e o filtro. Está? Então a automação disparou."
+      - "Quarto: em que passo ele está? A Ação atual é Esperar 1 dia. Isso é espera, não é erro."
+      - "Quinto: a mensagem saiu? Abra os Registros de execução."
+      - "O envio aparece como Executado. Parece que deu certo."
+      - "Mas clique em Visualizar detalhes."
+      - "Estatísticas de SMS: Failed. E o motivo logo abaixo: o WhatsApp está desconectado."
+      - "Reconecte o WhatsApp Homio, e as próximas mensagens voltam a sair."
+      - "Um extra: funcionou uma vez e não repete para o mesmo contato? Abra Configurações."
+      - "Veja se Habilitar reentrada está ligada. Desligada, o contato só entra uma vez."
+      - "E mesmo ligada: quem ainda está dentro do fluxo, esperando, não entra de novo."
+      - "Resumindo: publicada, acionador e filtro, histórico de inscrições, ação atual e detalhes do envio."
+    resposta: "Confira cinco pontos, nesta ordem. 1) Na lista de automações, o status precisa ser Publicado: rascunho não dispara. 2) Abra o fluxo e olhe o acionador (o primeiro bloco) e o filtro dele: é o filtro que decide quem entra. 3) Na aba Histórico de inscrições, veja se o contato entrou. Se não entrou, o problema é o acionador ou o filtro. 4) Se entrou, a coluna Ação atual mostra em que passo ele está; um passo de espera não é erro. 5) Na aba Registros de execução, clique em Visualizar detalhes no passo de envio: é ali que aparece se a mensagem falhou e por quê. Veja o passo a passo: {link}"
+    sintomas:
+      - "automação não disparou"
+      - "automação não funciona"
+      - "automação não rodou"
+      - "workflow não disparou"
+      - "fluxo não disparou"
+      - "gatilho não funcionou"
+      - "automação parou de funcionar"
+      - "fluxo de trabalho não dispara"
+  - ancora: rascunho
+    titulo: "A automação está em Rascunho"
+    pergunta: "Montei a automação e nada acontece. Na lista aparece Rascunho."
+    tipo: erro
+    duracao: 12
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/a7ccc6a6-c5c6-47ae-99e5-f54e4b06efa5.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/b7afdaea-e202-463e-a3df-c3be9742e03b.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/8accb5ee-cc93-44de-b2d5-f8416c875edd.jpg
+    capa_titulo: "Está em Rascunho"
+    legendas:
+      - "Primeiro: ela está publicada? Na lista, o status precisa ser Publicado. Rascunho não dispara."
+      - "Abra o fluxo."
+      - "E ligue a chave Publicar, no topo. Ela já salva."
+    resposta: "Em Rascunho a automação está montada, mas desligada: ela não dispara para ninguém. Abra o fluxo e ligue a chave Publicar, no topo do construtor, ao lado de Rascunho. Ela já salva, e na lista o status passa a Publicado. O que aconteceu antes de publicar não dispara sozinho: para testar, refaça a ação do acionador num contato de teste. Veja: {link}"
+    sintomas:
+      - "automação em rascunho"
+      - "status rascunho"
+      - "publicar automação"
+      - "como publico o fluxo"
+      - "automação desligada"
+      - "esqueci de publicar"
+  - ancora: filtro
+    titulo: "O acionador e o filtro decidem quem entra"
+    pergunta: "A automação está publicada, mas o contato não entra nela."
+    tipo: erro
+    duracao: 14
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/b1821215-c9b7-4a61-8064-d23b3c1d65bb.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/31284d84-b54d-4cea-913e-be24bb47063f.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/93f38fc1-48d4-4da5-94d1-2977c81df613.jpg
+    capa_titulo: "Acionador e filtro"
+    legendas:
+      - "Segundo: o acionador, o primeiro bloco. É ele que decide quem entra."
+      - "Olhe o filtro. Aqui só entra quem receber a tag cliente-novo, escrita exatamente assim."
+      - "E só vale para tag adicionada depois de publicar."
+    resposta: "Quem decide quem entra é o acionador, o primeiro bloco do fluxo, e o filtro dele. Clique no acionador e leia o filtro: se ele pede uma tag, o contato precisa receber essa tag escrita exatamente igual, com hífen, espaço e acento no mesmo lugar. E atenção: o acionador de tag só vale para tag adicionada depois que o fluxo foi publicado; quem já tinha a tag antes não entra sozinho. Veja: {link}"
+    sintomas:
+      - "filtro do acionador"
+      - "filtro do gatilho"
+      - "tag não dispara automação"
+      - "adicionei a tag e não disparou"
+      - "acionador não funciona"
+      - "contato já tinha a tag"
+      - "sem acionador"
+      - "fluxo sem gatilho"
+  - ancora: nao-entrou
+    titulo: "O contato entrou? O Histórico de inscrições responde"
+    pergunta: "Como eu sei se o contato entrou na automação?"
+    tipo: erro
+    duracao: 21
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/b9d864e3-91aa-4e58-b0b9-13beb62e8e2d.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/3a313ded-72f0-4e76-b255-3adc3e8df848.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/145dcc0e-c4ee-44cd-bdac-76ff726b01e7.jpg
+    capa_titulo: "O contato entrou?"
+    legendas:
+      - "Terceiro: o contato entrou? Abra o Histórico de inscrições."
+      - "Ele mostra quem entrou e quando, nos últimos 60 dias. A Helena está aqui."
+      - "O Caio, que também ganhou uma tag, não. A dele é cliente novo, com espaço. Não bateu com o filtro."
+      - "Não está no histórico? Reveja o acionador e o filtro. Está? Então a automação disparou."
+    resposta: "Abra o fluxo e clique na aba Histórico de inscrições: ela mostra quem entrou e quando, nos últimos 60 dias. Se o contato não está na lista, a automação não começou para ele: reveja o acionador e o filtro (uma tag escrita diferente, mesmo por um espaço, não bate). Se ele está na lista, a automação disparou, e o que falta olhar é o passo em que ele está. Veja: {link}"
+    sintomas:
+      - "histórico de inscrições"
+      - "contato não entrou na automação"
+      - "ver quem entrou no fluxo"
+      - "enrollment history"
+      - "contato não aparece no histórico"
+      - "saber se a automação rodou"
+  - ancora: esperando
+    titulo: "A automação parece parada num passo"
+    pergunta: "O contato entrou na automação, mas ela parou e nada acontece."
+    tipo: erro
+    duracao: 6
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/ae9372f5-b098-4881-a810-f5ca63d2412e.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/7705f234-5e1f-4bd1-a773-232df7eb582d.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/6a21ad29-2cd1-4a8f-8c94-17373160336f.jpg
+    capa_titulo: "Parou num passo"
+    legendas:
+      - "Quarto: em que passo ele está? A Ação atual é Esperar 1 dia. Isso é espera, não é erro."
+    resposta: "No Histórico de inscrições, a coluna Ação atual mostra em que passo o contato está, e a coluna ao lado mostra quando é a próxima execução. Se o passo é um Esperar, a automação não travou: ela está aguardando o tempo configurado e segue sozinha depois. Veja: {link}"
+    sintomas:
+      - "automação parada"
+      - "automação travou"
+      - "contato parado no fluxo"
+      - "waiting"
+      - "aguardando horário"
+      - "passo esperar"
+      - "automação não continua"
+  - ancora: mensagem-nao-saiu
+    titulo: "O passo diz Executado, mas a mensagem não chegou"
+    pergunta: "A automação rodou, mas a mensagem não chegou no cliente."
+    tipo: erro
+    duracao: 22
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/8ad3e773-233c-4f23-9c20-c8193e3b6327.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/c2c34a31-ccdb-40c3-83af-1d739e8193f9.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/7ec0e87b-c0bf-4e39-8cc9-6373c6e04252.jpg
+    capa_titulo: "A mensagem não saiu"
+    suporte_rank: 8
+    legendas:
+      - "Quinto: a mensagem saiu? Abra os Registros de execução."
+      - "O envio aparece como Executado. Parece que deu certo."
+      - "Mas clique em Visualizar detalhes."
+      - "Estatísticas de SMS: Failed. E o motivo logo abaixo: o WhatsApp está desconectado."
+      - "Reconecte o WhatsApp Homio, e as próximas mensagens voltam a sair."
+    resposta: "Na aba Registros de execução, o passo de envio pode aparecer como Executado mesmo quando a mensagem falhou. Clique em Visualizar detalhes nesse passo: em Estatísticas de SMS aparece Failed quando o envio falhou, e logo abaixo vem o motivo. O mais comum é o WhatsApp desconectado (\"Verifique sua conexão com o Whats Homio\"). Reconecte o WhatsApp Homio e as próximas mensagens voltam a sair. Veja: {link}"
+    sintomas:
+      - "mensagem da automação não chegou"
+      - "automação não enviou mensagem"
+      - "executado mas não enviou"
+      - "registros de execução"
+      - "visualizar detalhes"
+      - "sms failed"
+      - "automação não manda whatsapp"
+      - "mensagem não saiu"
+  - ancora: reentrada
+    titulo: "Funcionou uma vez e não repete para o mesmo contato"
+    pergunta: "A automação funcionou na primeira vez e não dispara de novo para o mesmo contato."
+    tipo: erro
+    duracao: 15
+    narrado: true
+    mp4: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/7cbe6ab3-2bce-45fa-8713-03a340de2a8b.mp4
+    capa: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/91b58076-998f-4910-b016-d7a7acb6a384.jpg
+    capa_molde: https://assets.cdn.filesafe.space/sTzec3aUgGdmWIlduwGM/media/a605c245-07f4-44ba-a742-c4ef19a5d9f6.jpg
+    capa_titulo: "Não repete para o mesmo contato"
+    legendas:
+      - "Um extra: funcionou uma vez e não repete para o mesmo contato? Abra Configurações."
+      - "Veja se Habilitar reentrada está ligada. Desligada, o contato só entra uma vez."
+      - "E mesmo ligada: quem ainda está dentro do fluxo, esperando, não entra de novo."
+    resposta: "Abra a aba Configurações do fluxo e veja a chave Habilitar reentrada. Desligada, cada contato só entra uma vez. E mesmo com ela ligada, quem ainda está dentro do fluxo (num passo de espera, por exemplo) é ignorado se o acionador acontecer de novo: só volta a entrar depois de sair. Veja: {link}"
+    sintomas:
+      - "habilitar reentrada"
+      - "automação não repete"
+      - "não dispara de novo"
+      - "segunda vez não funciona"
+      - "mesmo contato não entra de novo"
+      - "reentrada"
+---
+
+Quando uma automação "não dispara", quase sempre a causa está em um destes cinco pontos, e a própria Homio
+mostra qual: o **status** na lista, o **acionador** e o filtro dele, o **Histórico de inscrições**, a **Ação
+atual** do contato e os **detalhes do envio** nos Registros de execução. Siga na ordem: cada passo elimina
+uma causa.
+
+Duas regras que explicam boa parte dos casos: o acionador de tag só vale para tag adicionada **depois** de
+publicar o fluxo, e o passo de envio aparece como Executado mesmo quando a mensagem falhou; o motivo fica em
+Visualizar detalhes.
